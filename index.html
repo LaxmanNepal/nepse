@@ -2,31 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NEPSE AI Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEPSE Live Market (MeroLagani Clone)</title>
   <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js" defer></script>
 </head>
 <body>
-
   <header>
-    <h1>📊 NEPSE AI Stock Dashboard</h1>
+    <h1>📊 NEPSE Live Market</h1>
+    <input type="text" id="search" placeholder="Search company..." oninput="filterTable()">
   </header>
 
-  <div class="search-bar">
-    <input type="text" id="search" placeholder="Search stock (e.g., NABIL, RHPC)" oninput="filterStocks()">
-    <button class="voice-btn" onclick="startVoice()">🎙️ Ask</button>
-  </div>
-
-  <div class="stock-grid" id="stockGrid"></div>
-
-  <div id="chartSection" class="chart-container" style="display:none;">
-    <h2>📈 Price Trend</h2>
-    <canvas id="priceChart"></canvas>
-  </div>
-
-  <div class="ai-response" id="response"></div>
-
-  <script src="script.js"></script>
+  <main>
+    <div class="table-container">
+      <table id="stockTable">
+        <thead>
+          <tr>
+            <th>Company</th>
+            <th>LTP</th>
+            <th>Change</th>
+            <th>% Change</th>
+            <th>Volume</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- JS Injected Rows -->
+        </tbody>
+      </table>
+    </div>
+  </main>
 </body>
 </html>
