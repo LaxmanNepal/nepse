@@ -1,51 +1,66 @@
 body {
   font-family: 'Segoe UI', sans-serif;
-  background: #f0f2f5;
   margin: 0;
   padding: 0;
+  background: #f4f7fa;
+  color: #333;
 }
 header {
-  background: #1c3c6e;
+  background: #143F6B;
   color: white;
   padding: 1rem;
   text-align: center;
 }
 .search-bar {
-  text-align: center;
   padding: 1rem;
+  text-align: center;
 }
 input[type="text"] {
-  width: 80%;
+  width: 75%;
   padding: 10px;
-  border-radius: 6px;
+  font-size: 16px;
+  border-radius: 8px;
   border: 1px solid #ccc;
 }
-button {
-  padding: 10px;
+.voice-btn {
+  background: #F55353;
   border: none;
-  background: #28a745;
   color: white;
-  border-radius: 6px;
-  margin-left: 10px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
 }
 .stock-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1rem;
   padding: 1rem;
 }
 .stock-card {
   background: white;
-  padding: 1rem;
   border-radius: 10px;
-  box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+.stock-card:hover {
+  transform: scale(1.02);
 }
 .ai-response {
-  padding: 1rem;
-  font-size: 16px;
-  background: #fff;
   margin: 1rem;
+  background: #fff;
+  padding: 1rem;
   border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
 }
 .green { color: green; }
 .red { color: red; }
+
+.chart-container {
+  margin: 2rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
