@@ -1,66 +1,48 @@
 body {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
   margin: 0;
   padding: 0;
-  background: #f4f7fa;
-  color: #333;
 }
 header {
-  background: #143F6B;
-  color: white;
+  background: #004080;
+  color: #fff;
   padding: 1rem;
   text-align: center;
 }
-.search-bar {
-  padding: 1rem;
-  text-align: center;
-}
-input[type="text"] {
-  width: 75%;
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-}
-.voice-btn {
-  background: #F55353;
+header input {
+  margin-top: 10px;
+  padding: 8px;
+  width: 80%;
+  max-width: 400px;
+  border-radius: 5px;
   border: none;
-  color: white;
-  padding: 10px 15px;
-  border-radius: 8px;
   font-size: 16px;
-  cursor: pointer;
 }
-.stock-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1rem;
+.table-container {
   padding: 1rem;
+  overflow-x: auto;
 }
-.stock-card {
-  background: white;
-  border-radius: 10px;
-  padding: 1rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  transition: transform 0.2s;
-}
-.stock-card:hover {
-  transform: scale(1.02);
-}
-.ai-response {
-  margin: 1rem;
+table {
+  width: 100%;
+  border-collapse: collapse;
   background: #fff;
-  padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
 }
-.green { color: green; }
-.red { color: red; }
-
-.chart-container {
-  margin: 2rem;
-  padding: 1rem;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+thead {
+  background: #003366;
+  color: #fff;
+}
+th, td {
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+tbody tr:nth-child(even) {
+  background: #f9f9f9;
+}
+.green {
+  color: green;
+}
+.red {
+  color: red;
 }
