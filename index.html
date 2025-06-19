@@ -1,25 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>NEPSE AI Dashboard</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
   <header>
-    <h1>📈 NEPSE AI Stock Dashboard</h1>
+    <h1>📊 NEPSE AI Stock Dashboard</h1>
   </header>
 
   <div class="search-bar">
-    <input type="text" id="search" placeholder="Search stock..." oninput="filterStocks()">
-    <button onclick="startVoice()">🎙️ Ask</button>
+    <input type="text" id="search" placeholder="Search stock (e.g., NABIL, RHPC)" oninput="filterStocks()">
+    <button class="voice-btn" onclick="startVoice()">🎙️ Ask</button>
   </div>
 
-  <div id="stockGrid" class="stock-grid"></div>
+  <div class="stock-grid" id="stockGrid"></div>
 
-  <div id="response" class="ai-response"></div>
+  <div id="chartSection" class="chart-container" style="display:none;">
+    <h2>📈 Price Trend</h2>
+    <canvas id="priceChart"></canvas>
+  </div>
+
+  <div class="ai-response" id="response"></div>
 
   <script src="script.js"></script>
 </body>
