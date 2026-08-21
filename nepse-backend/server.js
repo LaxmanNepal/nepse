@@ -1,40 +1,4 @@
-const express = require("express");
-const axios = require("axios");
-const cheerio = require("cheerio");
-const cors = require("cors");
-
-const app = express();
-app.use(cors());
-
-app.get("/stocks", async (req, res) => {
-  try {
-    const { data } = await axios.get("https://merolagani.com/LatestMarket.aspx");
-    const $ = cheerio.load(data);
-
-    const rows = $("#ctl00_ContentPlaceHolder1_divLatestMarket table tr");
-    const stocks = [];
-
-    rows.each((i, row) => {
-      const cols = $(row).find("td");
-      if (cols.length > 1) {
-        const name = $(cols[0]).text().trim();
-        const ltp = parseFloat($(cols[2]).text().trim());
-        const change = parseFloat($(cols[4]).text().trim());
-        const volume = parseInt($(cols[10]).text().replace(/,/g, '').trim());
-
-        if (!isNaN(ltp) && !isNaN(change)) {
-          stocks.push({ name, ltp, change, volume });
-        }
-      }
-    });
-
-    res.json(stocks);
-  } catch (err) {
-    console.error("Error scraping:", err.message);
-    res.status(500).json({ error: "Failed to fetch NEPSE data" });
-  }
-});
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`✅ Server running on http://localhost:${PORT}`));
-
+const express=require('express');const axios=require('axios');const cheerio=require('cheerio');const cors=require('cors');
+const app=express();app.use(cors());app.get('/health',(req,res)=>res.json({ok:true,service:'nepse-api'}));
+app.get('/stocks',async(req,res)=>{try{const{data}=await axios.get('https://merolagani.com/LatestMarket.aspx',{headers:{'User-Agent':'Mozilla/5.0'}});const $=cheerio.load(data),stocks=[];$('#ctl00_ContentPlaceHolder1_divLatestMarket table tr').each((i,row)=>{const c=$(row).find('td');if(c.length>10){const symbol=$(c[0]).find('a').text().trim()||$(c[0]).text().trim(),name=$(c[0]).text().trim(),ltp=parseFloat($(c[2]).text().replace(/,/g,'')),change=parseFloat($(c[4]).text().replace(/,/g,'')),volume=parseInt($(c[10]).text().replace(/,/g,''),10);if(Number.isFinite(ltp)&&Number.isFinite(change))stocks.push({symbol,name,ltp,change,percentChange:ltp-change?change/(ltp-change)*100:0,volume,turnover:ltp*volume})}});res.set('Cache-Control','public,max-age=30');res.json(stocks)}catch(err){console.error(err.message);res.status(502).json({error:'Failed to fetch NEPSE market data'})}});
+const PORT=process.env.PORT||3000;app.listen(PORT,()=>console.log(`NEPSE API listening on ${PORT}`));
