@@ -1,32 +1,15 @@
-async function loadLiveStocks() {
-  const res = await fetch("http://localhost:3000/stocks");
-  const data = await res.json();
-  populateTable(data);
-}
-
-function populateTable(stocks) {
-  const tbody = document.querySelector("#stockTable tbody");
-  tbody.innerHTML = "";
-  stocks.forEach(stock => {
-    const row = document.createElement("tr");
-    row.innerHTML = `
-      <td>${stock.name}</td>
-      <td>${stock.ltp}</td>
-      <td class="${stock.change >= 0 ? 'green' : 'red'}">${stock.change}</td>
-      <td class="${stock.change >= 0 ? 'green' : 'red'}">${((stock.change / (stock.ltp - stock.change)) * 100).toFixed(2)}%</td>
-      <td>${stock.volume}</td>
-    `;
-    tbody.appendChild(row);
-  });
-}
-
-function filterTable() {
-  const query = document.getElementById('search').value.toUpperCase();
-  const rows = document.querySelectorAll("#stockTable tbody tr");
-  rows.forEach(row => {
-    const company = row.children[0].textContent.toUpperCase();
-    row.style.display = company.includes(query) ? "" : "none";
-  });
-}
-
-loadLiveStocks();
+const API=(window.NEPSE_API||'http://localhost:3000').replace(/\/$/,'');let stocks=[],watch=new Set(JSON.parse(localStorage.getItem('nepseWatchlist')||'[]'));const $=s=>document.querySelector(s),fmt=n=>Number(n||0).toLocaleString('en-IN'),pct=n=>`${Number(n||0)>=0?'+':''}${Number(n||0).toFixed(2)}%`;
+function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}function toast(t){const x=$('#toast');x.textContent=t;x.classList.add('show');setTimeout(()=>x.classList.remove('show'),2200)}
+async function fetchJson(path){const r=await fetch(API+path,{cache:'no-store'});if(!r.ok)throw Error(`${r.status}`);return r.json()}
+async function load(){setStatus('Loading market…');try{const data=await fetchJson('/stocks');stocks=(Array.isArray(data)?data:data.stocks||[]).map(normalize);renderAll();setStatus('Market data ready');$('#lastUpdated').textContent='Updated '+new Date().toLocaleTimeString();}catch(e){console.error(e);setStatus('API unavailable');$('#stockBody').innerHTML='<tr><td colspan="8" class="empty">Could not load market data. Start the NEPSE backend or set <b>window.NEPSE_API</b> to your API URL.</td></tr>'}}
+function normalize(s){const l=Number(s.ltp??s.lastPrice??s.price??0),c=Number(s.change??s.pointChange??0);const pc=Number(s.percentChange??s.percentageChange??(l-c?c/(l-c)*100:0));return{...s,symbol:s.symbol||s.ticker||s.name||'',name:s.companyName||s.company||s.name||'',ltp:l,change:c,percentChange:pc,volume:Number(s.volume||s.totalTradedQuantity||0),turnover:Number(s.turnover||s.totalTradedValue||l*Number(s.volume||0)||0),sector:s.sector||s.sectorName||'Other'}}
+function setStatus(t){$('#marketStatus').innerHTML=`<i></i> ${esc(t)}`}
+function renderAll(){renderIndices();renderSummary();renderSectors();renderMovers();renderTable();renderWatch()}
+function renderIndices(){const gain=stocks.reduce((a,s)=>a+s.change,0),avg=stocks.length?stocks.reduce((a,s)=>a+s.percentChange,0)/stocks.length:0;const ltp=stocks.length?stocks.reduce((a,s)=>a+s.ltp,0)/stocks.length:0;const cards=[['NEPSE Index',stocks.length?ltp.toFixed(2):'—',avg],['Stocks Traded',fmt(stocks.length),''],['Advancers',fmt(stocks.filter(s=>s.change>0).length),stocks.length?stocks.filter(s=>s.change>0).length/stocks.length*100:0],['Decliners',fmt(stocks.filter(s=>s.change<0).length),stocks.length?stocks.filter(s=>s.change<0).length/stocks.length*100:0]];$('#indices').innerHTML=cards.map(c=>`<div class="card index-card"><span class="label">${c[0]}</span><h3>${c[1]}</h3><div class="index-meta ${Number(c[2])>=0?'up':'down'}">${c[2]===''?'Live market universe':pct(c[2])}</div></div>`).join('')}
+function renderSummary(){const adv=stocks.filter(s=>s.change>0).length,dec=stocks.filter(s=>s.change<0).length,vol=stocks.reduce((a,s)=>a+s.volume,0),turn=stocks.reduce((a,s)=>a+s.turnover,0);$('#summaryStats').innerHTML=[['Advancers',fmt(adv),'up'],['Decliners',fmt(dec),'down'],['Unchanged',fmt(Math.max(0,stocks.length-adv-dec)),''],['Total Volume',fmt(vol),''],['Total Turnover','Rs. '+fmt(turn),''],['Securities',fmt(stocks.length),'']].map(x=>`<div class="stat"><label>${x[0]}</label><strong class="${x[2]}">${x[1]}</strong></div>`).join('')}
+function renderSectors(){const ss=[...new Set(stocks.map(s=>s.sector))].sort();$('#sectorFilter').innerHTML='<option value="all">All sectors</option>'+ss.map(s=>`<option>${esc(s)}</option>`).join('')}
+function renderMovers(){let a=[...stocks];const type=$('#moverType').value;if(type==='gainers')a.sort((x,y)=>y.percentChange-x.percentChange);if(type==='losers')a.sort((x,y)=>x.percentChange-y.percentChange);if(type==='turnover')a.sort((x,y)=>y.turnover-x.turnover);$('#moversList').innerHTML=a.slice(0,6).map(s=>`<div class="mover"><div><span class="symbol">${esc(s.symbol)}</span><small>${esc(s.name)}</small></div><b>${s.ltp.toFixed(2)}</b><span class="badge ${s.percentChange<0?'downbg':''} ${s.percentChange>=0?'up':'down'}">${pct(s.percentChange)}</span></div>`).join('')||'<div class="empty">No data</div>'}
+function filtered(){const q=($('#stockSearch').value||$('#globalSearch').value).toLowerCase(),sector=$('#sectorFilter').value;let a=stocks.filter(s=>(!q||`${s.symbol} ${s.name}`.toLowerCase().includes(q))&&(sector==='all'||s.sector===sector));const sort=$('#sortSelect').value;if(sort==='changeDesc')a.sort((x,y)=>y.percentChange-x.percentChange);if(sort==='changeAsc')a.sort((x,y)=>x.percentChange-y.percentChange);if(sort==='ltpDesc')a.sort((x,y)=>y.ltp-x.ltp);if(sort==='volumeDesc')a.sort((x,y)=>y.volume-x.volume);if(sort==='symbol')a.sort((x,y)=>x.symbol.localeCompare(y.symbol));return a}
+function renderTable(){const a=filtered();$('#stockCount').textContent=`${a.length} of ${stocks.length} securities`;$('#emptyState').hidden=!!a.length;$('#stockBody').innerHTML=a.map(s=>`<tr><td><b>${esc(s.symbol)}</b></td><td>${esc(s.name)}</td><td><b>${s.ltp.toFixed(2)}</b></td><td class="${s.change>=0?'up':'down'}">${s.change>=0?'+':''}${s.change.toFixed(2)}</td><td class="${s.percentChange>=0?'up':'down'}">${pct(s.percentChange)}</td><td>${fmt(s.volume)}</td><td>Rs. ${fmt(s.turnover)}</td><td><button class="star ${watch.has(s.symbol)?'saved':''}" data-star="${esc(s.symbol)}">★</button></td></tr>`).join('')}
+function renderWatch(){const a=stocks.filter(s=>watch.has(s.symbol));$('#watchlistGrid').innerHTML=a.length?a.map(s=>`<div class="watch-item"><strong>${esc(s.symbol)} <span class="${s.percentChange>=0?'up':'down'}">${pct(s.percentChange)}</span></strong><span>Rs. ${s.ltp.toFixed(2)} · ${fmt(s.volume)} vol.</span></div>`).join(''):'<div class="empty">Your watchlist is empty. Tap ★ beside a stock to save it.</div>'}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-star]');if(b){const x=b.dataset.star;watch.has(x)?watch.delete(x):watch.add(x);localStorage.setItem('nepseWatchlist',JSON.stringify([...watch]));renderTable();renderWatch()}if(e.target.matches('[data-close]'))$('#stockModal').hidden=true});['#stockSearch','#globalSearch'].forEach(id=>$(id).addEventListener('input',()=>renderTable()));$('#sectorFilter').addEventListener('change',renderTable);$('#sortSelect').addEventListener('change',renderTable);$('#moverType').addEventListener('change',renderMovers);$('#refreshBtn').addEventListener('click',()=>{toast('Refreshing market data…');load()});$('#clearWatch').addEventListener('click',()=>{watch.clear();localStorage.removeItem('nepseWatchlist');renderWatch();renderTable()});$('#themeBtn').addEventListener('click',()=>{document.body.classList.toggle('dark');localStorage.setItem('nepseDark',document.body.classList.contains('dark'))});document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();$('#globalSearch').focus()}});if(localStorage.getItem('nepseDark')==='true')document.body.classList.add('dark');load();setInterval(load,60000);
