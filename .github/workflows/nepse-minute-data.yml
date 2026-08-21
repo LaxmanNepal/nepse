@@ -1,0 +1,42 @@
+name: NEPSE minute collector
+on:
+  workflow_dispatch:
+  schedule:
+    # GitHub Actions schedules have a practical minimum of 5 minutes.
+    # Each run below collects once per minute while Nepal market is open.
+    - cron: '*/5 5-9 * * 1-5'
+permissions:
+  contents: write
+concurrency:
+  group: nepse-minute-collector
+  cancel-in-progress: false
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Collect every minute during Nepal market window
+        shell: bash
+        run: |
+          set -e
+          for i in 1 2 3 4 5; do
+            H=$(TZ=Asia/Kathmandu date +%H)
+            M=$(TZ=Asia/Kathmandu date +%M)
+            D=$(TZ=Asia/Kathmandu date +%u)
+            if [ "$D" -le 5 ] && [ "$H" -ge 11 ] && [ "$H" -lt 15 ]; then
+              python scripts/generate_stock_pages.py
+              mkdir -p "data/intraday/$(TZ=Asia/Kathmandu date +%Y-%m-%d)"
+              cp data/live.json "data/intraday/$(TZ=Asia/Kathmandu date +%Y-%m-%d)/$(TZ=Asia/Kathmandu date +%H-%M-%S).json"
+            fi
+            if [ "$i" -lt 5 ]; then sleep 60; fi
+          done
+      - name: Commit collected market data and generated stock routes
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data stock
+          if git diff --cached --quiet; then echo 'No market update'; exit 0; fi
+          git commit -m "chore: update NEPSE minute market data"
+          git push
