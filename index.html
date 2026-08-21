@@ -1,35 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NEPSE Live Market (MeroLagani Clone)</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#07111f"><meta name="description" content="NEPSE Pulse — clean Nepal stock market dashboard with live market data."><title>NEPSE Pulse — Nepal Stock Market</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <header>
-    <h1>📊 NEPSE Live Market</h1>
-    <input type="text" id="search" placeholder="Search company..." oninput="filterTable()">
-  </header>
-
-  <main>
-    <div class="table-container">
-      <table id="stockTable">
-        <thead>
-          <tr>
-            <th>Company</th>
-            <th>LTP</th>
-            <th>Change</th>
-            <th>% Change</th>
-            <th>Volume</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- JS Injected Rows -->
-        </tbody>
-      </table>
-    </div>
-  </main>
-</body>
-</html>
+<body><div class="app-shell">
+<header class="topbar"><div class="brand"><div class="brand-mark">N</div><div><strong>NEPSE Pulse</strong><span>नेपाल शेयर बजार</span></div></div><nav><a class="active" href="#dashboard">Market</a><a href="#stocks">Stocks</a><a href="#watchlist">Watchlist</a><a href="#about">About</a></nav><div class="top-actions"><span id="marketStatus" class="status"><i></i> Checking market</span><button id="refreshBtn" class="icon-btn" title="Refresh">↻</button><button id="themeBtn" class="icon-btn" title="Theme">◐</button></div></header>
+<main id="dashboard" class="container">
+<section class="hero"><div><div class="eyebrow">NEPAL STOCK EXCHANGE</div><h1>Market at a glance.</h1><p>Fast, clean and investor-focused NEPSE data — without the clutter.</p></div><div class="search-wrap">⌕<input id="globalSearch" placeholder="Search symbol or company…"><kbd>Ctrl K</kbd></div></section>
+<section id="indices" class="index-grid"><div class="skeleton card"></div><div class="skeleton card"></div><div class="skeleton card"></div><div class="skeleton card"></div></section>
+<section class="summary-grid"><div class="card market-summary"><div class="section-head"><div><h2>Market Summary</h2><span id="lastUpdated">Updating…</span></div><span class="live-dot">LIVE</span></div><div id="summaryStats" class="stat-grid"></div></div><div class="card movers"><div class="section-head"><h2>Top Movers</h2><select id="moverType"><option value="gainers">Gainers</option><option value="losers">Losers</option><option value="turnover">Turnover</option></select></div><div id="moversList"></div></div></section>
+<section class="card table-card" id="stocks"><div class="section-head table-head"><div><h2>All Listed Stocks</h2><span id="stockCount">Loading securities…</span></div><div class="table-tools"><div class="small-search">⌕<input id="stockSearch" placeholder="Search stocks"></div><select id="sectorFilter"><option value="all">All sectors</option></select><select id="sortSelect"><option value="symbol">Symbol</option><option value="changeDesc">Change ↓</option><option value="changeAsc">Change ↑</option><option value="ltpDesc">LTP ↓</option><option value="volumeDesc">Volume ↓</option></select></div></div><div class="table-scroll"><table><thead><tr><th>Symbol</th><th>Company</th><th>LTP</th><th>Change</th><th>% Change</th><th>Volume</th><th>Turnover</th><th></th></tr></thead><tbody id="stockBody"></tbody></table></div><div id="emptyState" class="empty" hidden>No stocks match your search.</div></section>
+<section id="watchlist" class="card watch-card"><div class="section-head"><div><h2>My Watchlist</h2><span>Saved in this browser</span></div><button id="clearWatch" class="text-btn">Clear all</button></div><div id="watchlistGrid" class="watch-grid"></div></section>
+<section id="about" class="about"><div><span class="eyebrow">BUILT FOR NEPALI INVESTORS</span><h2>A better starting point for NEPSE research.</h2></div><p>NEPSE Pulse is an independent market interface. Data is sourced from publicly available Nepal market datasets and is provided for informational purposes only. It is not investment advice.</p></section>
+</main><footer><span>NEPSE Pulse</span><span>Auto-refresh during market hours</span><span>Independent project by Laxman Nepal</span></footer></div>
+<div id="stockModal" class="modal" hidden><div class="modal-backdrop" data-close></div><article class="modal-panel"><button class="modal-close" data-close>×</button><div id="modalContent"></div></article></div><div id="toast" class="toast"></div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script><script src="script.js"></script></body></html>
