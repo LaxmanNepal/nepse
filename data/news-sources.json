@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "updatedAt": "2026-08-22T00:00:00Z",
+  "language": ["ne", "en"],
+  "policy": "Use public RSS/Atom feeds or sitemaps only where permitted. Store metadata and links; do not republish full copyrighted articles.",
+  "sources": [
+    {"name":"ShareSansar","url":"https://www.sharesansar.com/","sitemap":"https://www.sharesansar.com/sitemap.xml","topics":["stock","ipo","dividend","company","market"]},
+    {"name":"MeroLagani","url":"https://merolagani.com/","news":"https://merolagani.com/NewsList.aspx","announcements":"https://eng.merolagani.com/AnnouncementList.aspx","topics":["stock","company","dividend","market"]},
+    {"name":"NEPSE Khabar","url":"https://nepsekhabar.com/","topics":["stock","finance","market"]},
+    {"name":"MeroShares News Feed","url":"https://meroshares.com/news-feed","topics":["nepse","financial-news","notices"]}
+  ]
+}
