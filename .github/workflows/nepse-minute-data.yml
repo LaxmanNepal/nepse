@@ -35,15 +35,16 @@ jobs:
           python scripts/collect_finance_news.py
           if [ "$GITHUB_EVENT_NAME" != "schedule" ]; then
             python scripts/generate_stock_pages.py
-            exit 0
+          else
+            for i in 1 2 3 4 5; do
+              H=$(TZ=Asia/Kathmandu date +%H); D=$(TZ=Asia/Kathmandu date +%u)
+              if [ "$D" -le 5 ] && [ "$H" -ge 11 ] && [ "$H" -lt 15 ]; then
+                python scripts/generate_stock_pages.py
+              fi
+              [ "$i" -lt 5 ] && sleep 60 || true
+            done
           fi
-          for i in 1 2 3 4 5; do
-            H=$(TZ=Asia/Kathmandu date +%H); D=$(TZ=Asia/Kathmandu date +%u)
-            if [ "$D" -le 5 ] && [ "$H" -ge 11 ] && [ "$H" -lt 15 ]; then
-              python scripts/generate_stock_pages.py
-            fi
-            [ "$i" -lt 5 ] && sleep 60 || true
-          done
+          python scripts/validate_market_data.py
       - name: Commit generated data
         shell: bash
         run: |
