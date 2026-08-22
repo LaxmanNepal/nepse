@@ -45,6 +45,29 @@ jobs:
             done
           fi
           python scripts/validate_market_data.py
+          python scripts/validate_site.py
+          python - <<'PY'
+          import json
+          from datetime import datetime, timezone
+          from pathlib import Path
+          root=Path('.')
+          live=json.loads((root/'data/live.json').read_text()) if (root/'data/live.json').exists() else {}
+          news=json.loads((root/'data/news.json').read_text()) if (root/'data/news.json').exists() else []
+          ipos=json.loads((root/'data/ipos.json').read_text()) if (root/'data/ipos.json').exists() else []
+          stocks=live.get('stocks', live.get('data', [])) if isinstance(live,dict) else []
+          status={
+            'status':'ok',
+            'market':'open' if 11 <= datetime.now().hour < 15 and datetime.now().weekday()<5 else 'closed',
+            'lastUpdate':datetime.now(timezone.utc).isoformat(),
+            'source':live.get('source') if isinstance(live,dict) else None,
+            'stocks':len(stocks) if isinstance(stocks,list) else 0,
+            'index':live.get('index') if isinstance(live,dict) else None,
+            'news':len(news) if isinstance(news,list) else 0,
+            'ipos':len(ipos) if isinstance(ipos,list) else 0,
+            'message':'Validated generated market data'
+          }
+          (root/'data/status.json').write_text(json.dumps(status,ensure_ascii=False,indent=2)+'\n')
+          PY
       - name: Commit generated data
         shell: bash
         run: |
