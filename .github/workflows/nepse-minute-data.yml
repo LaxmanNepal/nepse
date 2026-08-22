@@ -1,75 +1,55 @@
-name: NEPSE minute collector
+name: NEPSE data and finance news
 
 on:
   workflow_dispatch:
   push:
     branches: [main]
     paths:
-      - 'scripts/generate_stock_pages.py'
+      - 'scripts/**'
       - 'stock/_template/**'
+      - 'news/**'
+      - 'data/news-sources.json'
       - '.github/workflows/nepse-minute-data.yml'
   schedule:
-    # GitHub schedules are not guaranteed to fire every minute.
-    # During the Nepal market session each run takes five one-minute snapshots.
-    - cron: '15-59/5 5 * * 1-5'
-    - cron: '*/5 6-8 * * 1-5'
-    - cron: '*/5 9 * * 1-5'
+    - cron: '*/5 5-9 * * 1-5'
+    - cron: '0 * * * *'
 
 permissions:
   contents: write
 
 concurrency:
-  group: nepse-minute-collector
+  group: nepse-data
   cancel-in-progress: false
 
 jobs:
   collect:
-    # A push made by this workflow only triggers a no-op second run.
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
-
-      - name: Generate stock pages and collect snapshots
+      - name: Install and collect
         shell: bash
         run: |
           set -e
-
-          # Always generate pages for manual/push runs. This fixes newly-added
-          # stock routes immediately instead of waiting for the next market session.
+          python scripts/collect_finance_news.py
           if [ "$GITHUB_EVENT_NAME" != "schedule" ]; then
             python scripts/generate_stock_pages.py
             exit 0
           fi
-
-          # Scheduled runs collect five snapshots, one minute apart, only during
-          # the Nepal trading session (Monday-Friday, 11:00-15:00 NPT).
           for i in 1 2 3 4 5; do
-            H=$(TZ=Asia/Kathmandu date +%H)
-            M=$(TZ=Asia/Kathmandu date +%M)
-            D=$(TZ=Asia/Kathmandu date +%u)
-
-            if [ "$D" -le 5 ] && { [ "$H" -ge 11 ] && [ "$H" -lt 15 ]; }; then
-              echo "Snapshot $i at Nepal ${H}:${M}"
+            H=$(TZ=Asia/Kathmandu date +%H); D=$(TZ=Asia/Kathmandu date +%u)
+            if [ "$D" -le 5 ] && [ "$H" -ge 11 ] && [ "$H" -lt 15 ]; then
               python scripts/generate_stock_pages.py
-            else
-              echo "Outside Nepal market session; skipping snapshot $i"
             fi
-
-            if [ "$i" -lt 5 ]; then sleep 60; fi
+            [ "$i" -lt 5 ] && sleep 60 || true
           done
-
-      - name: Commit generated company routes and data
+      - name: Commit generated data
         shell: bash
         run: |
-          set -e
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add data stock
-          if git diff --cached --quiet; then
-            echo 'No generated changes.'
-            exit 0
-          fi
-          git commit -m 'chore: generate NEPSE stock pages and market data'
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'chore: update NEPSE market data and finance news'
           git push
