@@ -2,7 +2,7 @@ import json, pathlib, re, urllib.request, xml.etree.ElementTree as ET
 from html.parser import HTMLParser
 from urllib.parse import urljoin
 ROOT=pathlib.Path(__file__).resolve().parents[1]; REG=ROOT/'data/news-sources.json'; OUT=ROOT/'data/news.json'; STOCKS=ROOT/'data/live.json'
-UA='Mozilla/5.0 (compatible; NEPSE-Pulse/2.0)'
+UA='Mozilla/5.0 (compatible; NEPSE-Pulse/2.1)'
 def get(url):
  r=urllib.request.Request(url,headers={'User-Agent':UA,'Accept':'application/rss+xml,application/atom+xml,application/xml,text/html'}); return urllib.request.urlopen(r,timeout=20).read()
 def clean(x): return re.sub(r'\s+',' ',x or '').strip()
@@ -30,16 +30,23 @@ def xml_items(raw,source):
   date=clean(e.findtext('pubDate') or e.findtext('a:updated',default='',namespaces=ns))
   if title and link: out.append({'title':title,'url':link,'published':date,'source':source,'category':category(title)})
  return out
-def sitemap_items(raw,source,limit=500):
- root=ET.fromstring(raw); ns={'s':'http://www.sitemaps.org/schemas/sitemap/0.9'}; locs=[clean(x.text) for x in root.findall('.//s:loc',ns) if x.text]
- return [{'title':'','url':u,'published':'','source':source,'category':'finance','sitemap':True} for u in locs[:limit]]
+def page_title(url):
+ try:
+  raw=get(url)[:250000].decode('utf-8','ignore'); m=re.search(r'<title[^>]*>(.*?)</title>',raw,re.I|re.S); title=clean(re.sub('<[^>]+>',' ',m.group(1))) if m else ''
+  return title
+ except Exception:return ''
+def sitemap_items(raw,source,limit=80):
+ root=ET.fromstring(raw); ns={'s':'http://www.sitemaps.org/schemas/sitemap/0.9'}; locs=[clean(x.text) for x in root.findall('.//s:loc',ns) if x.text]; out=[]
+ for u in locs[:limit]:
+  title=page_title(u)
+  if title and len(title)>=12: out.append({'title':title,'url':u,'published':'','source':source,'category':category(title)})
+ return out
 def html_items(raw,source,base):
  p=Links(); p.feed(raw.decode('utf-8','ignore')); out=[]
  for title,link in p.rows:
   if len(title)<15 or len(title)>240: continue
   link=urljoin(base,link)
-  if not link.startswith('http'): continue
-  out.append({'title':title,'url':link,'published':'','source':source,'category':category(title)})
+  if link.startswith('http'): out.append({'title':title,'url':link,'published':'','source':source,'category':category(title)})
  return out
 def load_symbols():
  try:
@@ -49,16 +56,14 @@ def tag_company(item,symbols):
  hay=(item.get('title','')+' '+item.get('url','')).lower(); hits=[]
  for sym,name in symbols.items():
   if len(sym)>=2 and (re.search(rf'(?<![A-Z0-9]){re.escape(sym.lower())}(?![A-Z0-9])',hay) or (name and name in hay)): hits.append(sym)
- item['symbols']=hits[:8]
- return item
+ item['symbols']=hits[:8]; return item
 def main():
  cfg=json.loads(REG.read_text()); merged={}
  if OUT.exists():
   try: merged={x['url']:x for x in json.loads(OUT.read_text()) if x.get('url')}
   except Exception: pass
  for s in cfg['sources']:
-  urls=[(s.get(k),k) for k in ('feed','rss','atom','news','announcements','sitemap') if s.get(k)]
-  for u,kind in urls:
+  for u,kind in [(s.get(k),k) for k in ('feed','rss','atom','news','announcements','sitemap') if s.get(k)]:
    try:
     raw=get(u)
     if kind=='sitemap': found=sitemap_items(raw,s['name'])
@@ -67,13 +72,8 @@ def main():
      except Exception: found=html_items(raw,s['name'],s.get('url',''))
     for x in found: merged[x['url']]=x
    except Exception as e: print('skip',s['name'],u,e)
- symbols=load_symbols()
- data=[]
- for x in merged.values():
-  x=tag_company(x,symbols)
-  # Keep only useful article-like entries. Raw sitemap URLs without titles are retained only as discoverable links.
-  if x.get('title') or x.get('sitemap'): data.append(x)
+ symbols=load_symbols(); data=[tag_company(x,symbols) for x in merged.values() if x.get('title')]
  data=sorted(data,key=lambda x:x.get('published',''),reverse=True)[:1500]
  OUT.parent.mkdir(exist_ok=True); OUT.write_text(json.dumps(data,ensure_ascii=False,indent=2))
- print('Collected',len(data),'finance news/discovery items')
+ print('Collected',len(data),'finance news items')
 if __name__=='__main__': main()
