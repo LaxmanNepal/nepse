@@ -1,12 +1,499 @@
 [
-  {"title":"NEPSE Index Declines, Transaction Amount Rises","url":"https://merolagani.com/NewsList.aspx","source":"MeroLagani","published":"2026-08-17 15:44","category":"stock"},
-  {"title":"Financial Standing of Microfinance Companies in Last FY","url":"https://merolagani.com/NewsList.aspx","source":"MeroLagani","published":"2026-08-18 10:24","category":"company"},
-  {"title":"Siddhartha Capital Announces Dividends of 2 Mutual Funds","url":"https://merolagani.com/NewsList.aspx","source":"MeroLagani","published":"2026-08-18 10:06","category":"dividend"},
-  {"title":"Shangrila-la Development Bank Announces Dividend","url":"https://merolagani.com/NewsList.aspx","source":"MeroLagani","published":"2026-08-18 09:59","category":"dividend"},
-  {"title":"Pre-Open Session Update: NEPSE Index Gains 2.5 Points","url":"https://eng.merolagani.com/NewsList.aspx/1000","source":"MeroLagani","published":"2026-08-18 10:57","category":"stock"},
-  {"title":"Gold Price Stable, Silver Declines","url":"https://eng.merolagani.com/NewsList.aspx/1000","source":"MeroLagani","published":"2026-08-18 10:54","category":"finance"},
-  {"title":"Snow Rivers Limited Posts 241.50% Rise in Net Profit in Q4","url":"https://www.sharesansar.com/","source":"ShareSansar","published":"2026-08-10","category":"company"},
-  {"title":"Nabil Bank's Q4 Profit Surges 33.50%; Distributable Profit Climbs to Rs. 5.16 Arba","url":"https://www.sharesansar.com/","source":"ShareSansar","published":"2026-08-05","category":"company"},
-  {"title":"NEPSE Concludes The Week With 2.95% Gain and Turnover of Rs. 29.19 Arba","url":"https://www.sharesansar.com/","source":"ShareSansar","published":"2026-07-18","category":"stock"},
-  {"title":"Nepse posts strongest weekly gain in months as turnover jumps","url":"https://kathmandupost.com/money/2026/07/18/nepse-posts-strongest-weekly-gain-in-months-as-turnover-jumps","source":"The Kathmandu Post","published":"2026-07-18","category":"economy"}
+  {
+    "title": "Gold Price Stable, Silver Declines",
+    "url": "https://eng.merolagani.com/NewsList.aspx/1000",
+    "source": "MeroLagani",
+    "published": "2026-08-18 10:54",
+    "category": "finance"
+  },
+  {
+    "title": "Shangrila-la Development Bank Announces Dividend",
+    "url": "https://merolagani.com/NewsList.aspx",
+    "source": "MeroLagani",
+    "published": "2026-08-18 09:59",
+    "category": "dividend"
+  },
+  {
+    "title": "NEPSE Concludes The Week With 2.95% Gain and Turnover of Rs. 29.19 Arba",
+    "url": "https://www.sharesansar.com/",
+    "source": "ShareSansar",
+    "published": "2026-07-18",
+    "category": "stock"
+  },
+  {
+    "title": "Nepse posts strongest weekly gain in months as turnover jumps",
+    "url": "https://kathmandupost.com/money/2026/07/18/nepse-posts-strongest-weekly-gain-in-months-as-turnover-jumps",
+    "source": "The Kathmandu Post",
+    "published": "2026-07-18",
+    "category": "economy"
+  },
+  {
+    "title": "Create Free Account",
+    "url": "https://merolagani.com/Login.aspx",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "finance"
+  },
+  {
+    "title": "Video Tutorials",
+    "url": "https://merolagani.com/VideoTutorials.aspx",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "finance"
+  },
+  {
+    "title": "Daily Stock Quotes",
+    "url": "https://merolagani.com/StockQuote.aspx",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "stock"
+  },
+  {
+    "title": "Market Overview",
+    "url": "https://merolagani.com/MarketSummary.aspx",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "finance"
+  },
+  {
+    "title": "Tender & Auction",
+    "url": "https://merolagani.com/#divOpportunity",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "ipo"
+  },
+  {
+    "title": "Current Affairs",
+    "url": "https://merolagani.com/NewsList.aspx?id=25&type=latest",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "finance"
+  },
+  {
+    "title": "Technical Analysis",
+    "url": "https://merolagani.com/NewsList.aspx?id=15&type=latest",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "finance"
+  },
+  {
+    "title": "Opinion & Analysis",
+    "url": "https://merolagani.com/NewsList.aspx?id=10&type=latest",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "finance"
+  },
+  {
+    "title": "Quarterly Reports",
+    "url": "https://merolagani.com/CompanyReports.aspx?type=QUARTERLY",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "finance"
+  },
+  {
+    "title": "Online Stock Training",
+    "url": "https://merolagani.com/StockTrainingPodcast.aspx",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "stock"
+  },
+  {
+    "title": "Change Password",
+    "url": "https://merolagani.com/EditAccount.aspx?type=pw",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "finance"
+  },
+  {
+    "title": "सार्वजनिक सेवालाई प्रविधिमैत्री बनाउन सरकारले ‘सफ्टवेयर विकास तथा सञ्चालन केन्द्र’ स्थापना गर्ने",
+    "url": "https://merolagani.com/NewsDetail.aspx?newsID=129966",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "finance"
+  },
+  {
+    "title": "पुँजी बजार सुधार र नयाँ वित्तीय उपकरणबारे धितोपत्र बोर्ड र प्राज्ञिक व्यक्तित्वबीच नीति संवाद",
+    "url": "https://merolagani.com/NewsDetail.aspx?newsID=129965",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "stock"
+  },
+  {
+    "title": "विश्वको सबैभन्दा ठूलो रियल इस्टेट कम्पनी एवरग्रैंड टाट पल्टियो: चिनियाँ फाउन्डरलाई जन्मकैद, कम्पनीमाथि २८ खर्बको कर्जा",
+    "url": "https://merolagani.com/NewsDetail.aspx?newsID=129964",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "finance"
+  },
+  {
+    "title": "साउन महिनामा सर्वाधिक आयात भएका १० वस्तु: कुनमा कति अर्ब रुपैयाँ बाहिरियो ?",
+    "url": "https://merolagani.com/NewsDetail.aspx?newsID=129962",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "finance"
+  },
+  {
+    "title": "साउनमा ९८७ वटा चारपांग्रे गाडी आयात, ६९ प्रतिशतभन्दा बढी विद्युतीय",
+    "url": "https://merolagani.com/NewsDetail.aspx?newsID=129959",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "finance"
+  },
+  {
+    "title": "एक महिनामै ३.३५ लाख मोबाइल आयात, ४ अर्ब रुपैयाँ बाहिरिँदा सरकारलाई ७५ करोड राजस्व",
+    "url": "https://merolagani.com/NewsDetail.aspx?newsID=129956",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "finance"
+  },
+  {
+    "title": "सरकार लोकरिझ्याइँको लागि सेयर बजारलाई ‘बम्प’ गरेर ‘डम्प’ गर्न आएको होइनः अर्थमन्त्री वाग्ले",
+    "url": "https://merolagani.com/NewsDetail.aspx?newsID=129957",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "stock"
+  },
+  {
+    "title": "निर्यात ६२ प्रतिशतले बढ्यो, व्यापार घाटा पनि २५ प्रतिशतले उक्लियो",
+    "url": "https://merolagani.com/NewsDetail.aspx?newsID=129955",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "finance"
+  },
+  {
+    "title": "Disclaimer, Privacy & Terms of Use",
+    "url": "https://merolagani.com/Disclaimer.aspx",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "finance"
+  },
+  {
+    "title": "De-listing of 10% Himalayan Bank Limited Debenture 2083 - Himalayan Bank Limited (HBL)",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=67093",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "company"
+  },
+  {
+    "title": "Rasuwa Hydropower Limited has notified that its SGM is scheduled for Bhadra 20, 2083",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=66987",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "company"
+  },
+  {
+    "title": "Deprosc Nepal Limited has notified that its 33rd AGM is scheduled for Ashwin 08, 2083",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=66986",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "finance"
+  },
+  {
+    "title": "Nepal Investment Mega Bank Limited has issued a notice regarding the transfer of ownership and the right to claim of 3,33,747.00 units of promoter shares.",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=66788",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "stock"
+  },
+  {
+    "title": "Dudhkoshi Hydropower Nepal Limited is going to issues its 50,00,000.00 units of additional ordinary shares at Rs.100.00 per unit to its existing shareholders.",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=66773",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "stock"
+  },
+  {
+    "title": "Nepal SBI Merchant Banking Limited has published a notice regarding claims on lost share certificates.",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=66772",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "stock"
+  },
+  {
+    "title": "Himalayan Life Insurance Limited has published a notice regarding claims on lost insurance policies.",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=66696",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "company"
+  },
+  {
+    "title": "Siddhartha Capital Limited has declared a 8% return scheme (cash dividends) for “Siddhartha Investment Growth Scheme-2\" and announced Bhadra 15, 2083 as the book closure date.",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=67092",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "dividend"
+  },
+  {
+    "title": "Siddhartha Capital Limited has declared a 10% return scheme (cash dividends) for “Siddhartha Investment Growth Scheme-3\" and announced Bhadra 15, 2083 as the book closure date.",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=67091",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "dividend"
+  },
+  {
+    "title": "Price Adjusted to Rs.763.64 for 10% Bonus shares on previous closing price of Rs.840.00 - Mandu Hydropower Limited (MANDU)",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=67090",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "dividend"
+  },
+  {
+    "title": "10,75,000.00 Units (5%) of Bonus Share has been listed in NEPSE - Sanima GIC Insurance Limited (SGIC)",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=67089",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "dividend"
+  },
+  {
+    "title": "Swastik Laghubitta Bittiya Sanstha Limited has notified that its 7th AGM is Scheduled for Bhadra 27, 2083",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=67088",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "finance"
+  },
+  {
+    "title": "Water Energy Solution Limited has notified that its 9th AGM is scheduled for Bhadra 26, 2083",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=67085",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "finance"
+  },
+  {
+    "title": "Sanima Hydropower Limited has notified that its 13th AGM is scheduled for Bhadra 26, 2083",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=67004",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "company"
+  },
+  {
+    "title": "Skypeak Adventures Park Limited has published a notice regarding the sale of back-up shares to its existing promoter shareholders.",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=66993",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "stock"
+  },
+  {
+    "title": "Swarojgar Laghubitta Bittiya Sanstha Limited has published a notice regarding the sale of 3,500.00 units of promoter shares to its interested existing promoter shareholders.",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=66853",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "stock"
+  },
+  {
+    "title": "Kamana Sewa Bikas Bank Limited has published a notice regarding the sale of 5,000.00 units of promoter shares to the interested other person/institutions.",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=66753",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "stock"
+  },
+  {
+    "title": "Siddhartha Capital Limited has published a notice regarding claims on lost share certificates.",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=66741",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "stock"
+  },
+  {
+    "title": "Delisting of 10% Himalayan Bank Debenture 2083 - Himalayan Bank Limited (HBL)",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=66735",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "company"
+  },
+  {
+    "title": "23,10,000 Units (10%) of Right Share has been listed in NEPSE - United Ajod Insurance Limited (UAIL)",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=67087",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "ipo"
+  },
+  {
+    "title": "3,04,681.1072 Units (9.5%) of Bonus Share has been listed in NEPSE - Salt Trading Corporation (STC)",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=67086",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "dividend"
+  },
+  {
+    "title": "Delisting of \"10.25% NIC Asia Debenture 2083/84\" - NIC Asia Bank Limited (NICA)",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=67084",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "company"
+  },
+  {
+    "title": "Guheshwori Merchant Banking and Finance Limited has requested its shareholders to contact the company’s central office with the required documents to claim unclaimed cash dividends from previous fiscal years.",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=67015",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "dividend"
+  },
+  {
+    "title": "Nepal Investment Mega Bank Limited has published a notice regarding the sale of 1,74,887.00 units of promoter shares to its existing promoter shareholders.",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=66832",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "stock"
+  },
+  {
+    "title": "National Life Insurance Company Limited has published a notice regarding claims on lost insurance policies.",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=66706",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "company"
+  },
+  {
+    "title": "Declaration of 8% Cash Dividend - Siddhartha Investment Growth Scheme-2 (SIGS2)",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=67082",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "dividend"
+  },
+  {
+    "title": "Declaration of 10% Cash Dividend - Siddhartha Investment Growth Scheme-3 (SIGS3)",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=67081",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "dividend"
+  },
+  {
+    "title": "Declaration of 6.5263% Cash Dividend and 4% Bonus Share - Shangri-la Development Bank Limited (SADBL)",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=67080",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "dividend"
+  },
+  {
+    "title": "Hydroelectricity Investment and Development Company Limited has published its provisional financial statement for the fourth quarter of the fiscal year 2082/83",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=67079",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "company"
+  },
+  {
+    "title": "People's Power Limited has published its provisional financial statement for the fourth quarter of the fiscal year 2082/83",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=67078",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "finance"
+  },
+  {
+    "title": "Ankhu Khola Jalavidyut Company Limited has appointed Prabhu Capital Limited as its share registrar.",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=66870",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "stock"
+  },
+  {
+    "title": "Muktinath Bikas Bank Limited has published a notice regarding the sale of promoter shares to the interested former promoter shareholders.",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=66820",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "stock"
+  },
+  {
+    "title": "Siddhartha Bank Limited has published a notice regarding the sale/ownership transfer of total 1,57,479.00 units of promoter shares to its interested existing promoter shareholders.",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=66740",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "stock"
+  },
+  {
+    "title": "Siddhartha Bank Limited has published a notice regarding the sale/ownership transfer of total 3,11,643.00 units of promoter shares to the other person/institutions.",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=66738",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "stock"
+  },
+  {
+    "title": "Declaration of 3.15% Cash Dividend - NMB 50 (NMB50)",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=67076",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "dividend"
+  },
+  {
+    "title": "Declaration of 4.5% Cash Dividend - NMB Hybrid Fund L-II (NMBHF2)",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=67075",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "dividend"
+  },
+  {
+    "title": "Declaration of 10% Cash Dividend - NMB Sulav Investment Fund-II (NSIF2)",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=67074",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "dividend"
+  },
+  {
+    "title": "Crest Micro Life Insurance Limited has published its provisional financial statement for the fourth quarter of the fiscal year 2082/83",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=67073",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "company"
+  },
+  {
+    "title": "Janautthan Samudayic Laghubitta Bittiya Sanstha Limited has published its provisional financial statement for the fourth quarter of the fiscal year 2082/83",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=67072",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "finance"
+  },
+  {
+    "title": "Joshi Hydropower Development Company Limited has published its provisional financial statement for the fourth quarter of the fiscal year 2082/83",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=67071",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "company"
+  },
+  {
+    "title": "Muktinath Krishi Company Limited has published its provisional financial statement for the fourth quarter of the fiscal year 2082/83",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=67070",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "finance"
+  },
+  {
+    "title": "Nepal Lube Oil Limited has published its provisional financial statement for the fourth quarter of the fiscal year 2082/83",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=67069",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "finance"
+  },
+  {
+    "title": "Forward Microfinance Laghubitta Bittiya Sanstha Limited has appointed Siddhartha Capital Limited as its share registrar.",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=67068",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "stock"
+  },
+  {
+    "title": "Machhapuchhre Bank Limited has appointed Machhapuchhre Capital Limited as its share registrar.",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=67050",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "stock"
+  },
+  {
+    "title": "Machhapuchhre Capital Limited has notified that its 7th AGM is scheduled for Bhadra 24, 2083",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=66960",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "finance"
+  },
+  {
+    "title": "Asali Investment Limited has notified that its 18th AGM/SGM is scheduled for Bhadra 21, 2083",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=66871",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "finance"
+  },
+  {
+    "title": "Hotel Park Land Limited is going to issue its 1:1 ratio right shares (60,00,000.00 units @ Rs.100.00 per unit) to its shareholders starting from 15th Bhadra - 5th Ashwin, 2083",
+    "url": "https://merolagani.com/AnnouncementDetail.aspx?id=66748",
+    "published": "",
+    "source": "MeroLagani",
+    "category": "ipo"
+  }
 ]
