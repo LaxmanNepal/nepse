@@ -6,8 +6,10 @@ import urllib.request
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 SOURCE = "https://shubhamnpk.github.io/yonepse/data/nepse_data.json"
+INDEX_SOURCE = "https://shubhamnpk.github.io/yonepse/data/market/indices.json"
 TEMPLATE = ROOT / "stock" / "_template" / "research.html"
 LIVE = ROOT / "data" / "live.json"
+INDEX_HISTORY = ROOT / "data" / "index-history.json"
 
 
 def load_json(url):
@@ -31,6 +33,34 @@ nepal = now.astimezone(datetime.timezone(datetime.timedelta(hours=5, minutes=45)
 LIVE.parent.mkdir(parents=True, exist_ok=True)
 LIVE.write_text(json.dumps({"updatedAt": now.isoformat(), "stocks": stocks}, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
 
+# Capture the real NEPSE index separately. Never calculate an index from stock averages.
+try:
+    index_payload = load_json(INDEX_SOURCE)
+    index_rows = index_payload if isinstance(index_payload, list) else index_payload.get("items", index_payload.get("data", []))
+    nepse = next((x for x in index_rows if "nepse" in str(x.get("index", x.get("name", ""))).lower()), None)
+    if nepse:
+        index_history = json.loads(INDEX_HISTORY.read_text(encoding="utf-8")) if INDEX_HISTORY.exists() else {"index": "NEPSE", "points": []}
+        points = index_history.get("points", [])
+        point = {
+            "date": f"{nepal:%Y-%m-%d}",
+            "timestamp": now.isoformat(),
+            "value": float(nepse.get("currentValue", nepse.get("close", 0)) or 0),
+            "change": float(nepse.get("change", 0) or 0),
+            "percent": float(nepse.get("perChange", 0) or 0),
+            "high": float(nepse.get("high", 0) or 0),
+            "low": float(nepse.get("low", 0) or 0),
+        }
+        if point["value"] > 0:
+            # Keep the latest observation for the same timestamp/minute and retain a large history.
+            minute = point["timestamp"][:16]
+            points = [p for p in points if str(p.get("timestamp", ""))[:16] != minute]
+            points.append(point)
+            points = sorted(points, key=lambda p: (p.get("date", ""), p.get("timestamp", "")))[-100000:]
+            index_history.update({"updatedAt": now.isoformat(), "points": points})
+            INDEX_HISTORY.write_text(json.dumps(index_history, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+except Exception as exc:
+    print(f"Index history update skipped: {exc}")
+
 # One compact daily archive. Each snapshot contains the complete market universe.
 day_dir = ROOT / "data" / "intraday"
 day_dir.mkdir(parents=True, exist_ok=True)
@@ -41,7 +71,6 @@ except Exception:
     day = {"date": f"{nepal:%Y-%m-%d}", "snapshots": []}
 
 snapshot = {"timestamp": now.isoformat(), "nepalDate": f"{nepal:%Y-%m-%d}", "stocks": stocks}
-# Avoid duplicate snapshots when Actions retries the same minute.
 minute_key = now.astimezone(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M")
 if not any(str(x.get("timestamp", ""))[:16] == minute_key for x in day["snapshots"][-3:]):
     day["snapshots"].append(snapshot)
@@ -55,8 +84,6 @@ for stock in stocks:
     if re.fullmatch(r"[A-Z0-9._-]{1,20}", s):
         valid.append(stock)
 
-# Generate a self-contained data file for every company. This makes /stock/<symbol>/
-# a real company page rather than a generic company.html route.
 for stock in valid:
     s = symbol(stock)
     company_history = []
@@ -78,4 +105,4 @@ for stock in valid:
     }
     (out / "data.json").write_text(json.dumps(company_payload, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
 
-print(f"Generated {len(valid)} company pages and data files; snapshot {nepal.isoformat()}")
+print(f"Generated {len(valid)} company pages/data files and updated NEPSE index history at {nepal.isoformat()}")
