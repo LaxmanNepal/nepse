@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ne">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>नेपाली वित्त समाचार | NEPSE Pulse</title>
+<meta name="description" content="नेपालको शेयर बजार, कम्पनी, लाभांश, IPO, वित्तीय विवरण, बैंकिङ, बीमा र अर्थतन्त्रसम्बन्धी समाचार।">
+<link rel="stylesheet" href="../style.css">
+<style>
+.news-wrap{max-width:1200px;margin:auto;padding:32px 20px}.news-hero{padding:28px;border:1px solid var(--border,#ddd);border-radius:18px;background:var(--surface,#fff);margin-bottom:20px}.news-grid{display:grid;grid-template-columns:2fr 1fr;gap:20px}.news-list{display:grid;gap:12px}.news-card{padding:18px;border:1px solid var(--border,#ddd);border-radius:14px;background:var(--surface,#fff)}.news-card h2{font-size:19px;margin:6px 0}.news-meta{font-size:12px;opacity:.65}.news-filter{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.news-filter button{border:1px solid var(--border,#ddd);background:transparent;border-radius:999px;padding:8px 12px;cursor:pointer}.news-side{padding:18px;border:1px solid var(--border,#ddd);border-radius:14px}.news-card a{color:inherit;text-decoration:none}.news-card a:hover{text-decoration:underline}@media(max-width:760px){.news-grid{grid-template-columns:1fr}.news-wrap{padding:20px 14px}}
+</style></head>
+<body>
+<header class="site-header"><div class="container"><a class="brand" href="../">NEPSE <span>PULSE</span></a><nav><a href="../">बजार</a><a href="./">समाचार</a></nav></div></header>
+<main class="news-wrap">
+<section class="news-hero"><div class="news-meta">NEPSE PULSE · नेपाली वित्त समाचार</div><h1>नेपालको वित्त र शेयर बजार समाचार</h1><p>नेप्से, कम्पनी, लाभांश, IPO/FPO, वित्तीय विवरण, बैंकिङ, बीमा, अर्थतन्त्र र नियामक समाचारलाई एउटै ठाउँमा हेर्नुहोस्। प्रत्येक समाचारको मूल स्रोतमा जान सकिने गरी metadata र link मात्र एकीकृत गरिन्छ।</p><div class="news-filter" id="filters"><button data-cat="all">सबै</button><button data-cat="stock">शेयर बजार</button><button data-cat="company">कम्पनी</button><button data-cat="dividend">लाभांश</button><button data-cat="ipo">IPO/FPO</button><button data-cat="economy">अर्थतन्त्र</button></div></section>
+<div class="news-grid"><section><div id="news" class="news-list"><div class="news-card">समाचार लोड हुँदैछ…</div></div></section><aside class="news-side"><h3>समाचार स्रोत</h3><p>ShareSansar, MeroLagani, NEPSE Khabar लगायत सार्वजनिक रूपमा उपलब्ध स्रोतका headline/feed metadata लाई एकीकृत गर्ने संरचना तयार गरिएको छ।</p><p class="news-meta">पूरा समाचार पढ्न मूल प्रकाशकको लिंक प्रयोग गर्नुहोस्।</p></aside></div>
+</main>
+<script>
+let all=[];let cat='all';
+async function load(){try{let r=await fetch('../data/news.json',{cache:'no-store'});all=await r.json();render()}catch(e){document.querySelector('#news').innerHTML='<div class="news-card">अहिले समाचार डेटा उपलब्ध छैन।</div>'}}
+function render(){let x=cat==='all'?all:all.filter(n=>(n.category||'').toLowerCase()===cat);document.querySelector('#news').innerHTML=x.slice(0,100).map(n=>`<article class="news-card"><div class="news-meta">${n.source||'Source'} · ${n.published||''}</div><h2><a href="${n.url}" target="_blank" rel="noopener noreferrer">${n.title||''}</a></h2><div class="news-meta">${n.category||'finance'}</div></article>`).join('')||'<div class="news-card">यस श्रेणीमा समाचार छैन।</div>'}
+document.querySelectorAll('#filters button').forEach(b=>b.onclick=()=>{cat=b.dataset.cat;render()});load();
+</script></body></html>
