@@ -1,0 +1,11 @@
+{
+  "status": "unknown",
+  "market": "closed",
+  "lastUpdate": null,
+  "source": null,
+  "stocks": 0,
+  "index": null,
+  "news": 0,
+  "ipos": 0,
+  "message": "Awaiting verified market data"
+}
