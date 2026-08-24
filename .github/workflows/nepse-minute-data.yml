@@ -23,9 +23,8 @@ concurrency:
 
 jobs:
   collect:
-    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - name: Install and collect
@@ -48,10 +47,13 @@ jobs:
           news=json.loads((root/'data/news.json').read_text()) if (root/'data/news.json').exists() else []
           ipos=json.loads((root/'data/ipos.json').read_text()) if (root/'data/ipos.json').exists() else []
           stocks=live.get('stocks', live.get('data', [])) if isinstance(live,dict) else []
+          from zoneinfo import ZoneInfo
+          npt=datetime.now(ZoneInfo('Asia/Kathmandu'))
           status={
             'status':'ok',
-            'market':'open' if 11 <= datetime.now().hour < 15 and datetime.now().weekday()<5 else 'closed',
+            'market':'open' if npt.weekday()<5 and ((npt.hour==11 and npt.minute>=0) or 12<=npt.hour<15) else 'closed',
             'lastUpdate':datetime.now(timezone.utc).isoformat(),
+            'lastUpdateNPT':npt.isoformat(),
             'source':live.get('source') if isinstance(live,dict) else None,
             'stocks':len(stocks) if isinstance(stocks,list) else 0,
             'index':live.get('index') if isinstance(live,dict) else None,
