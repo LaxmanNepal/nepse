@@ -29,6 +29,9 @@ if live.exists():
             errors.append("data/live.json contains no stocks")
         if len(stocks) < 100:
             errors.append(f"Suspiciously low stock count: {len(stocks)}")
+        source = payload.get("source")
+        if not source:
+            errors.append("data/live.json is missing its source URL")
         updated = payload.get("updatedAt")
         if updated:
             try:
@@ -60,8 +63,18 @@ companies = ROOT / "data/companies.json"
 if companies.exists():
     try:
         obj = json.loads(companies.read_text(encoding="utf-8"))
-        if not isinstance(obj.get("companies"), dict) or not obj["companies"]:
+        records = obj.get("companies") if isinstance(obj, dict) else None
+        if not isinstance(records, dict) or not records:
             errors.append("data/companies.json contains no company records")
+        elif live.exists():
+            live_symbols = {str(x.get("symbol") or "").upper() for x in stocks if isinstance(x, dict)}
+            company_symbols = {str(k).upper() for k in records}
+            missing = sorted(live_symbols - company_symbols)
+            extra = sorted(company_symbols - live_symbols)
+            if missing:
+                errors.append(f"Company index missing {len(missing)} live symbols: {', '.join(missing[:10])}")
+            if extra:
+                errors.append(f"Company index has {len(extra)} stale symbols: {', '.join(extra[:10])}")
     except Exception as exc:
         errors.append(f"Invalid companies.json: {exc}")
 
@@ -70,6 +83,12 @@ if stock_root.exists():
     pages = list(stock_root.glob("*/data.json"))
     if len(pages) < 100:
         errors.append(f"Too few generated stock pages: {len(pages)}")
+    if live.exists():
+        live_symbols = {str(x.get("symbol") or "").upper() for x in stocks if isinstance(x, dict)}
+        page_symbols = {p.parent.name.upper() for p in pages}
+        missing_pages = sorted(live_symbols - page_symbols)
+        if missing_pages:
+            errors.append(f"Missing generated pages for {len(missing_pages)} symbols: {', '.join(missing_pages[:10])}")
     for p in pages:
         try:
             obj = json.loads(p.read_text(encoding="utf-8"))
