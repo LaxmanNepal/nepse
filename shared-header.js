@@ -3,8 +3,7 @@
   const here=location.pathname.split('/').filter(Boolean);
   const i=here.indexOf('nepse');
   const rest=i>=0?here.slice(i+1):[];
-  const depth=rest.length?Math.max(0,rest.length-1):0;
-  const root='../'.repeat(depth)||'./';
+  const root='../'.repeat(rest.length)||'./';
   const isStock=rest[0]==='stock';
   const isNews=rest[0]==='news';
   const isIPO=rest[0]==='ipos';
@@ -13,7 +12,7 @@
   if(!old)return;
 
   const searchId=isStock?'search':'globalSearch';
-  const searchPlaceholder=isStock?'Search company or symbol…':'Search company or symbol…';
+  const searchPlaceholder='Search company or symbol…';
   const header=document.createElement('header');
   header.className='topbar shared-topbar';
   header.innerHTML=`
@@ -49,7 +48,6 @@
     </nav>`;
   old.replaceWith(header);
 
-  // Preserve the existing theme/keyboard behaviour while making navigation consistent.
   document.addEventListener('keydown',function(e){
     if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){
       e.preventDefault();const el=document.getElementById(searchId);if(el){el.focus();el.select();}
