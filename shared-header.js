@@ -2,7 +2,7 @@
 'use strict';
 const here=location.pathname.split('/').filter(Boolean),i=here.indexOf('nepse'),rest=i>=0?here.slice(i+1):[],root='../'.repeat(rest.length)||'./';
 const isStock=rest[0]==='stock',isNews=rest[0]==='news',isIPO=rest[0]==='ipos',isSectors=rest[0]==='sectors',isDashboard=!isStock&&!isNews&&!isIPO&&!isSectors;
-const old=document.querySelector('.topbar,.terminal-nav');
+const old=document.querySelector('.topbar,.terminal-nav,.bar');
 function load(file){const href=root+file;if(!document.querySelector('link[href="'+href+'"]')){const link=document.createElement('link');link.rel='stylesheet';link.href=href;document.head.appendChild(link)}}
 load('shared-header.css');load('app-theme.css');load('glass-ui.css');
 if(!old)return;
