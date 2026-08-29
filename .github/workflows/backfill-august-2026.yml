@@ -1,28 +1,28 @@
-name: Backfill August 2026 NEPSE company history
+name: Backfill six months of NEPSE history
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '30 10 * * 1-5'
   push:
     branches: [main]
     paths:
-      - 'scripts/backfill_august_2026.py'
+      - 'scripts/backfill_six_months.py'
       - '.github/workflows/backfill-august-2026.yml'
+  schedule:
+    - cron: '30 12 * * 0'
 permissions:
   contents: write
 jobs:
   backfill:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
-      - name: Build complete August history
-        run: python scripts/backfill_august_2026.py
-      - name: Commit history
+      - name: Download previous six months
+        run: python scripts/backfill_six_months.py
+      - name: Commit historical shards
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/history/2026-08.json
+          git add data/history/ltp data/history/manifest.json
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m 'data: update August 2026 company history'
+          git commit -m 'data: backfill previous six months of NEPSE history'
           git push
