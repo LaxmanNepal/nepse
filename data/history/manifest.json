@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "market": "NEPSE",
+  "source": "https://raw.githubusercontent.com/Shubhamnpk/yonepse/main/data/ltp/monthly",
+  "generatedAt": "2026-08-29",
+  "months": [
+    {
+      "month": "2026-03",
+      "file": "history/ltp/2026-03.json",
+      "dates": 18,
+      "symbols": 395
+    },
+    {
+      "month": "2026-04",
+      "file": "history/ltp/2026-04.json",
+      "dates": 21,
+      "symbols": 406
+    },
+    {
+      "month": "2026-05",
+      "file": "history/ltp/2026-05.json",
+      "dates": 18,
+      "symbols": 419
+    },
+    {
+      "month": "2026-06",
+      "file": "history/ltp/2026-06.json",
+      "dates": 21,
+      "symbols": 432
+    },
+    {
+      "month": "2026-07",
+      "file": "history/ltp/2026-07.json",
+      "dates": 23,
+      "symbols": 438
+    },
+    {
+      "month": "2026-08",
+      "file": "history/ltp/2026-08.json",
+      "dates": 19,
+      "symbols": 433
+    }
+  ],
+  "failures": [],
+  "complete": true
+}
