@@ -1,0 +1,25 @@
+name: Historical NEPSE data backfill
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '30 12 * * 0'
+permissions:
+  contents: write
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download rolling six-month history
+        run: python scripts/backfill_six_months.py
+      - name: Validate historical shards
+        run: python scripts/validate_market_data.py
+      - name: Commit historical shards
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/history/ltp data/history/manifest.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'data: refresh rolling six-month NEPSE history'
+          git push
