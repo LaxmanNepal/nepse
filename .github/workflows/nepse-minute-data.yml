@@ -11,8 +11,8 @@ on:
       - 'data/news-sources.json'
       - '.github/workflows/nepse-minute-data.yml'
   schedule:
-    - cron: '*/5 5-9 * * 1-5'
-    - cron: '0 * * * *'
+    # Nepal market window, Sunday–Thursday, 11:00–15:00 NPT (05:15–09:15 UTC)
+    - cron: '*/10 5-9 * * 0-4'
 
 permissions:
   contents: write
@@ -51,7 +51,7 @@ jobs:
           npt=datetime.now(ZoneInfo('Asia/Kathmandu'))
           status={
             'status':'ok',
-            'market':'open' if npt.weekday()<5 and ((npt.hour==11 and npt.minute>=0) or 12<=npt.hour<15) else 'closed',
+            'market':'open' if npt.weekday() in (6,0,1,2,3) and ((npt.hour==11 and npt.minute>=0) or 12<=npt.hour<15) else 'closed',
             'lastUpdate':datetime.now(timezone.utc).isoformat(),
             'lastUpdateNPT':npt.isoformat(),
             'source':live.get('source') if isinstance(live,dict) else None,
