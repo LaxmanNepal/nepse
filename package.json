@@ -1,0 +1,1 @@
+{"name":"nepse-pulse","private":true,"version":"1.0.0","description":"NEPSE Pulse market data and research platform","scripts":{"validate":"python scripts/validate_market_data.py && python scripts/validate_site.py","start":"node nepse-backend/server.js"},"engines":{"node":">=20"},"dependencies":{"axios":"^1.8.4","cheerio":"^1.0.0","cors":"^2.8.5","express":"^4.21.2"}}
