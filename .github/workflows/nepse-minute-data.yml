@@ -11,8 +11,10 @@ on:
       - 'data/news-sources.json'
       - '.github/workflows/nepse-minute-data.yml'
   schedule:
-    # Nepal market window, Sunday–Thursday, 11:00–15:00 NPT (05:15–09:15 UTC)
-    - cron: '*/10 5-9 * * 0-4'
+    # Nepal market window: Sunday–Thursday, 11:00–15:00 NPT (UTC+5:45).
+    - cron: '15-55/10 5 * * 0-4'
+    - cron: '*/10 6-8 * * 0-4'
+    - cron: '0-15/10 9 * * 0-4'
 
 permissions:
   contents: write
@@ -32,35 +34,23 @@ jobs:
         run: |
           set -e
           python scripts/collect_finance_news.py
-          # Always rebuild the complete local live file and every company page.
-          # Never reuse a partial company list: the collector writes data/live.json
-          # from the full upstream market universe on every run.
           python scripts/generate_stock_pages.py
           python scripts/validate_market_data.py
           python scripts/validate_site.py
-          python - <<'PY
+          python - <<'PY'
           import json
           from datetime import datetime, timezone
           from pathlib import Path
+          from zoneinfo import ZoneInfo
           root=Path('.')
           live=json.loads((root/'data/live.json').read_text()) if (root/'data/live.json').exists() else {}
           news=json.loads((root/'data/news.json').read_text()) if (root/'data/news.json').exists() else []
           ipos=json.loads((root/'data/ipos.json').read_text()) if (root/'data/ipos.json').exists() else []
           stocks=live.get('stocks', live.get('data', [])) if isinstance(live,dict) else []
-          from zoneinfo import ZoneInfo
           npt=datetime.now(ZoneInfo('Asia/Kathmandu'))
-          status={
-            'status':'ok',
-            'market':'open' if npt.weekday() in (6,0,1,2,3) and ((npt.hour==11 and npt.minute>=0) or 12<=npt.hour<15) else 'closed',
-            'lastUpdate':datetime.now(timezone.utc).isoformat(),
-            'lastUpdateNPT':npt.isoformat(),
-            'source':live.get('source') if isinstance(live,dict) else None,
-            'stocks':len(stocks) if isinstance(stocks,list) else 0,
-            'index':live.get('index') if isinstance(live,dict) else None,
-            'news':len(news) if isinstance(news,list) else 0,
-            'ipos':len(ipos) if isinstance(ipos,list) else 0,
-            'message':'Validated generated market data'
-          }
+          mins=npt.hour*60+npt.minute
+          market_open=npt.weekday() in (6,0,1,2,3) and 660<=mins<900
+          status={'status':'ok','market':'open' if market_open else 'closed','lastUpdate':datetime.now(timezone.utc).isoformat(),'lastUpdateNPT':npt.isoformat(),'source':live.get('source') if isinstance(live,dict) else None,'stocks':len(stocks) if isinstance(stocks,list) else 0,'index':live.get('index') if isinstance(live,dict) else None,'news':len(news) if isinstance(news,list) else 0,'ipos':len(ipos) if isinstance(ipos,list) else 0,'message':'Validated generated market data'}
           (root/'data/status.json').write_text(json.dumps(status,ensure_ascii=False,indent=2)+'\n')
           PY
       - name: Commit generated data
