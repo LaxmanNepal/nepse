@@ -29,10 +29,11 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
-      - name: Install and collect
+      - name: Install and collect live market snapshot
         shell: bash
         run: |
           set -e
+          python scripts/update_live_market.py
           python scripts/collect_finance_news.py
           python scripts/generate_stock_pages.py
           python scripts/validate_market_data.py
@@ -50,7 +51,7 @@ jobs:
           npt=datetime.now(ZoneInfo('Asia/Kathmandu'))
           mins=npt.hour*60+npt.minute
           market_open=npt.weekday() in (6,0,1,2,3) and 660<=mins<900
-          status={'status':'ok','market':'open' if market_open else 'closed','lastUpdate':datetime.now(timezone.utc).isoformat(),'lastUpdateNPT':npt.isoformat(),'source':live.get('source') if isinstance(live,dict) else None,'stocks':len(stocks) if isinstance(stocks,list) else 0,'index':live.get('index') if isinstance(live,dict) else None,'news':len(news) if isinstance(news,list) else 0,'ipos':len(ipos) if isinstance(ipos,list) else 0,'message':'Validated generated market data'}
+          status={'status':'ok','market':'open' if market_open else 'closed','lastUpdate':datetime.now(timezone.utc).isoformat(),'lastUpdateNPT':npt.isoformat(),'source':live.get('source') if isinstance(live,dict) else None,'sourceUpdatedAt':live.get('sourceUpdatedAt') if isinstance(live,dict) else None,'stocks':len(stocks) if isinstance(stocks,list) else 0,'index':live.get('index') if isinstance(live,dict) else None,'news':len(news) if isinstance(news,list) else 0,'ipos':len(ipos) if isinstance(ipos,list) else 0,'message':'Validated generated market data'}
           (root/'data/status.json').write_text(json.dumps(status,ensure_ascii=False,indent=2)+'\n')
           PY
       - name: Commit generated data
