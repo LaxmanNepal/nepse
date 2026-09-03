@@ -1,15 +1,19 @@
-"""Shared data-quality helpers for the NEPSE Pulse pipeline."""
+"""Shared normalization and data-quality helpers for the NEPSE pipeline."""
 from __future__ import annotations
 
 from datetime import datetime, timezone
 from typing import Any
+from zoneinfo import ZoneInfo
 
-
+NPT = ZoneInfo("Asia/Kathmandu")
 PRICE_KEYS = ("ltp", "lastTradedPrice", "lastPrice", "price", "close", "currentValue")
+PREVIOUS_CLOSE_KEYS = ("previousClose", "previous_close", "prevClose")
 CHANGE_KEYS = ("change", "changeValue")
-PERCENT_KEYS = ("changePercent", "perChange", "percent", "percentage")
+PERCENT_KEYS = ("changePercent", "percent_change", "perChange", "percent", "percentage")
 VOLUME_KEYS = ("volume", "quantity", "totalTradedQuantity")
 TURNOVER_KEYS = ("turnover", "totalTurnover")
+TRADES_KEYS = ("trades", "totalTrades")
+MARKET_CAP_KEYS = ("marketCap", "market_cap")
 
 
 def first_value(row: dict[str, Any], keys: tuple[str, ...]) -> Any:
@@ -36,9 +40,15 @@ def parse_timestamp(value: Any) -> datetime | None:
     try:
         parsed = datetime.fromisoformat(text.replace("Z", "+00:00"))
     except ValueError:
-        return None
+        try:
+            parsed = datetime.strptime(text, "%Y-%m-%d %H:%M:%S.%f")
+        except ValueError:
+            try:
+                parsed = datetime.strptime(text, "%Y-%m-%d %H:%M:%S")
+            except ValueError:
+                return None
     if parsed.tzinfo is None:
-        parsed = parsed.replace(tzinfo=timezone.utc)
+        parsed = parsed.replace(tzinfo=NPT)
     return parsed.astimezone(timezone.utc)
 
 
@@ -60,6 +70,32 @@ def freshness_status(age_seconds: float | None) -> str:
     return "stale"
 
 
+def canonical_stock(row: dict[str, Any], sector: str = "Other") -> dict[str, Any]:
+    """Map a source row into the stable public stock schema."""
+    symbol = str(first_value(row, ("symbol", "ticker", "securitySymbol")) or "").strip().upper()
+    return {
+        "symbol": symbol,
+        "name": first_value(row, ("name", "securityName", "companyName")),
+        "sector": first_value(row, ("sector", "sectorName")) or sector,
+        "ltp": as_float(first_value(row, PRICE_KEYS)),
+        "previousClose": as_float(first_value(row, PREVIOUS_CLOSE_KEYS)),
+        "change": as_float(first_value(row, CHANGE_KEYS)),
+        "changePercent": as_float(first_value(row, PERCENT_KEYS)),
+        "open": as_float(first_value(row, ("open", "openPrice"))),
+        "high": as_float(first_value(row, ("high", "dayHigh"))),
+        "low": as_float(first_value(row, ("low", "dayLow"))),
+        "volume": as_float(first_value(row, VOLUME_KEYS)),
+        "turnover": as_float(first_value(row, TURNOVER_KEYS)),
+        "trades": as_float(first_value(row, TRADES_KEYS)),
+        "marketCap": as_float(first_value(row, MARKET_CAP_KEYS)),
+        "lastUpdated": first_value(row, ("lastUpdated", "last_updated", "generatedTime")),
+    }
+
+
+def _approx(actual: float, expected: float, tolerance: float = 0.02) -> bool:
+    return abs(actual - expected) <= tolerance + abs(expected) * 0.002
+
+
 def validate_stock(stock: dict[str, Any]) -> list[str]:
     errors: list[str] = []
     symbol = str(stock.get("symbol") or "").strip().upper()
@@ -70,10 +106,13 @@ def validate_stock(stock: dict[str, Any]) -> list[str]:
 
     numeric_fields = {
         "price": PRICE_KEYS,
+        "previousClose": PREVIOUS_CLOSE_KEYS,
         "change": CHANGE_KEYS,
         "changePercent": PERCENT_KEYS,
         "volume": VOLUME_KEYS,
         "turnover": TURNOVER_KEYS,
+        "trades": TRADES_KEYS,
+        "marketCap": MARKET_CAP_KEYS,
     }
     values: dict[str, float | None] = {}
     for label_name, keys in numeric_fields.items():
@@ -86,17 +125,37 @@ def validate_stock(stock: dict[str, Any]) -> list[str]:
             errors.append(f"invalid {label_name}: {label}")
             continue
         values[label_name] = number
-        if label_name in {"price", "volume", "turnover"} and number < 0:
+        if label_name != "change" and number < 0:
             errors.append(f"negative {label_name}: {label}")
 
     high = as_float(first_value(stock, ("high", "dayHigh")))
     low = as_float(first_value(stock, ("low", "dayLow")))
+    opening = as_float(first_value(stock, ("open", "openPrice")))
     ltp = values.get("price")
+    previous = values.get("previousClose")
+    change = values.get("change")
+    percent = values.get("changePercent")
+
     if high is not None and low is not None and high < low:
         errors.append(f"high below low: {label}")
     if ltp is not None and high is not None and ltp > high:
         errors.append(f"LTP above high: {label}")
     if ltp is not None and low is not None and ltp < low:
         errors.append(f"LTP below low: {label}")
+    if opening is not None and high is not None and opening > high:
+        errors.append(f"open above high: {label}")
+    if opening is not None and low is not None and opening < low:
+        errors.append(f"open below low: {label}")
 
+    if previous is not None and ltp is not None and change is not None:
+        if not _approx(change, ltp - previous):
+            errors.append(f"change mismatch: {label}")
+    if previous is not None and previous > 0 and change is not None and percent is not None:
+        expected_percent = change / previous * 100
+        if not _approx(percent, expected_percent, tolerance=0.03):
+            errors.append(f"changePercent mismatch: {label}")
+
+    timestamp = first_value(stock, ("lastUpdated", "last_updated", "generatedTime"))
+    if timestamp is not None and parse_timestamp(timestamp) is None:
+        errors.append(f"invalid timestamp: {label}.lastUpdated")
     return errors
