@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Refresh and normalize the static NEPSE market snapshot."""
+"""Refresh, normalize and validate the static NEPSE market snapshot."""
 from __future__ import annotations
 
 import json
@@ -11,6 +11,10 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
 BASE = "https://shubhamnpk.github.io/yonepse/data/"
 UA = "NEPSE-Pulse/7.0 (+https://apps.laxmannepal.com.np/nepse/)"
+
+import sys
+sys.path.insert(0, str(ROOT / "scripts"))
+from data_quality import as_float, canonical_stock, first_value, parse_timestamp, validate_stock  # noqa: E402
 
 
 def fetch(path: str):
@@ -25,19 +29,11 @@ def write_json(path: pathlib.Path, value) -> None:
 
 
 def first(row: dict, *keys):
-    for key in keys:
-        if row.get(key) not in (None, ""):
-            return row[key]
-    return None
+    return first_value(row, tuple(keys))
 
 
 def number(value):
-    if value in (None, ""):
-        return None
-    try:
-        return float(str(value).replace(",", ""))
-    except (TypeError, ValueError):
-        return None
+    return as_float(value)
 
 
 def sector_map(raw):
@@ -64,24 +60,7 @@ def sector_map(raw):
 
 
 def normalize_stock(row: dict, mapping: dict[str, str]) -> dict:
-    symbol = str(first(row, "symbol", "ticker", "securitySymbol") or "").strip().upper()
-    return {
-        "symbol": symbol,
-        "name": first(row, "name", "securityName", "companyName"),
-        "sector": first(row, "sector", "sectorName") or mapping.get(symbol) or "Other",
-        "ltp": number(first(row, "ltp", "lastTradedPrice", "lastPrice", "price")),
-        "previousClose": number(first(row, "previousClose", "previous_close", "prevClose")),
-        "change": number(first(row, "change", "changeValue")),
-        "changePercent": number(first(row, "changePercent", "percent_change", "perChange", "percentage")),
-        "open": number(first(row, "open", "openPrice")),
-        "high": number(first(row, "high", "dayHigh")),
-        "low": number(first(row, "low", "dayLow")),
-        "volume": number(first(row, "volume", "quantity", "totalTradedQuantity")),
-        "turnover": number(first(row, "turnover", "totalTurnover")),
-        "trades": number(first(row, "trades", "totalTrades")),
-        "marketCap": number(first(row, "marketCap", "market_cap")),
-        "lastUpdated": first(row, "lastUpdated", "last_updated", "generatedTime"),
-    }
+    return canonical_stock(row, mapping.get(str(first(row, "symbol", "ticker", "securitySymbol") or "").strip().upper(), "Other"))
 
 
 def main():
@@ -104,8 +83,21 @@ def main():
         raise RuntimeError("No valid securities after normalization")
 
     source_updated_at = status.get("last_checked") if isinstance(status, dict) else None
-    nepse = next((x for x in indices if isinstance(x, dict) and x.get("index") == "NEPSE"), None)
+    if not source_updated_at or parse_timestamp(source_updated_at) is None:
+        raise RuntimeError("YONEPSE returned an invalid or missing source timestamp")
 
+    symbols = [row["symbol"] for row in normalized]
+    duplicates = sorted({s for s in symbols if symbols.count(s) > 1})
+    if duplicates:
+        raise RuntimeError("Duplicate security symbols: " + ", ".join(duplicates[:20]))
+
+    quality_errors = []
+    for row in normalized:
+        quality_errors.extend(validate_stock(row))
+    if quality_errors:
+        raise RuntimeError("Source data failed validation: " + "; ".join(quality_errors[:20]))
+
+    nepse = next((x for x in indices if isinstance(x, dict) and x.get("index") == "NEPSE"), None)
     live = {
         "schemaVersion": 1,
         "updatedAt": now,
@@ -117,18 +109,10 @@ def main():
         "stocks": normalized,
     }
 
+    # Only publish after every stock has passed validation, preserving the last good snapshot on failure.
     write_json(DATA / "live.json", live)
     write_json(DATA / "sectors.json", {"schemaVersion": 1, "updatedAt": now, "source": "YONEPSE", "sectors": mapping})
     write_json(DATA / "market-summary.json", {"schemaVersion": 1, "updatedAt": now, "source": "YONEPSE", "summary": summary})
-    write_json(DATA / "health.json", {
-        "schemaVersion": 1,
-        "status": "ok",
-        "generatedAt": now,
-        "source": live["source"],
-        "sourceUpdatedAt": source_updated_at,
-        "stocks": len(normalized),
-        "validation": "pending",
-    })
 
     history_path = DATA / "index-history.json"
     history = {"schemaVersion": 1, "index": "NEPSE", "updatedAt": now, "points": []}
@@ -159,7 +143,7 @@ def main():
     history["points"] = points[-5000:]
     write_json(history_path, history)
 
-    print(f"Updated {len(normalized)} securities; sectors={len(mapping)}; source={source_updated_at or 'unknown'}")
+    print(f"Updated {len(normalized)} securities; sectors={len(mapping)}; source={source_updated_at}")
 
 
 if __name__ == "__main__":
