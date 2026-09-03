@@ -1,9 +1,5 @@
 #!/usr/bin/env python3
-"""Refresh the local NEPSE snapshot from the public YONEPSE datasets.
-
-The dashboard is static, so GitHub Actions must materialize a fresh snapshot
-into data/ for the site to remain fast and usable without a backend.
-"""
+"""Refresh and normalize the static NEPSE market snapshot."""
 from __future__ import annotations
 
 import json
@@ -14,7 +10,7 @@ from datetime import datetime, timezone
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
 BASE = "https://shubhamnpk.github.io/yonepse/data/"
-UA = "NEPSE-Pulse/6.0 (+https://apps.laxmannepal.com.np/Nepse)"
+UA = "NEPSE-Pulse/7.0 (+https://apps.laxmannepal.com.np/nepse/)"
 
 
 def fetch(path: str):
@@ -25,11 +21,26 @@ def fetch(path: str):
 
 def write_json(path: pathlib.Path, value) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(value, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
+def first(row: dict, *keys):
+    for key in keys:
+        if row.get(key) not in (None, ""):
+            return row[key]
+    return None
+
+
+def number(value):
+    if value in (None, ""):
+        return None
+    try:
+        return float(str(value).replace(",", ""))
+    except (TypeError, ValueError):
+        return None
 
 
 def sector_map(raw):
-    # YONEPSE publishes {sector: [symbols]} and may add metadata later.
     if isinstance(raw, dict):
         source = raw.get("sectors", raw.get("data", raw))
     else:
@@ -52,6 +63,27 @@ def sector_map(raw):
     return mapping
 
 
+def normalize_stock(row: dict, mapping: dict[str, str]) -> dict:
+    symbol = str(first(row, "symbol", "ticker", "securitySymbol") or "").strip().upper()
+    return {
+        "symbol": symbol,
+        "name": first(row, "name", "securityName", "companyName"),
+        "sector": first(row, "sector", "sectorName") or mapping.get(symbol) or "Other",
+        "ltp": number(first(row, "ltp", "lastTradedPrice", "lastPrice", "price")),
+        "previousClose": number(first(row, "previousClose", "previous_close", "prevClose")),
+        "change": number(first(row, "change", "changeValue")),
+        "changePercent": number(first(row, "changePercent", "percent_change", "perChange", "percentage")),
+        "open": number(first(row, "open", "openPrice")),
+        "high": number(first(row, "high", "dayHigh")),
+        "low": number(first(row, "low", "dayLow")),
+        "volume": number(first(row, "volume", "quantity", "totalTradedQuantity")),
+        "turnover": number(first(row, "turnover", "totalTurnover")),
+        "trades": number(first(row, "trades", "totalTrades")),
+        "marketCap": number(first(row, "marketCap", "market_cap")),
+        "lastUpdated": first(row, "lastUpdated", "last_updated", "generatedTime"),
+    }
+
+
 def main():
     stocks = fetch("nepse_data.json")
     indices = fetch("market/indices.json")
@@ -62,37 +94,44 @@ def main():
 
     if not isinstance(stocks, list) or not stocks:
         raise RuntimeError("YONEPSE returned no stock rows")
+    if not isinstance(status, (dict, list)):
+        raise RuntimeError("YONEPSE returned invalid market status")
 
     now = datetime.now(timezone.utc).isoformat()
-    normalized = []
-    for row in stocks:
-        if not isinstance(row, dict) or not row.get("symbol"):
-            continue
-        item = dict(row)
-        symbol = str(item["symbol"]).upper()
-        item["symbol"] = symbol
-        item["sector"] = (
-            item.get("sector") or item.get("sectorName") or mapping.get(symbol) or "Other"
-        )
-        normalized.append(item)
+    normalized = [normalize_stock(row, mapping) for row in stocks if isinstance(row, dict)]
+    normalized = [row for row in normalized if row["symbol"]]
+    if not normalized:
+        raise RuntimeError("No valid securities after normalization")
+
+    source_updated_at = status.get("last_checked") if isinstance(status, dict) else None
+    nepse = next((x for x in indices if isinstance(x, dict) and x.get("index") == "NEPSE"), None)
 
     live = {
+        "schemaVersion": 1,
         "updatedAt": now,
         "source": "YONEPSE public dataset",
-        "sourceUpdatedAt": status.get("last_checked") if isinstance(status, dict) else None,
+        "sourceUpdatedAt": source_updated_at,
         "market": status,
-        "index": next((x for x in indices if isinstance(x, dict) and x.get("index") == "NEPSE"), None),
+        "index": nepse,
         "summary": summary,
         "stocks": normalized,
     }
 
     write_json(DATA / "live.json", live)
-    write_json(DATA / "sectors.json", {"updatedAt": now, "sectors": mapping})
-    write_json(DATA / "market-summary.json", {"updatedAt": now, "source": "YONEPSE", "summary": summary})
+    write_json(DATA / "sectors.json", {"schemaVersion": 1, "updatedAt": now, "source": "YONEPSE", "sectors": mapping})
+    write_json(DATA / "market-summary.json", {"schemaVersion": 1, "updatedAt": now, "source": "YONEPSE", "summary": summary})
+    write_json(DATA / "health.json", {
+        "schemaVersion": 1,
+        "status": "ok",
+        "generatedAt": now,
+        "source": live["source"],
+        "sourceUpdatedAt": source_updated_at,
+        "stocks": len(normalized),
+        "validation": "pending",
+    })
 
-    nepse = live["index"]
     history_path = DATA / "index-history.json"
-    history = {"index": "NEPSE", "updatedAt": now, "points": []}
+    history = {"schemaVersion": 1, "index": "NEPSE", "updatedAt": now, "points": []}
     if history_path.exists():
         try:
             history = json.loads(history_path.read_text(encoding="utf-8"))
@@ -101,24 +140,26 @@ def main():
     points = history.get("points", []) if isinstance(history, dict) else []
     if not isinstance(points, list):
         points = []
-    if isinstance(nepse, dict) and nepse.get("close") is not None:
-        stamp = nepse.get("generatedTime") or now
-        point = {
-            "date": str(stamp)[:10],
-            "timestamp": stamp,
-            "value": nepse.get("close", nepse.get("currentValue")),
-            "change": nepse.get("change"),
-            "percent": nepse.get("perChange"),
-            "high": nepse.get("high"),
-            "low": nepse.get("low"),
-        }
-        if not points or points[-1].get("timestamp") != point["timestamp"]:
-            points.append(point)
+    if isinstance(nepse, dict):
+        close = number(first(nepse, "close", "currentValue", "value"))
+        if close is not None:
+            stamp = nepse.get("generatedTime") or now
+            point = {
+                "date": str(stamp)[:10],
+                "timestamp": stamp,
+                "value": close,
+                "change": number(nepse.get("change")),
+                "percent": number(nepse.get("perChange")),
+                "high": number(nepse.get("high")),
+                "low": number(nepse.get("low")),
+            }
+            if not points or points[-1].get("timestamp") != point["timestamp"]:
+                points.append(point)
     history["updatedAt"] = now
     history["points"] = points[-5000:]
     write_json(history_path, history)
 
-    print(f"Updated {len(normalized)} securities; sectors={len(mapping)}; source={status.get('last_checked') if isinstance(status, dict) else 'unknown'}")
+    print(f"Updated {len(normalized)} securities; sectors={len(mapping)}; source={source_updated_at or 'unknown'}")
 
 
 if __name__ == "__main__":
