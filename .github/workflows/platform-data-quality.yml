@@ -1,0 +1,39 @@
+name: Platform data quality
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'data/**/*.json'
+      - 'scripts/validate_platform_data.py'
+      - '.github/workflows/platform-data-quality.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'data/**/*.json'
+      - 'scripts/validate_platform_data.py'
+      - '.github/workflows/platform-data-quality.yml'
+  schedule:
+    - cron: '17 10 * * 0-4'
+permissions:
+  contents: read
+concurrency:
+  group: platform-data-quality
+  cancel-in-progress: true
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate platform JSON
+        run: python scripts/validate_platform_data.py
+      - name: Validate existing market data
+        run: |
+          if [ -f scripts/validate_market_data.py ]; then python scripts/validate_market_data.py; fi
+      - name: Validate site
+        run: |
+          if [ -f scripts/validate_site.py ]; then python scripts/validate_site.py; fi
