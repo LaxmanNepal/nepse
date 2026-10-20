@@ -186,6 +186,47 @@ if not any(str(x.get("timestamp", ""))[:16] == minute_key for x in day["snapshot
 day["snapshots"] = day["snapshots"][-500:]
 day_file.write_text(json.dumps(day, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
 
+# Load compact monthly LTP shards once, then write one small history file per symbol.
+# Missing or malformed optional shards are skipped; no prices are synthesized.
+historical_by_symbol = {}
+manifest_path = ROOT / "data" / "history" / "manifest.json"
+try:
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+except Exception:
+    manifest = {"months": []}
+for month in manifest.get("months", []):
+    shard_path = ROOT / "data" / month.get("file", "")
+    try:
+        shard = json.loads(shard_path.read_text(encoding="utf-8"))
+        dates = shard.get("dates", [])
+        series = shard.get("series", {})
+        for sym, records in series.items():
+            target = historical_by_symbol.setdefault(str(sym).upper(), [])
+            for record in records:
+                if not isinstance(record, list) or len(record) < 2:
+                    continue
+                try:
+                    idx = int(record[0])
+                    day = str(dates[idx])
+                    ltp_value = float(record[1] or 0)
+                    if ltp_value <= 0:
+                        continue
+                    target.append({
+                        "date": day,
+                        "timestamp": day + "T15:00:00+05:45",
+                        "ltp": ltp_value,
+                        "volume": float(record[2] or 0) if len(record) > 2 else 0,
+                        "turnover": float(record[3] or 0) if len(record) > 3 else 0,
+                        "transactions": int(record[4] or 0) if len(record) > 4 else 0,
+                    })
+                except (IndexError, TypeError, ValueError):
+                    continue
+    except Exception as exc:
+        print(f"Historical shard skipped ({shard_path}): {exc}")
+for sym, points in historical_by_symbol.items():
+    unique = {(p["date"], p["ltp"]): p for p in points}
+    historical_by_symbol[sym] = sorted(unique.values(), key=lambda p: (p["date"], p["timestamp"]))
+
 tpl = TEMPLATE.read_text(encoding="utf-8")
 try:
     news = json.loads(NEWS.read_text(encoding="utf-8"))
@@ -215,6 +256,7 @@ for stock in valid:
     (out / "index.html").write_text(tpl, encoding="utf-8")
     company_payload = {"symbol": s, "name": name(stock), "generatedAt": now.isoformat(), "marketDateNepal": f"{nepal:%Y-%m-%d}", "stock": stock, "profile": profiles.get(s, {}), "financials": financials.get(s, {}), "history": company_history, "technical": analysis, "news": related}
     (out / "data.json").write_text(json.dumps(company_payload, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    (out / "history.json").write_text(json.dumps({"symbol": s, "source": "local-monthly-history-shards", "points": historical_by_symbol.get(s, [])}, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
 
 SECTORS.write_text(json.dumps({"updatedAt": now.isoformat(), "sectors": list(sector_map.values())}, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
 print(f"Generated {len(valid)} company pages; embedded {len(profiles)} profiles and {len(financials)} financial records across {len(sector_map)} sectors at {nepal.isoformat()}")

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#073f3f">
+  <meta name="description" content="Explore Nepal Stock Exchange market data, market breadth, top movers and listed securities.">
+  <title>Market Explorer — NEPSE Pulse</title>
+  <link rel="stylesheet" href="./market.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../">NEPSE <span>Pulse</span></a>
+    <nav aria-label="Main navigation"><a href="../">Dashboard</a><a class="active" href="./">Market Explorer</a><a href="../Company/">Company</a></nav>
+    <span id="feedState" class="state" role="status">Loading data…</span>
+  </header>
+  <main class="wrap">
+    <section class="intro"><p class="eyebrow">NEPAL STOCK EXCHANGE</p><h1>Market Explorer</h1><p>Explore listed securities using the latest repository snapshot. Data timestamps and source status are shown where available.</p></section>
+    <section class="cards" aria-label="Market summary">
+      <article class="card index-card"><span>NEPSE Index</span><strong id="indexValue">—</strong><small id="indexChange">Waiting for index data</small></article>
+      <article class="card"><span>Total turnover</span><strong id="turnover">—</strong><small>From available stock records</small></article>
+      <article class="card"><span>Total volume</span><strong id="volume">—</strong><small>From available stock records</small></article>
+      <article class="card"><span>Listed records</span><strong id="stockCount">—</strong><small id="breadth">Breadth unavailable</small></article>
+    </section>
+    <section class="panel">
+      <div class="panel-head"><div><h2>Listed securities</h2><p>Search by symbol or company name; sort the current snapshot.</p></div><button id="refresh" type="button">Refresh data</button></div>
+      <div class="filters"><label class="search">Search<input id="search" type="search" placeholder="e.g. NABIL, Nepal Bank" autocomplete="off"></label><label>Movement<select id="movement"><option value="all">All stocks</option><option value="gainers">Gainers</option><option value="losers">Losers</option><option value="unchanged">Unchanged</option></select></label><label>Sort by<select id="sort"><option value="turnover">Turnover</option><option value="change">Change %</option><option value="ltp">LTP</option><option value="volume">Volume</option><option value="symbol">Symbol A–Z</option></select></label></div>
+      <div class="table-wrap"><table><thead><tr><th>Symbol / Company</th><th>LTP (Rs.)</th><th>Change</th><th>Volume</th><th>Turnover (Rs.)</th></tr></thead><tbody id="stocks"><tr><td colspan="5" class="empty">Loading market snapshot…</td></tr></tbody></table></div>
+      <div class="table-foot"><span id="resultCount">0 results</span><span id="updatedAt">Snapshot timestamp unavailable</span></div>
+    </section>
+    <p class="disclaimer">Market data may be delayed, incomplete or unavailable when source feeds fail. This website is informational and is not investment advice.</p>
+  </main>
+  <script src="./market.js" defer></script>
+</body>
+</html>
