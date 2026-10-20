@@ -39,13 +39,43 @@ function localStocks(){
 }
 function companyIndex(){return unwrap(readJson('companies.json',{companies:{}}))?.companies||{};}
 function stockHistory(symbol){
-  const file=path.join(DATA,'intraday',`${new Date().toISOString().slice(0,10)}.json`);
-  const today=(()=>{try{return JSON.parse(fs.readFileSync(file,'utf8'))}catch{return null}})();
-  const points=Array.isArray(today?.snapshots)?today.snapshots:Array.isArray(today)?today:[];
-  return points.map(p=>{const list=rows(p);const s=list.find(x=>symbolOf(x)===symbol);return s?{timestamp:p.timestamp||p.time||p.updatedAt||null,ltp:numberOf(s.ltp??s.lastTradedPrice??s.lastPrice),change:numberOf(s.change??s.pointChange),volume:numberOf(s.volume??s.totalTradedQuantity),turnover:numberOf(s.turnover??s.totalTradedValue)}:null}).filter(Boolean);
+  const wanted=String(symbol||'').toUpperCase();
+  const manifest=unwrap(readJson('history/manifest.json',{months:[]}));
+  const months=Array.isArray(manifest?.months)?manifest.months:[];
+  const points=[];
+  for(const month of months){
+    const file=String(month?.file||'').replace(/^\//,'');
+    if(!file)continue;
+    const payload=unwrap(readJson(file,null));
+    if(!payload||!Array.isArray(payload.dates)||!payload.series||!Array.isArray(payload.series[wanted]))continue;
+    for(const row of payload.series[wanted]){
+      if(!Array.isArray(row)||row.length<2)continue;
+      const index=Number(row[0]);
+      const ltp=numberOf(row[1]);
+      if(!Number.isInteger(index)||index<0||index>=payload.dates.length||ltp<=0)continue;
+      points.push({
+        timestamp:`${payload.dates[index]}T15:00:00+05:45`,
+        date:payload.dates[index],
+        ltp,
+        volume:numberOf(row[2]),
+        turnover:numberOf(row[3]),
+        transactions:numberOf(row[4])
+      });
+    }
+  }
+  const todayFile=path.join(DATA,'intraday',`${new Date().toISOString().slice(0,10)}.json`);
+  const todayRaw=(()=>{try{return JSON.parse(fs.readFileSync(todayFile,'utf8'))}catch{return null}})();
+  const snapshots=Array.isArray(todayRaw?.snapshots)?todayRaw.snapshots:Array.isArray(todayRaw)?todayRaw:[];
+  for(const p of snapshots){
+    const list=rows(p);const s=list.find(x=>symbolOf(x)===wanted);if(!s)continue;
+    const ltp=numberOf(s.ltp??s.lastTradedPrice??s.lastPrice);if(ltp<=0)continue;
+    points.push({timestamp:p.timestamp||p.time||p.updatedAt||null,ltp,change:numberOf(s.change??s.pointChange),volume:numberOf(s.volume??s.totalTradedQuantity),turnover:numberOf(s.turnover??s.totalTradedValue),transactions:numberOf(s.transactions??s.transactionCount)});
+  }
+  const seen=new Set();
+  return points.filter(p=>{const key=`${p.timestamp}|${p.ltp}|${p.volume}`;if(seen.has(key))return false;seen.add(key);return true;}).sort((a,b)=>String(a.timestamp||'').localeCompare(String(b.timestamp||'')));
 }
 
-app.get('/health',(req,res)=>res.json({ok:true,service:'nepse-api',version:'2.1'}));
+app.get('/health',(req,res)=>res.json({ok:true,service:'nepse-api',version:'2.2'}));
 
 app.get('/api/stocks',(req,res)=>{
   let stocks=localStocks();
@@ -76,7 +106,8 @@ app.get('/api/stocks/:symbol',(req,res)=>{
 app.get('/api/stocks/:symbol/history',(req,res)=>{
   const symbol=String(req.params.symbol||'').toUpperCase();
   if(!localStocks().some(s=>symbolOf(s)===symbol))return res.status(404).json({error:'Stock not found',symbol});
-  res.json({symbol,points:stockHistory(symbol)});
+  const points=stockHistory(symbol);
+  res.json({symbol,count:points.length,source:'local-history-shards',points});
 });
 
 app.get('/api/search',(req,res)=>{
