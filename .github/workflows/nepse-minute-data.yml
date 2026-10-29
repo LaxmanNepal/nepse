@@ -12,10 +12,9 @@ on:
       - 'data/news-sources.json'
       - '.github/workflows/nepse-minute-data.yml'
   schedule:
-    # Nepal market window: Sunday–Thursday, 11:00–15:00 NPT (UTC+5:45).
-    - cron: '15-55/10 5 * * 0-4'
-    - cron: '*/10 6-8 * * 0-4'
-    - cron: '0-15/10 9 * * 0-4'
+    # Nepal market window: Sunday–Thursday, approximately 11:00–15:00 NPT.
+    # GitHub Actions is near-live, not tick-by-tick, and scheduled jobs can be delayed.
+    - cron: '*/5 5-9 * * 0-4'
 
 permissions:
   contents: write
@@ -39,6 +38,7 @@ jobs:
         run: |
           set -e
           python scripts/update_live_market.py
+          python scripts/generate_ai_signals.py
           python scripts/collect_finance_news.py
           python scripts/generate_stock_pages.py
           python scripts/validate_market_data.py
@@ -51,5 +51,5 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add data stock
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m 'chore: update NEPSE market data and finance news'
+          git commit -m 'chore: update NEPSE live data and AI signals'
           git push
