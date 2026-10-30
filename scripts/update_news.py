@@ -22,10 +22,12 @@ QUERIES = [
     'site:nepseanalysis.com "नेप्से" when:14d',
     'site:merolagani.com "नेप्से" when:14d',
     'site:sharesansar.com "नेप्से" when:14d',
+    'site:equitynepal.com "नेप्से" when:14d',
+    'site:arthakhabar.com "नेप्से" when:14d',
 ]
 MARKET_TERMS = ("नेप्से", "शेयर", "सेयर", "आईपीओ", "आइपिओ", "लाभांश", "हकप्रद", "बोनस शेयर", "साधारणसभा", "सूचीकृत कम्पनी", "कारोबार", "ब्रोकर", "धितोपत्र")
 NEPAL_MARKET_TERMS = ("नेप्से", "नेपाल", "नेपाली", "nepse", "nepal")
-NEPAL_SOURCES = ("merolagani", "sharesansar", "artha sarokar", "arthasarokar", "arthasansar", "nepali paisa", "nepalipaisa", "bizmandu", "capital nepal", "nepse analysis", "nepseanalysis", "lagani saathi", "nepse trading", "nepsealpha")
+NEPAL_SOURCES = ("merolagani", "sharesansar", "artha sarokar", "arthasarokar", "arthasansar", "nepali paisa", "nepalipaisa", "bizmandu", "capital nepal", "nepse analysis", "nepseanalysis", "lagani saathi", "nepse trading", "nepsealpha", "equitynepal", "artha khabar", "arthakhabar")
 IPO_TERMS = ("आईपीओ", "आइपिओ", "हकप्रद", "एफपीओ", "बुक बिल्डिङ")
 DIVIDEND_TERMS = ("लाभांश", "बोनस शेयर", "बोनस सेयर", "बुक क्लोज")
 COMPANY_TERMS = ("कम्पनी", "बैंक", "हाइड्रो", "लघुवित्त", "बीमा", "वित्त", "सूचीकृत", "साधारणसभा", "नाफा", "वित्तीय")
@@ -78,6 +80,13 @@ def main() -> None:
         key = re.sub(r"[^\w\u0900-\u097F]", "", item["title"].lower())
         if key and key not in unique: unique[key] = item
     items = sorted(unique.values(), key=lambda x: x.get("published", ""), reverse=True)[:80]
+    if not items and OUT.exists():
+        try:
+            previous = json.loads(OUT.read_text(encoding="utf-8"))
+            cutoff = datetime.now(timezone.utc).timestamp() - 14 * 86400
+            items = [x for x in previous.get("items", []) if parsedate_to_datetime(x.get("published", "")).timestamp() >= cutoff]
+        except (OSError, ValueError, TypeError, KeyError):
+            items = []
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps({"schemaVersion": 1, "updatedAt": datetime.now(timezone.utc).isoformat(), "language": "Nepali headlines only", "scope": "NEPSE and listed-company news", "items": items}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"Wrote {len(items)} NEPSE-related Nepali news items.")
