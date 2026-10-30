@@ -25,6 +25,8 @@ jobs:
           python-version: '3.12'
       - name: Compile Python modules
         run: python -m compileall -q scripts
+      - name: Run Python data integrity regression tests
+        run: python -m unittest discover -s tests -v
       - name: Fetch and validate current market snapshot
         run: python scripts/update_live_market.py
       - name: Generate conservative screening signals
