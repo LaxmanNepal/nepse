@@ -49,7 +49,8 @@ def fetch_query(query: str) -> list[dict]:
         source = clean(source_el.text if source_el is not None else "समाचार स्रोत")
         link = clean(item.findtext("link", ""))
         if not link.startswith("https://"): continue
-        summary = clean(item.findtext("description", ""))\n        if not re.search(r"[\\u0900-\\u097F]", summary): summary = ""
+        summary = clean(item.findtext("description", ""))
+        if not re.search(r"[\u0900-\u097F]", summary): summary = ""
         published = clean(item.findtext("pubDate", ""))
         cat, label = category(title)
         items.append({"title": title, "summary": summary[:500], "url": link, "source": source, "published": published, "category": cat, "categoryLabel": label, "symbols": []})
