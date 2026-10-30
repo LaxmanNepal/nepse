@@ -40,5 +40,5 @@ jobs:
           fi
           git commit -m "chore: refresh NEPSE market data and signals"
           # Rebase generated data onto concurrent UI/docs commits before pushing.
-          git pull --rebase origin main
+          git pull --rebase -X theirs origin main
           git push
