@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from datetime import datetime, timezone
+import math
 from typing import Any
 from zoneinfo import ZoneInfo
 
@@ -28,9 +29,9 @@ def as_float(value: Any) -> float | None:
         return None
     try:
         number = float(str(value).replace(",", ""))
-    except (TypeError, ValueError):
+    except (TypeError, ValueError, OverflowError):
         return None
-    return number
+    return number if math.isfinite(number) else None
 
 
 def parse_timestamp(value: Any) -> datetime | None:
