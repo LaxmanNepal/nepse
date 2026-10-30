@@ -25,7 +25,7 @@ DIVIDEND_TERMS = ("लाभांश", "बोनस शेयर", "बोन�
 COMPANY_TERMS = ("कम्पनी", "बैंक", "हाइड्रो", "लघुवित्त", "बीमा", "वित्त", "सूचीकृत", "साधारणसभा", "नाफा", "वित्तीय")
 def clean(value: str) -> str:
     value = html.unescape(re.sub(r"<[^>]+>", " ", value or ""))
-    return re.sub(r"\\s+", " ", value).strip()
+    return re.sub(r"\s+", " ", value).strip()
 def category(title: str) -> tuple[str, str]:
     t = title.lower()
     if any(k in t for k in IPO_TERMS): return "ipo", "आईपीओ / हकप्रद"
@@ -33,7 +33,7 @@ def category(title: str) -> tuple[str, str]:
     if any(k in t for k in COMPANY_TERMS): return "company", "कम्पनी समाचार"
     return "market", "नेप्से / बजार"
 def is_nepali_market_item(title: str) -> bool:
-    if not re.search(r"[\\u0900-\\u097F]", title): return False
+    if not re.search(r"[\u0900-\u097F]", title): return False
     t = title.lower()
     return any(k in t for k in MARKET_TERMS)
 def fetch_query(query: str) -> list[dict]:
@@ -62,7 +62,7 @@ def main() -> None:
         time.sleep(1)
     unique = {}
     for item in gathered:
-        key = re.sub(r"[^\\w\\u0900-\\u097F]", "", item["title"].lower())
+        key = re.sub(r"[^\w\u0900-\u097F]", "", item["title"].lower())
         if key and key not in unique: unique[key] = item
     items = sorted(unique.values(), key=lambda x: x.get("published", ""), reverse=True)[:80]
     if not items and OUT.exists():
@@ -72,6 +72,6 @@ def main() -> None:
             print("No new RSS items; preserving last feed snapshot.")
             return
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(json.dumps({"schemaVersion": 1, "updatedAt": datetime.now(timezone.utc).isoformat(), "language": "Nepali headlines only", "scope": "NEPSE and listed-company news", "items": items}, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
+    OUT.write_text(json.dumps({"schemaVersion": 1, "updatedAt": datetime.now(timezone.utc).isoformat(), "language": "Nepali headlines only", "scope": "NEPSE and listed-company news", "items": items}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"Wrote {len(items)} NEPSE-related Nepali news items.")
 if __name__ == "__main__": main()
