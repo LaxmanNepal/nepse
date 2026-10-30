@@ -125,7 +125,7 @@ def validate_stock(stock: dict[str, Any]) -> list[str]:
             errors.append(f"invalid {label_name}: {label}")
             continue
         values[label_name] = number
-        if label_name != "change" and number < 0:
+        if label_name not in ("change", "changePercent") and number < 0:
             errors.append(f"negative {label_name}: {label}")
 
     high = as_float(first_value(stock, ("high", "dayHigh")))
