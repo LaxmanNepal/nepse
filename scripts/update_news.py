@@ -23,7 +23,9 @@ QUERIES = [
     'site:merolagani.com "नेप्से" when:14d',
     'site:sharesansar.com "नेप्से" when:14d',
 ]
-MARKET_TERMS = ("नेप्से", "शेयर", "सेयर", "आईपीओ", "आइपिओ", "लाभांश", "हकप्रद", "बोनस शेयर", "साधारणसभा", "सूचीकृत कम्पनी", "कारोबार", "ब्रोकर", "धितोपत्र", "merolagani", "sharesansar", "nepse")
+MARKET_TERMS = ("नेप्से", "शेयर", "सेयर", "आईपीओ", "आइपिओ", "लाभांश", "हकप्रद", "बोनस शेयर", "साधारणसभा", "सूचीकृत कम्पनी", "कारोबार", "ब्रोकर", "धितोपत्र")
+NEPAL_MARKET_TERMS = ("नेप्से", "नेपाल", "नेपाली", "nepse", "nepal")
+NEPAL_SOURCES = ("merolagani", "sharesansar", "artha sarokar", "arthasarokar", "arthasansar", "nepali paisa", "nepalipaisa", "bizmandu", "capital nepal", "nepse analysis", "nepseanalysis", "lagani saathi", "nepse trading", "nepsealpha")
 IPO_TERMS = ("आईपीओ", "आइपिओ", "हकप्रद", "एफपीओ", "बुक बिल्डिङ")
 DIVIDEND_TERMS = ("लाभांश", "बोनस शेयर", "बोनस सेयर", "बुक क्लोज")
 COMPANY_TERMS = ("कम्पनी", "बैंक", "हाइड्रो", "लघुवित्त", "बीमा", "वित्त", "सूचीकृत", "साधारणसभा", "नाफा", "वित्तीय")
@@ -36,10 +38,11 @@ def category(title: str) -> tuple[str, str]:
     if any(k in t for k in DIVIDEND_TERMS): return "dividend", "लाभांश / बोनस"
     if any(k in t for k in COMPANY_TERMS): return "company", "कम्पनी समाचार"
     return "market", "नेप्से / बजार"
-def is_nepali_market_item(title: str) -> bool:
+def is_nepali_market_item(title: str, source: str = "") -> bool:
     if not re.search(r"[\u0900-\u097F]", title): return False
-    t = title.lower()
-    return any(k in t for k in MARKET_TERMS)
+    t, src = title.lower(), source.lower()
+    if not any(k in t for k in MARKET_TERMS): return False
+    return any(k in t for k in NEPAL_MARKET_TERMS) or any(k in src for k in NEPAL_SOURCES)
 def fetch_query(query: str) -> list[dict]:
     url = "https://news.google.com/rss/search?" + urllib.parse.urlencode({"q": query, "hl": "ne", "gl": "NP", "ceid": "NP:ne"})
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 NEPSE-Terminal-News/1.0"})
@@ -48,9 +51,9 @@ def fetch_query(query: str) -> list[dict]:
     items = []
     for item in root.findall("./channel/item"):
         title = clean(item.findtext("title", ""))
-        if not is_nepali_market_item(title): continue
         source_el = item.find("source")
         source = clean(source_el.text if source_el is not None else "समाचार स्रोत")
+        if not is_nepali_market_item(title, source): continue
         link = clean(item.findtext("link", ""))
         if not link.startswith("https://"): continue
         summary = clean(item.findtext("description", ""))
