@@ -46,10 +46,34 @@ function rows(){
  const a=S.filtered.slice((S.page-1)*SIZE,S.page*SIZE);
  $("stock-rows").innerHTML=a.length?a.map(x=>{
   const p=n(x.changePercent??x.percent_change)||0,lo=n(x.low),hi=n(x.high),ltp=n(x.ltp),pos=lo!=null&&hi!=null&&hi>lo?Math.max(0,Math.min(100,(ltp-lo)/(hi-lo)*100)):0;
-  return '<tr><td class="stock-name"><b>'+esc(x.symbol)+'</b><small>'+esc(x.name||"")+'</small></td><td class="num">'+fmt(ltp)+'</td><td class="num '+(p>0?"positive":p<0?"negative":"")+'">'+(p>0?"+":"")+fmt(p)+'%</td><td class="num">'+fmt(n(x.volume),0)+'</td><td class="num">'+fmt(n(x.turnover),0)+'</td><td class="num"><span class="range"><i style="width:'+pos+'%"></i></span> <small>'+fmt(lo,1)+'–'+fmt(hi,1)+'</small></td></tr>';
+  return '<tr class="stock-row" data-symbol="'+esc(x.symbol)+'" tabindex="0" role="button" aria-label="Open '+esc(x.symbol)+' research"><td class="stock-name"><b>'+esc(x.symbol)+'</b><small>'+esc(x.name||"")+'</small></td><td class="num">'+fmt(ltp)+'</td><td class="num '+(p>0?"positive":p<0?"negative":"")+'">'+(p>0?"+":"")+fmt(p)+'%</td><td class="num">'+fmt(n(x.volume),0)+'</td><td class="num">'+fmt(n(x.turnover),0)+'</td><td class="num"><span class="range"><i style="width:'+pos+'%"></i></span> <small>'+fmt(lo,1)+'–'+fmt(hi,1)+'</small></td></tr>';
  }).join(""):'<tr><td colspan="6" class="table-empty">No stocks match this filter.</td></tr>';
  $("table-status").textContent="Showing "+(total?(S.page-1)*SIZE+1:0)+"–"+Math.min(S.page*SIZE,total)+" of "+total+" matches";
  $("page-label").textContent=S.page+" / "+pages;$("prev").disabled=S.page<=1;$("next").disabled=S.page>=pages;
+}
+function bar(label,value,display,ratio,klass=""){
+ const w=Math.max(0,Math.min(100,Number(ratio)||0));
+ return '<div class="data-bar"><div><span>'+esc(label)+'</span><b class="'+klass+'">'+esc(display)+'</b></div><i><em style="width:'+w+'%"></em></i></div>';
+}
+function miniChart(points){
+ const vals=points.map(p=>n(p.close)).filter(v=>v>0);if(vals.length<2)return '<div class="chart-empty">Not enough daily history to draw a price chart.</div>';
+ const W=760,H=190,P=12,min=Math.min(...vals),max=Math.max(...vals),span=max-min||1;
+ const coords=vals.map((v,i)=>[P+i*(W-2*P)/(vals.length-1),H-P-(v-min)/span*(H-2*P)]);
+ const path=coords.map((p,i)=>(i?"L":"M")+p[0].toFixed(1)+","+p[1].toFixed(1)).join(" ");
+ return '<div class="history-chart"><div class="chart-meta"><span>'+esc(points[0].date||"Start")+'</span><b>'+vals.length+' daily observations</b><span>'+esc(points[points.length-1].date||"Latest")+'</span></div><svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Daily closing price chart"><defs><linearGradient id="priceFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#268bdf" stop-opacity=".22"/><stop offset="1" stop-color="#268bdf" stop-opacity="0"/></linearGradient></defs><path d="'+path+' L'+coords[coords.length-1][0]+' '+(H-P)+' L'+P+' '+(H-P)+' Z" fill="url(#priceFill)"/><path d="'+path+'" fill="none" stroke="#268bdf" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="chart-scale"><span>NPR '+fmt(min)+'</span><span>NPR '+fmt(max)+'</span></div></div>';
+}
+async function openStock(symbol){
+ const stock=S.stocks.find(x=>String(x.symbol).toUpperCase()===String(symbol).toUpperCase());if(!stock)return;
+ const panel=$("stock-detail");panel.classList.remove("hidden");$("detail-title").textContent=stock.name||stock.symbol;$("detail-subtitle").textContent=stock.symbol+" · "+(stock.sector||"Sector not supplied")+" · market snapshot";
+ $("detail-content").innerHTML='<p class="table-empty">Loading '+esc(stock.symbol)+' historical research…</p>';
+ panel.scrollIntoView({behavior:"smooth",block:"start"});
+ let history=[],ind={};
+ try{const [hr,sr]=await Promise.all([fetch("./data/history/"+encodeURIComponent(stock.symbol)+".json?v="+Date.now(),fetch("./data/ai-signals.json?v="+Date.now())]);if(hr.ok)history=await hr.json();if(sr.ok){const sd=await sr.json();ind=(sd.signals||[]).find(x=>x.symbol===stock.symbol)?.indicators||{}}}catch(e){}
+ if(!Array.isArray(history))history=[];
+ const ltp=n(stock.ltp),p=n(stock.changePercent??stock.percent_change)||0,lo=n(stock.low),hi=n(stock.high),vol=n(stock.volume)||0,to=n(stock.turnover)||0,range=lo!=null&&hi!=null&&hi>lo?(ltp-lo)/(hi-lo)*100:0;
+ const closes=history.map(x=>n(x.close)).filter(x=>x>0),last20=history.slice(-20),support=last20.length?Math.min(...last20.map(x=>n(x.close)).filter(x=>x>0)):null,resistance=last20.length?Math.max(...last20.map(x=>n(x.close)).filter(x=>x>0)):null;
+ const indicators=[["RSI (14)",ind.rsi14==null?"Unavailable":fmt(ind.rsi14),ind.rsi14==null?0:ind.rsi14,""],["SMA (20)",fmt(ind.sma20),ind.sma20&&ltp?ind.sma20/ltp*100:0,""],["SMA (50)",fmt(ind.sma50),ind.sma50&&ltp?ind.sma50/ltp*100:0,""],["EMA (12)",fmt(ind.ema12),ind.ema12&&ltp?ind.ema12/ltp*100:0,""],["EMA (26)",fmt(ind.ema26),ind.ema26&&ltp?ind.ema26/ltp*100:0,""],["Relative volume",ind.relative_volume==null?"Unavailable":fmt(ind.relative_volume,2)+"×",ind.relative_volume==null?0:Math.min(100,ind.relative_volume*40),""]];
+ $("detail-content").innerHTML='<div class="detail-hero"><div><small>LAST TRADED PRICE</small><strong>NPR '+fmt(ltp)+'</strong><span class="'+(p>=0?"positive":"negative")+'">'+(p>0?"+":"")+fmt(p)+'% session change</span></div><div class="detail-tags"><span>'+esc(stock.symbol)+'</span><span>'+history.length+' history rows</span></div></div>'+miniChart(history)+'<div class="detail-grid"><div class="detail-card"><h3>Market snapshot</h3>'+bar("Previous close",null,"NPR "+fmt(stock.previous_close),50)+bar("Day high",null,"NPR "+fmt(hi),hi&&ltp?ltp/hi*100:0)+bar("Day low",null,"NPR "+fmt(lo),lo&&ltp?lo/ltp*100:0)+bar("Day range position",null,fmt(range,0)+"%",range,p>=0?"positive":"negative")+bar("Traded volume",null,fmt(vol,0),Math.min(100,Math.log10(vol+1)*20))+bar("Turnover",null,"NPR "+fmt(to,0),Math.min(100,Math.log10(to+1)*10))+'</div><div class="detail-card"><h3>Technical indicators</h3>'+indicators.map(x=>bar(x[0],null,x[1],x[2])).join("")+'<p class="detail-note">Indicators are shown only when historical data is available. Missing values are not estimated.</p></div><div class="detail-card"><h3>Historical levels · last 20 observations</h3>'+bar("Observed support proxy",null,support==null?"Unavailable":"NPR "+fmt(support),support&&ltp?support/ltp*100:0)+bar("Observed resistance proxy",null,resistance==null?"Unavailable":"NPR "+fmt(resistance),resistance&&ltp?resistance/ltp*100:0)+'<p class="detail-note">These are simple recent-window extrema, not validated support/resistance zones.</p></div><div class="detail-card"><h3>Available company fields</h3>'+bar("Company",null,stock.name||"Not supplied",100)+bar("Sector",null,stock.sector||"Not supplied",stock.sector?100:0)+bar("Trades",null,fmt(stock.trades,0),Math.min(100,(n(stock.trades)||0)))+'<p class="detail-note">Fundamentals such as EPS, P/E, book value, dividends, financial statements and ownership are not present in this feed. They are not fabricated.</p></div></div>';
 }
 function risk(){
  const c=n($("capital").value),p=n($("risk-pct").value),e=n($("entry").value),s=n($("stop").value);
@@ -83,7 +107,7 @@ async function load(){
 function init(){
  $("clock").textContent=new Date().toLocaleDateString("en-GB",{weekday:"short",day:"2-digit",month:"short",year:"numeric",timeZone:"Asia/Kathmandu"})+" · NPT";
  ["search","movement","sort"].forEach(id=>$(id).addEventListener(id==="search"?"input":"change",()=>{S.page=1;filter()}));
- $("prev").addEventListener("click",()=>{S.page--;rows()});$("next").addEventListener("click",()=>{S.page++;rows()});$("refresh").addEventListener("click",load);
+ $("stock-rows").addEventListener("click",e=>{const tr=e.target.closest("tr[data-symbol]");if(tr)openStock(tr.dataset.symbol)});$("stock-rows").addEventListener("keydown",e=>{if((e.key==="Enter"||e.key===" ")&&e.target.matches("tr[data-symbol]")){e.preventDefault();openStock(e.target.dataset.symbol)}});$("detail-close").addEventListener("click",()=>$("stock-detail").classList.add("hidden"));$("prev").addEventListener("click",()=>{S.page--;rows()});$("next").addEventListener("click",()=>{S.page++;rows()});$("refresh").addEventListener("click",load);
  ["capital","risk-pct","entry","stop"].forEach(id=>$(id).addEventListener("input",risk));load();
 }
 document.addEventListener("DOMContentLoaded",init);
