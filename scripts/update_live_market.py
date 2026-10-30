@@ -91,11 +91,26 @@ def main():
     if duplicates:
         raise RuntimeError("Duplicate security symbols: " + ", ".join(duplicates[:20]))
 
-    quality_errors = []
+    # Quarantine individual bad rows instead of discarding an otherwise usable market snapshot.
+    # A single stale/illiquid instrument can occasionally have inconsistent high/low fields.
+    valid_rows = []
+    rejected = []
     for row in normalized:
-        quality_errors.extend(validate_stock(row))
-    if quality_errors:
-        raise RuntimeError("Source data failed validation: " + "; ".join(quality_errors[:20]))
+        errors = validate_stock(row)
+        if errors:
+            rejected.extend(errors)
+        else:
+            valid_rows.append(row)
+    rejected_count = len(normalized) - len(valid_rows)
+    rejected_ratio = rejected_count / max(1, len(normalized))
+    if len(valid_rows) < 200 or rejected_ratio > 0.05:
+        raise RuntimeError(
+            f"Source data quality too poor: valid={len(valid_rows)}, "
+            f"rejected={rejected_count} ({rejected_ratio:.1%}); " + "; ".join(rejected[:20])
+        )
+    normalized = valid_rows
+    if rejected:
+        print(f"Quarantined {rejected_count} invalid rows: " + "; ".join(rejected[:10]))
 
     nepse = next((x for x in indices if isinstance(x, dict) and x.get("index") in ("NEPSE", "NEPSE Index")), None)
     live = {
