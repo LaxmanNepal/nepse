@@ -5,6 +5,7 @@ const S={stocks:[],page:1,filtered:[],live:null};
 const n=v=>v!==null&&v!==undefined&&v!==""&&Number.isFinite(Number(v))?Number(v):null;
 const fmt=(v,d=2)=>v==null?"—":Number(v).toLocaleString("en-IN",{maximumFractionDigits:d});
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function siteNavigate(path){if(window.top!==window.self)window.top.location.href='https://laxmannepal.com.np'+path;else location.href=path}
 function dateText(d){return Number.isNaN(d.getTime())?"Unknown":d.toLocaleString("en-GB",{dateStyle:"medium",timeStyle:"short",timeZone:"Asia/Kathmandu"})+" NPT"}
 function stamp(x){return new Date(x?.sourceUpdatedAt||x?.updatedAt||x?.timestamp||0)}
 function freshness(l){
@@ -132,7 +133,7 @@ async function load(){
 function init(){
  $("clock").textContent=new Date().toLocaleDateString("en-GB",{weekday:"short",day:"2-digit",month:"short",year:"numeric",timeZone:"Asia/Kathmandu"})+" · NPT";
  ["search","movement","sort"].forEach(id=>$(id).addEventListener(id==="search"?"input":"change",()=>{S.page=1;filter()}));
- $("stock-rows").addEventListener("click",e=>{const tr=e.target.closest("tr[data-symbol]");if(tr)location.href='/nepse/'+encodeURIComponent(tr.dataset.symbol.toLowerCase())});$("stock-rows").addEventListener("keydown",e=>{if((e.key==="Enter"||e.key===" ")&&e.target.matches("tr[data-symbol]")){e.preventDefault();location.href='/nepse/'+encodeURIComponent(e.target.dataset.symbol.toLowerCase())}});$("detail-close").addEventListener("click",()=>{const path=location.pathname.split("/").filter(Boolean);if(path.length>1&&path[path.length-1].toUpperCase()!=="INDEX.HTML")location.href="/nepse/";else $("stock-detail").classList.add("hidden")});$("prev").addEventListener("click",()=>{S.page--;rows()});$("next").addEventListener("click",()=>{S.page++;rows()});$("refresh").addEventListener("click",load);
+ $("stock-rows").addEventListener("click",e=>{const tr=e.target.closest("tr[data-symbol]");if(tr)siteNavigate('/nepse/'+encodeURIComponent(tr.dataset.symbol.toLowerCase()))});$("stock-rows").addEventListener("keydown",e=>{if((e.key==="Enter"||e.key===" ")&&e.target.matches("tr[data-symbol]")){e.preventDefault();siteNavigate('/nepse/'+encodeURIComponent(e.target.dataset.symbol.toLowerCase()))}});$("detail-close").addEventListener("click",()=>{const path=location.pathname.split("/").filter(Boolean);if(path.length>1&&path[path.length-1].toUpperCase()!=="INDEX.HTML")siteNavigate("/nepse/");else $("stock-detail").classList.add("hidden")});$("prev").addEventListener("click",()=>{S.page--;rows()});$("next").addEventListener("click",()=>{S.page++;rows()});$("refresh").addEventListener("click",load);
  ["capital","risk-pct","entry","stop"].forEach(id=>$(id).addEventListener("input",risk));load();
 }
 document.addEventListener("DOMContentLoaded",init);
