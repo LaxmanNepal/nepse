@@ -1,23 +1,23 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-30T22:48:13.427315+00:00",
+  "generatedAt": "2026-10-30T22:54:33.034400+00:00",
   "sourceUpdatedAt": "2026-10-30T09:14:59.997144+00:00",
-  "source": "YONEPSE public dataset",
+  "source": "YONEPSE public dataset; not independently exchange-verified",
   "engine": "NEPSE Pulse technical screener v2",
   "warning": "Heuristic screening only. No profit probability is claimed. SELL/REDUCE is not a short-selling instruction.",
   "counts": {
-    "stocks_scored": 299,
+    "stocks_scored": 275,
     "buy_confirmation": 0,
     "watch_breakout": 1,
-    "wait": 289,
-    "avoid": 9,
+    "wait": 266,
+    "avoid": 8,
     "sell_review": 0
   },
   "signals": [
     {
       "symbol": "BENH",
       "name": "Beni Hydropower Project Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WATCH BREAKOUT",
       "score": 78.2,
       "ltp": 709.7,
@@ -49,7 +49,7 @@
     {
       "symbol": "LBBL",
       "name": "Lumbini Bikas Bank Ltd.",
-      "sector": "Other",
+      "sector": "Development Banks",
       "action": "WAIT",
       "score": 86.7,
       "ltp": 550.0,
@@ -84,8 +84,8 @@
     },
     {
       "symbol": "MERO",
-      "name": "Mero Microfinance Bittiya Sanstha Ltd.",
-      "sector": "Other",
+      "name": "Meromicrofinance Laghubitta Bittiya Sanstha Ltd.",
+      "sector": "Microfinance",
       "action": "WAIT",
       "score": 77.2,
       "ltp": 625.0,
@@ -121,7 +121,7 @@
     {
       "symbol": "GRDBL",
       "name": "Green Development Bank Ltd.",
-      "sector": "Other",
+      "sector": "Development Banks",
       "action": "WAIT",
       "score": 76.8,
       "ltp": 947.0,
@@ -156,8 +156,8 @@
     },
     {
       "symbol": "SMH",
-      "name": "Super Mai Hydropower Limited",
-      "sector": "Other",
+      "name": "Supermai Hydropower Limited",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 76.0,
       "ltp": 567.9,
@@ -192,8 +192,8 @@
     },
     {
       "symbol": "SAPDBL",
-      "name": "Saptakoshi Development Bank Ltd",
-      "sector": "Other",
+      "name": "Saptakoshi Development bank Ltd",
+      "sector": "Development Banks",
       "action": "WAIT",
       "score": 75.4,
       "ltp": 585.0,
@@ -227,45 +227,9 @@
       "method": "heuristic technical screen; not a return probability or guarantee"
     },
     {
-      "symbol": "NIBLGF",
-      "name": "NIBL Growth Fund",
-      "sector": "Other",
-      "action": "WAIT",
-      "score": 75.3,
-      "ltp": 9.29,
-      "percent_change": 2.54,
-      "volume": 355717.0,
-      "turnover": 3271110.12,
-      "high": 9.35,
-      "low": 9.0,
-      "range_position": 0.8286,
-      "indicators": {
-        "history_points": 74,
-        "history_source": "data/history/NIBLGF.json",
-        "rsi14": 53.27,
-        "sma20": 8.84,
-        "sma50": 8.74,
-        "ema12": 8.94,
-        "ema26": 8.85,
-        "macd": {
-          "line": 0.0915,
-          "signal": 0.0329,
-          "histogram": 0.0586
-        },
-        "avg_volume20": 114775.8,
-        "relative_volume": 3.1
-      },
-      "entry": null,
-      "stop": null,
-      "target1": null,
-      "target2": null,
-      "risk_reward": null,
-      "method": "heuristic technical screen; not a return probability or guarantee"
-    },
-    {
       "symbol": "CZBIL",
       "name": "Citizens Bank International Limited",
-      "sector": "Other",
+      "sector": "Commercial Banks",
       "action": "WAIT",
       "score": 74.8,
       "ltp": 229.0,
@@ -301,7 +265,7 @@
     {
       "symbol": "CFCL",
       "name": "Central Finance Co. Ltd.",
-      "sector": "Other",
+      "sector": "Finance",
       "action": "WAIT",
       "score": 74.4,
       "ltp": 605.9,
@@ -337,7 +301,7 @@
     {
       "symbol": "HRL",
       "name": "Himalayan Reinsurance Limited",
-      "sector": "Other",
+      "sector": "Others",
       "action": "WAIT",
       "score": 73.3,
       "ltp": 493.9,
@@ -372,8 +336,8 @@
     },
     {
       "symbol": "SMFBS",
-      "name": "Swabhimaan Laghubitta Bittiya Sanstha Limited",
-      "sector": "Other",
+      "name": "Swabhumaan Laghubitta Bittiya Sanstha Ltd",
+      "sector": "Microfinance",
       "action": "WAIT",
       "score": 73.0,
       "ltp": 1500.0,
@@ -408,8 +372,8 @@
     },
     {
       "symbol": "RHPL",
-      "name": "RASUWAGADHI HYDROPOWER COMPANY LIMITED",
-      "sector": "Other",
+      "name": "Rasuwagadhi Hydropower Company Limited",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 72.4,
       "ltp": 173.0,
@@ -445,7 +409,7 @@
     {
       "symbol": "HEI",
       "name": "Himalayan Everest Insurance Limited",
-      "sector": "Other",
+      "sector": "Non Life Insurance",
       "action": "WAIT",
       "score": 72.3,
       "ltp": 448.9,
@@ -480,8 +444,8 @@
     },
     {
       "symbol": "SADBL",
-      "name": "Shangrila Development Bank Ltd.",
-      "sector": "Other",
+      "name": "SHANGRI-LA DEVELOPMENT BANK LIMITED",
+      "sector": "Development Banks",
       "action": "WAIT",
       "score": 72.1,
       "ltp": 417.0,
@@ -516,8 +480,8 @@
     },
     {
       "symbol": "ILBS",
-      "name": "Infinity Laghubitta Bittiya Sanstha Limited",
-      "sector": "Other",
+      "name": "Infinity Laghubitta Bittiya Sastha Ltd",
+      "sector": "Microfinance",
       "action": "WAIT",
       "score": 71.8,
       "ltp": 962.5,
@@ -553,7 +517,7 @@
     {
       "symbol": "MLBL",
       "name": "Mahalaxmi Bikas Bank Ltd.",
-      "sector": "Other",
+      "sector": "Development Banks",
       "action": "WAIT",
       "score": 71.5,
       "ltp": 391.8,
@@ -587,45 +551,9 @@
       "method": "heuristic technical screen; not a return probability or guarantee"
     },
     {
-      "symbol": "NSY",
-      "name": "Nepal Life Samriddhi Lagani Yojana",
-      "sector": "Other",
-      "action": "WAIT",
-      "score": 70.7,
-      "ltp": 9.38,
-      "percent_change": 2.96,
-      "volume": 59080.0,
-      "turnover": 548553.8,
-      "high": 9.38,
-      "low": 9.1,
-      "range_position": 1.0,
-      "indicators": {
-        "history_points": 76,
-        "history_source": "data/history/NSY.json",
-        "rsi14": 62.93,
-        "sma20": 9.01,
-        "sma50": 9.12,
-        "ema12": 9.07,
-        "ema26": 9.07,
-        "macd": {
-          "line": 0.0018,
-          "signal": -0.0374,
-          "histogram": 0.0392
-        },
-        "avg_volume20": 5382.15,
-        "relative_volume": 10.98
-      },
-      "entry": null,
-      "stop": null,
-      "target1": null,
-      "target2": null,
-      "risk_reward": null,
-      "method": "heuristic technical screen; not a return probability or guarantee"
-    },
-    {
       "symbol": "RFPL",
-      "name": "River Falls Power Limited",
-      "sector": "Other",
+      "name": "River Falls power Limited",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 70.3,
       "ltp": 374.0,
@@ -661,7 +589,7 @@
     {
       "symbol": "PCIL",
       "name": "Palpa Cement Industries Limited",
-      "sector": "Other",
+      "sector": "Manufacturing And Processing",
       "action": "WAIT",
       "score": 70.2,
       "ltp": 638.2,
@@ -697,7 +625,7 @@
     {
       "symbol": "GBIME",
       "name": "Global IME Bank Limited",
-      "sector": "Other",
+      "sector": "Commercial Banks",
       "action": "WAIT",
       "score": 69.9,
       "ltp": 264.9,
@@ -733,7 +661,7 @@
     {
       "symbol": "JBBL",
       "name": "Jyoti Bikas Bank Limited",
-      "sector": "Other",
+      "sector": "Development Banks",
       "action": "WAIT",
       "score": 69.4,
       "ltp": 367.8,
@@ -769,7 +697,7 @@
     {
       "symbol": "SONA",
       "name": "Sonapur Minerals And Oil Limited",
-      "sector": "Other",
+      "sector": "Manufacturing And Processing",
       "action": "WAIT",
       "score": 69.3,
       "ltp": 476.0,
@@ -805,7 +733,7 @@
     {
       "symbol": "UAIL",
       "name": "United Ajod Insurance Limited",
-      "sector": "Other",
+      "sector": "Non Life Insurance",
       "action": "WAIT",
       "score": 68.5,
       "ltp": 374.8,
@@ -840,8 +768,8 @@
     },
     {
       "symbol": "PPL",
-      "name": "People's Power Limited",
-      "sector": "Other",
+      "name": "Peoples Power Limited",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 68.3,
       "ltp": 330.2,
@@ -876,8 +804,8 @@
     },
     {
       "symbol": "SHPC",
-      "name": "Sanima Mai Hydropower Ltd.",
-      "sector": "Other",
+      "name": "Sanima Mai Hydropower Limited",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 68.1,
       "ltp": 562.0,
@@ -911,45 +839,9 @@
       "method": "heuristic technical screen; not a return probability or guarantee"
     },
     {
-      "symbol": "KSY",
-      "name": "Kumari Sabal Yojana",
-      "sector": "Other",
-      "action": "WAIT",
-      "score": 67.1,
-      "ltp": 9.29,
-      "percent_change": 0.87,
-      "volume": 102800.0,
-      "turnover": 945088.0,
-      "high": 9.29,
-      "low": 9.02,
-      "range_position": 1.0,
-      "indicators": {
-        "history_points": 72,
-        "history_source": "data/history/KSY.json",
-        "rsi14": 57.0,
-        "sma20": 9.05,
-        "sma50": 9.15,
-        "ema12": 9.09,
-        "ema26": 9.07,
-        "macd": {
-          "line": 0.0138,
-          "signal": -0.0362,
-          "histogram": 0.05
-        },
-        "avg_volume20": 8639.0,
-        "relative_volume": 11.9
-      },
-      "entry": null,
-      "stop": null,
-      "target1": null,
-      "target2": null,
-      "risk_reward": null,
-      "method": "heuristic technical screen; not a return probability or guarantee"
-    },
-    {
       "symbol": "DHEL",
-      "name": "Daramkhola Hydro Energy Limited",
-      "sector": "Other",
+      "name": "Daramkhola hydro Energy Ltd.",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 66.9,
       "ltp": 529.0,
@@ -984,8 +876,8 @@
     },
     {
       "symbol": "HIMSTAR",
-      "name": "Him Star Urja Company Limited",
-      "sector": "Other",
+      "name": "Himstar Urja Company Ltd.",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 66.9,
       "ltp": 621.2,
@@ -1021,7 +913,7 @@
     {
       "symbol": "CIT",
       "name": "Citizen Investment Trust",
-      "sector": "Other",
+      "sector": "Investment",
       "action": "WAIT",
       "score": 66.8,
       "ltp": 1748.8,
@@ -1056,8 +948,8 @@
     },
     {
       "symbol": "RURU",
-      "name": "Ru Ru Jalbidhyut Pariyojana Limited",
-      "sector": "Other",
+      "name": "Ru Ru Jalbidhyut  Pariyojana Ltd.",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 66.8,
       "ltp": 640.0,
@@ -1093,7 +985,7 @@
     {
       "symbol": "RIDI",
       "name": "Ridi Power Company Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 66.7,
       "ltp": 341.8,
@@ -1128,8 +1020,8 @@
     },
     {
       "symbol": "UHEWA",
-      "name": "Upper Hewakhola Hydropower Company Limited",
-      "sector": "Other",
+      "name": "Upper Hewakhola Hydropower company Limited",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 66.6,
       "ltp": 607.9,
@@ -1165,7 +1057,7 @@
     {
       "symbol": "PMLI",
       "name": "Prabhu Mahalaxmi Life Insurance Limited",
-      "sector": "Other",
+      "sector": "Life Insurance",
       "action": "WAIT",
       "score": 66.6,
       "ltp": 437.9,
@@ -1201,7 +1093,7 @@
     {
       "symbol": "HPPL",
       "name": "Himalayan Power Partner Ltd.",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 66.4,
       "ltp": 419.0,
@@ -1237,7 +1129,7 @@
     {
       "symbol": "PCBL",
       "name": "Prime Commercial Bank Ltd.",
-      "sector": "Other",
+      "sector": "Commercial Banks",
       "action": "WAIT",
       "score": 66.2,
       "ltp": 283.0,
@@ -1272,8 +1164,8 @@
     },
     {
       "symbol": "SHIVM",
-      "name": "SHIVAM CEMENTS LTD",
-      "sector": "Other",
+      "name": "Shivam Cements Limited",
+      "sector": "Manufacturing And Processing",
       "action": "WAIT",
       "score": 65.6,
       "ltp": 705.0,
@@ -1309,7 +1201,7 @@
     {
       "symbol": "NIFRA",
       "name": "Nepal Infrastructure Bank Limited",
-      "sector": "Other",
+      "sector": "Investment",
       "action": "WAIT",
       "score": 65.5,
       "ltp": 252.5,
@@ -1343,45 +1235,9 @@
       "method": "heuristic technical screen; not a return probability or guarantee"
     },
     {
-      "symbol": "HEIP",
-      "name": "Himalayan Everest Insurance Limited Promoter",
-      "sector": "Other",
-      "action": "WAIT",
-      "score": 65.5,
-      "ltp": 315.0,
-      "percent_change": 2.71,
-      "volume": 803.0,
-      "turnover": 252442.0,
-      "high": 315.0,
-      "low": 314.0,
-      "range_position": 1.0,
-      "indicators": {
-        "history_points": 63,
-        "history_source": "data/history/HEIP.json",
-        "rsi14": 52.46,
-        "sma20": 314.84,
-        "sma50": 320.65,
-        "ema12": 314.74,
-        "ema26": 315.59,
-        "macd": {
-          "line": -0.8522,
-          "signal": -1.1565,
-          "histogram": 0.3043
-        },
-        "avg_volume20": 797.75,
-        "relative_volume": 1.01
-      },
-      "entry": null,
-      "stop": null,
-      "target1": null,
-      "target2": null,
-      "risk_reward": null,
-      "method": "heuristic technical screen; not a return probability or guarantee"
-    },
-    {
       "symbol": "ULBSL",
-      "name": "Upakar Laghubitta Bittiya Sanstha Limited",
-      "sector": "Other",
+      "name": "Upakar Laghubitta Bittiya  Sanstha  Limited",
+      "sector": "Microfinance",
       "action": "WAIT",
       "score": 65.4,
       "ltp": 2567.9,
@@ -1415,45 +1271,9 @@
       "method": "heuristic technical screen; not a return probability or guarantee"
     },
     {
-      "symbol": "PSF",
-      "name": "Prabhu Select Fund",
-      "sector": "Other",
-      "action": "WAIT",
-      "score": 65.2,
-      "ltp": 11.49,
-      "percent_change": 2.41,
-      "volume": 19290.0,
-      "turnover": 220564.9,
-      "high": 11.5,
-      "low": 11.21,
-      "range_position": 0.9655,
-      "indicators": {
-        "history_points": 78,
-        "history_source": "data/history/PSF.json",
-        "rsi14": 71.15,
-        "sma20": 11.02,
-        "sma50": 11.39,
-        "ema12": 11.16,
-        "ema26": 11.16,
-        "macd": {
-          "line": 0.0039,
-          "signal": -0.0781,
-          "histogram": 0.082
-        },
-        "avg_volume20": 25995.05,
-        "relative_volume": 0.74
-      },
-      "entry": null,
-      "stop": null,
-      "target1": null,
-      "target2": null,
-      "risk_reward": null,
-      "method": "heuristic technical screen; not a return probability or guarantee"
-    },
-    {
       "symbol": "CLI",
       "name": "Citizen Life Insurance Company Limited",
-      "sector": "Other",
+      "sector": "Life Insurance",
       "action": "WAIT",
       "score": 64.9,
       "ltp": 452.0,
@@ -1489,7 +1309,7 @@
     {
       "symbol": "SKHEL",
       "name": "Suryakunda Hydro Electric Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 64.9,
       "ltp": 779.2,
@@ -1525,7 +1345,7 @@
     {
       "symbol": "TVCL",
       "name": "Trishuli Jal Vidhyut Company Limited ",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 64.8,
       "ltp": 292.0,
@@ -1560,8 +1380,8 @@
     },
     {
       "symbol": "VLUCL",
-      "name": "Vision Lumbini Urja Company Limited ",
-      "sector": "Other",
+      "name": "Vision Lumbini Urja Company Limited",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 64.7,
       "ltp": 389.0,
@@ -1597,7 +1417,7 @@
     {
       "symbol": "MBL",
       "name": "Machhapuchhre Bank Limited",
-      "sector": "Other",
+      "sector": "Commercial Banks",
       "action": "WAIT",
       "score": 64.5,
       "ltp": 280.2,
@@ -1632,8 +1452,8 @@
     },
     {
       "symbol": "NLIC",
-      "name": "Nepal Life Insurance Co. Ltd.",
-      "sector": "Other",
+      "name": "NEPAL LIFE INSURANCE COMPANY LIMITED",
+      "sector": "Life Insurance",
       "action": "WAIT",
       "score": 64.5,
       "ltp": 751.0,
@@ -1667,45 +1487,9 @@
       "method": "heuristic technical screen; not a return probability or guarantee"
     },
     {
-      "symbol": "PRSF",
-      "name": "Prabhu Smart Fund",
-      "sector": "Other",
-      "action": "WAIT",
-      "score": 64.5,
-      "ltp": 12.53,
-      "percent_change": 1.54,
-      "volume": 25100.0,
-      "turnover": 313824.0,
-      "high": 12.53,
-      "low": 12.34,
-      "range_position": 1.0,
-      "indicators": {
-        "history_points": 78,
-        "history_source": "data/history/PRSF.json",
-        "rsi14": 68.97,
-        "sma20": 12.14,
-        "sma50": 12.33,
-        "ema12": 12.28,
-        "ema26": 12.22,
-        "macd": {
-          "line": 0.0587,
-          "signal": -0.0093,
-          "histogram": 0.068
-        },
-        "avg_volume20": 80164.55,
-        "relative_volume": 0.31
-      },
-      "entry": null,
-      "stop": null,
-      "target1": null,
-      "target2": null,
-      "risk_reward": null,
-      "method": "heuristic technical screen; not a return probability or guarantee"
-    },
-    {
       "symbol": "BNHC",
-      "name": "Buddha Bhumi Nepal Hydropower Company Limited",
-      "sector": "Other",
+      "name": "Buddha bhumi nepal hydro power company limited",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 63.9,
       "ltp": 282.5,
@@ -1741,7 +1525,7 @@
     {
       "symbol": "TAMOR",
       "name": "Sanima Middle Tamor Hydropower Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 63.8,
       "ltp": 604.0,
@@ -1777,7 +1561,7 @@
     {
       "symbol": "NRN",
       "name": "NRN Infrastructure and Development Limited",
-      "sector": "Other",
+      "sector": "Investment",
       "action": "WAIT",
       "score": 63.4,
       "ltp": 1380.0,
@@ -1812,8 +1596,8 @@
     },
     {
       "symbol": "SCB",
-      "name": "Standard Chartered Bank Limited",
-      "sector": "Other",
+      "name": "Standard Chartered Bank  Nepal Limited",
+      "sector": "Commercial Banks",
       "action": "WAIT",
       "score": 63.3,
       "ltp": 683.0,
@@ -1849,7 +1633,7 @@
     {
       "symbol": "SPHL",
       "name": "Sayapatri Hydropower Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 63.3,
       "ltp": 511.9,
@@ -1885,7 +1669,7 @@
     {
       "symbol": "SPIL",
       "name": "Siddhartha Premier Insurance Limited",
-      "sector": "Other",
+      "sector": "Non Life Insurance",
       "action": "WAIT",
       "score": 63.3,
       "ltp": 617.9,
@@ -1920,8 +1704,8 @@
     },
     {
       "symbol": "ECL",
-      "name": "Everest Colour Limited",
-      "sector": "Other",
+      "name": "Everest Colour Ltd.",
+      "sector": "Manufacturing And Processing",
       "action": "WAIT",
       "score": 63.0,
       "ltp": 1291.0,
@@ -1957,7 +1741,7 @@
     {
       "symbol": "SABBL",
       "name": "Salapa Bikas Bank Limited",
-      "sector": "Other",
+      "sector": "Development Banks",
       "action": "WAIT",
       "score": 62.9,
       "ltp": 834.0,
@@ -1993,7 +1777,7 @@
     {
       "symbol": "SHL",
       "name": "Soaltee Hotel Limited",
-      "sector": "Other",
+      "sector": "Hotels And Tourism",
       "action": "WAIT",
       "score": 62.8,
       "ltp": 539.5,
@@ -2029,7 +1813,7 @@
     {
       "symbol": "PHCL",
       "name": "Peoples Hydropower Company Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 62.7,
       "ltp": 364.0,
@@ -2065,7 +1849,7 @@
     {
       "symbol": "SJLIC",
       "name": "SuryaJyoti Life Insurance Company Limited",
-      "sector": "Other",
+      "sector": "Life Insurance",
       "action": "WAIT",
       "score": 62.7,
       "ltp": 439.7,
@@ -2100,8 +1884,8 @@
     },
     {
       "symbol": "MSHL",
-      "name": "Mid Solu Hydropower Limited",
-      "sector": "Other",
+      "name": "Mid solu Hydropower Limited",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 62.6,
       "ltp": 558.5,
@@ -2136,8 +1920,8 @@
     },
     {
       "symbol": "NWCL",
-      "name": "Nepal Warehousing Company Limited ",
-      "sector": "Other",
+      "name": "Nepal Warehousing Company Limited",
+      "sector": "Others",
       "action": "WAIT",
       "score": 62.6,
       "ltp": 537.0,
@@ -2171,45 +1955,9 @@
       "method": "heuristic technical screen; not a return probability or guarantee"
     },
     {
-      "symbol": "SEF",
-      "name": "Siddhartha Equity Fund",
-      "sector": "Other",
-      "action": "WAIT",
-      "score": 62.6,
-      "ltp": 9.95,
-      "percent_change": 0.1,
-      "volume": 17900.0,
-      "turnover": 177875.0,
-      "high": 9.98,
-      "low": 9.85,
-      "range_position": 0.7692,
-      "indicators": {
-        "history_points": 76,
-        "history_source": "data/history/SEF.json",
-        "rsi14": 66.92,
-        "sma20": 9.73,
-        "sma50": 9.65,
-        "ema12": 9.82,
-        "ema26": 9.74,
-        "macd": {
-          "line": 0.0732,
-          "signal": 0.0445,
-          "histogram": 0.0287
-        },
-        "avg_volume20": 35542.5,
-        "relative_volume": 0.5
-      },
-      "entry": null,
-      "stop": null,
-      "target1": null,
-      "target2": null,
-      "risk_reward": null,
-      "method": "heuristic technical screen; not a return probability or guarantee"
-    },
-    {
       "symbol": "UMHL",
       "name": "United Modi Hydropower Ltd.",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 62.5,
       "ltp": 570.7,
@@ -2245,7 +1993,7 @@
     {
       "symbol": "OHL",
       "name": "Oriental Hotels Limited",
-      "sector": "Other",
+      "sector": "Hotels And Tourism",
       "action": "WAIT",
       "score": 62.4,
       "ltp": 647.0,
@@ -2281,7 +2029,7 @@
     {
       "symbol": "SAHAS",
       "name": "Sahas Urja Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 62.3,
       "ltp": 719.0,
@@ -2316,8 +2064,8 @@
     },
     {
       "symbol": "NRM",
-      "name": "Nepal Republic Media Limited",
-      "sector": "Other",
+      "name": "Nepal Republic Media Ltd",
+      "sector": "Others",
       "action": "WAIT",
       "score": 62.3,
       "ltp": 301.2,
@@ -2353,7 +2101,7 @@
     {
       "symbol": "LSL",
       "name": "Laxmi Sunrise Bank Limited",
-      "sector": "Other",
+      "sector": "Commercial Banks",
       "action": "WAIT",
       "score": 62.1,
       "ltp": 281.0,
@@ -2388,8 +2136,8 @@
     },
     {
       "symbol": "UPCL",
-      "name": "UNIVERSAL POWER COMPANY LTD",
-      "sector": "Other",
+      "name": "Universal Power Company Limited",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 62.1,
       "ltp": 348.0,
@@ -2423,45 +2171,9 @@
       "method": "heuristic technical screen; not a return probability or guarantee"
     },
     {
-      "symbol": "MMF1",
-      "name": "Mega Mutual Fund -1",
-      "sector": "Other",
-      "action": "WAIT",
-      "score": 62.1,
-      "ltp": 8.96,
-      "percent_change": 0.11,
-      "volume": 22800.0,
-      "turnover": 202050.0,
-      "high": 8.96,
-      "low": 8.7,
-      "range_position": 1.0,
-      "indicators": {
-        "history_points": 78,
-        "history_source": "data/history/MMF1.json",
-        "rsi14": 59.57,
-        "sma20": 8.76,
-        "sma50": 8.84,
-        "ema12": 8.85,
-        "ema26": 8.83,
-        "macd": {
-          "line": 0.0179,
-          "signal": -0.0245,
-          "histogram": 0.0424
-        },
-        "avg_volume20": 15678.15,
-        "relative_volume": 1.45
-      },
-      "entry": null,
-      "stop": null,
-      "target1": null,
-      "target2": null,
-      "risk_reward": null,
-      "method": "heuristic technical screen; not a return probability or guarantee"
-    },
-    {
       "symbol": "CORBL",
       "name": "Corporate Development Bank Limited",
-      "sector": "Other",
+      "sector": "Development Banks",
       "action": "WAIT",
       "score": 62.0,
       "ltp": 782.0,
@@ -2497,7 +2209,7 @@
     {
       "symbol": "ADBL",
       "name": "Agricultural Development Bank Limited",
-      "sector": "Other",
+      "sector": "Commercial Banks",
       "action": "WAIT",
       "score": 61.8,
       "ltp": 347.0,
@@ -2533,7 +2245,7 @@
     {
       "symbol": "SBL",
       "name": "Siddhartha Bank Limited",
-      "sector": "Other",
+      "sector": "Commercial Banks",
       "action": "WAIT",
       "score": 61.6,
       "ltp": 450.2,
@@ -2569,7 +2281,7 @@
     {
       "symbol": "MNBBL",
       "name": "Muktinath Bikas Bank Ltd.",
-      "sector": "Other",
+      "sector": "Development Banks",
       "action": "WAIT",
       "score": 61.6,
       "ltp": 348.2,
@@ -2605,7 +2317,7 @@
     {
       "symbol": "BHDC",
       "name": "Bindhyabasini Hydropower Development Company Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 61.6,
       "ltp": 429.0,
@@ -2641,7 +2353,7 @@
     {
       "symbol": "FMDBL",
       "name": "First Micro Finance Laghubitta Bittiya Sanstha Limited",
-      "sector": "Other",
+      "sector": "Microfinance",
       "action": "WAIT",
       "score": 61.6,
       "ltp": 733.0,
@@ -2677,7 +2389,7 @@
     {
       "symbol": "SWMF",
       "name": "Suryodaya Womi Laghubitta Bittiya Sanstha Limited",
-      "sector": "Other",
+      "sector": "Microfinance",
       "action": "WAIT",
       "score": 61.4,
       "ltp": 615.5,
@@ -2713,7 +2425,7 @@
     {
       "symbol": "SKBBL",
       "name": "Sana Kisan Bikas Laghubitta Bittiya Sanstha Limited",
-      "sector": "Other",
+      "sector": "Microfinance",
       "action": "WAIT",
       "score": 61.3,
       "ltp": 767.5,
@@ -2749,7 +2461,7 @@
     {
       "symbol": "RSDC",
       "name": "RSDC Laghubitta Bittiya Sanstha Ltd.",
-      "sector": "Other",
+      "sector": "Microfinance",
       "action": "WAIT",
       "score": 61.3,
       "ltp": 630.0,
@@ -2785,7 +2497,7 @@
     {
       "symbol": "NADEP",
       "name": "Nadep Laghubittiya bittya Sanstha Ltd.",
-      "sector": "Other",
+      "sector": "Microfinance",
       "action": "WAIT",
       "score": 61.3,
       "ltp": 679.9,
@@ -2821,7 +2533,7 @@
     {
       "symbol": "CGH",
       "name": "Chandragiri Hills Limited",
-      "sector": "Other",
+      "sector": "Hotels And Tourism",
       "action": "WAIT",
       "score": 61.1,
       "ltp": 749.0,
@@ -2857,7 +2569,7 @@
     {
       "symbol": "MANDU",
       "name": "Mandu Hydropower Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 61.0,
       "ltp": 821.0,
@@ -2892,8 +2604,8 @@
     },
     {
       "symbol": "RAWA",
-      "name": "Rawa Energy Development Limited",
-      "sector": "Other",
+      "name": "Rawa Energy Development Ltd.",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 61.0,
       "ltp": 416.0,
@@ -2929,7 +2641,7 @@
     {
       "symbol": "SALICO",
       "name": "Sagarmatha Lumbini Insurance Co. Limited",
-      "sector": "Other",
+      "sector": "Non Life Insurance",
       "action": "WAIT",
       "score": 60.9,
       "ltp": 530.5,
@@ -2965,7 +2677,7 @@
     {
       "symbol": "NMB",
       "name": "NMB Bank Limited",
-      "sector": "Other",
+      "sector": "Commercial Banks",
       "action": "WAIT",
       "score": 60.8,
       "ltp": 281.5,
@@ -3001,7 +2713,7 @@
     {
       "symbol": "GCIL",
       "name": "Ghorahi Cement Industry Limited",
-      "sector": "Other",
+      "sector": "Manufacturing And Processing",
       "action": "WAIT",
       "score": 60.7,
       "ltp": 400.3,
@@ -3035,45 +2747,9 @@
       "method": "heuristic technical screen; not a return probability or guarantee"
     },
     {
-      "symbol": "NSIF2",
-      "name": "NMB Sulav Investment Fund - 2",
-      "sector": "Other",
-      "action": "WAIT",
-      "score": 60.6,
-      "ltp": 10.24,
-      "percent_change": 1.19,
-      "volume": 16842.0,
-      "turnover": 169956.18,
-      "high": 10.29,
-      "low": 10.06,
-      "range_position": 0.7826,
-      "indicators": {
-        "history_points": 78,
-        "history_source": "data/history/NSIF2.json",
-        "rsi14": 65.94,
-        "sma20": 10.07,
-        "sma50": 10.2,
-        "ema12": 10.14,
-        "ema26": 10.12,
-        "macd": {
-          "line": 0.0172,
-          "signal": -0.0162,
-          "histogram": 0.0335
-        },
-        "avg_volume20": 27840.75,
-        "relative_volume": 0.6
-      },
-      "entry": null,
-      "stop": null,
-      "target1": null,
-      "target2": null,
-      "risk_reward": null,
-      "method": "heuristic technical screen; not a return probability or guarantee"
-    },
-    {
       "symbol": "SMJC",
       "name": "Sagarmatha Jalabidhyut Company Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 60.3,
       "ltp": 440.0,
@@ -3108,8 +2784,8 @@
     },
     {
       "symbol": "TPKHL",
-      "name": "Taksar Pikhuwa Khola Hydropower Limited",
-      "sector": "Other",
+      "name": "Taksar Pikhuwa Khola Hydropower Ltd.",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 60.3,
       "ltp": 450.0,
@@ -3145,7 +2821,7 @@
     {
       "symbol": "SOHL",
       "name": "Solu Hydropower Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 60.2,
       "ltp": 662.0,
@@ -3181,7 +2857,7 @@
     {
       "symbol": "LICN",
       "name": "Life Insurance Corporation (Nepal) Limited",
-      "sector": "Other",
+      "sector": "Life Insurance",
       "action": "WAIT",
       "score": 60.2,
       "ltp": 810.0,
@@ -3216,8 +2892,8 @@
     },
     {
       "symbol": "AVYAN",
-      "name": "Aviyan Laghubitta Bittiya Sanstha Limited",
-      "sector": "Other",
+      "name": "Aviyan laghubittya bittiya sanstha limited",
+      "sector": "Microfinance",
       "action": "WAIT",
       "score": 60.2,
       "ltp": 1034.0,
@@ -3253,7 +2929,7 @@
     {
       "symbol": "GVL",
       "name": "Green Ventures Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 60.1,
       "ltp": 582.2,
@@ -3289,7 +2965,7 @@
     {
       "symbol": "HIDCL",
       "name": "Hydorelectricity Investment and Development Company Ltd",
-      "sector": "Other",
+      "sector": "Investment",
       "action": "WAIT",
       "score": 60.1,
       "ltp": 257.2,
@@ -3324,8 +3000,8 @@
     },
     {
       "symbol": "SPL",
-      "name": "Shuvam Power Limited",
-      "sector": "Other",
+      "name": "SHUVAM POWER LIMITED",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 60.1,
       "ltp": 594.0,
@@ -3361,7 +3037,7 @@
     {
       "symbol": "BPCL",
       "name": "Butwal Power Company Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 60.0,
       "ltp": 712.3,
@@ -3397,7 +3073,7 @@
     {
       "symbol": "RADHI",
       "name": "Radhi Bidyut Company Ltd",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 60.0,
       "ltp": 725.0,
@@ -3432,8 +3108,8 @@
     },
     {
       "symbol": "ALICL",
-      "name": "Asian Life Insurance Co. Limited",
-      "sector": "Other",
+      "name": "Asian Life Insurance Co Limited",
+      "sector": "Life Insurance",
       "action": "WAIT",
       "score": 60.0,
       "ltp": 432.0,
@@ -3468,8 +3144,8 @@
     },
     {
       "symbol": "ALBSL",
-      "name": "Asha Laghubitta Bittiya Sanstha Ltd",
-      "sector": "Other",
+      "name": "Asha Laghubitta Bittiya Sanstha Ltd.",
+      "sector": "Microfinance",
       "action": "WAIT",
       "score": 59.9,
       "ltp": 1208.0,
@@ -3505,7 +3181,7 @@
     {
       "symbol": "GHL",
       "name": "Ghalemdi Hydro Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 59.8,
       "ltp": 332.3,
@@ -3541,7 +3217,7 @@
     {
       "symbol": "EDBL",
       "name": "Excel Development Bank Ltd.",
-      "sector": "Other",
+      "sector": "Development Banks",
       "action": "WAIT",
       "score": 59.8,
       "ltp": 585.9,
@@ -3577,7 +3253,7 @@
     {
       "symbol": "RLFL",
       "name": "Reliance Finance Ltd.",
-      "sector": "Other",
+      "sector": "Finance",
       "action": "WAIT",
       "score": 59.7,
       "ltp": 429.8,
@@ -3612,8 +3288,8 @@
     },
     {
       "symbol": "API",
-      "name": "Api Power Company Ltd.",
-      "sector": "Other",
+      "name": "API POWER COMPANY LIMITED",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 59.1,
       "ltp": 344.4,
@@ -3649,7 +3325,7 @@
     {
       "symbol": "CBBL",
       "name": "Chhimek Laghubitta Bittiya Sanstha Limited",
-      "sector": "Other",
+      "sector": "Microfinance",
       "action": "WAIT",
       "score": 59.1,
       "ltp": 990.0,
@@ -3685,7 +3361,7 @@
     {
       "symbol": "CREST",
       "name": "Crest Micro Life Insurance Limited",
-      "sector": "Other",
+      "sector": "Life Insurance",
       "action": "WAIT",
       "score": 59.1,
       "ltp": 1076.0,
@@ -3721,7 +3397,7 @@
     {
       "symbol": "MDB",
       "name": "Miteri Development Bank Limited",
-      "sector": "Other",
+      "sector": "Development Banks",
       "action": "WAIT",
       "score": 59.0,
       "ltp": 581.1,
@@ -3757,7 +3433,7 @@
     {
       "symbol": "HURJA",
       "name": "Himalaya Urja Bikas Company Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 58.9,
       "ltp": 266.9,
@@ -3792,8 +3468,8 @@
     },
     {
       "symbol": "RHGCL",
-      "name": "Rapti Hydro And General Construction Limited",
-      "sector": "Other",
+      "name": "Rapti Hydro and General Construction Limited",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 58.8,
       "ltp": 264.2,
@@ -3827,45 +3503,9 @@
       "method": "heuristic technical screen; not a return probability or guarantee"
     },
     {
-      "symbol": "NIMBPO",
-      "name": "Nepal Investment Mega Bank Ltd. Promoter Share",
-      "sector": "Other",
-      "action": "WAIT",
-      "score": 58.8,
-      "ltp": 156.6,
-      "percent_change": 0.0,
-      "volume": 38089.0,
-      "turnover": 6016135.6,
-      "high": 165.0,
-      "low": 152.4,
-      "range_position": 0.3333,
-      "indicators": {
-        "history_points": 74,
-        "history_source": "data/history/NIMBPO.json",
-        "rsi14": 71.89,
-        "sma20": 148.43,
-        "sma50": 144.18,
-        "ema12": 152.09,
-        "ema26": 148.68,
-        "macd": {
-          "line": 3.4154,
-          "signal": 2.4757,
-          "histogram": 0.9397
-        },
-        "avg_volume20": 33936.7,
-        "relative_volume": 1.12
-      },
-      "entry": null,
-      "stop": null,
-      "target1": null,
-      "target2": null,
-      "risk_reward": null,
-      "method": "heuristic technical screen; not a return probability or guarantee"
-    },
-    {
       "symbol": "SICL",
       "name": "Shikhar Insurance Co. Ltd.",
-      "sector": "Other",
+      "sector": "Non Life Insurance",
       "action": "WAIT",
       "score": 58.8,
       "ltp": 546.9,
@@ -3901,7 +3541,7 @@
     {
       "symbol": "NTC",
       "name": "Nepal Doorsanchar Company Limited",
-      "sector": "Other",
+      "sector": "Others",
       "action": "WAIT",
       "score": 58.7,
       "ltp": 925.0,
@@ -3936,8 +3576,8 @@
     },
     {
       "symbol": "ILI",
-      "name": "IME Life Insurance Company Limited",
-      "sector": "Other",
+      "name": "I.M.E. Life Insurance company Limited ",
+      "sector": "Life Insurance",
       "action": "WAIT",
       "score": 58.7,
       "ltp": 440.0,
@@ -3973,7 +3613,7 @@
     {
       "symbol": "NICA",
       "name": "NIC Asia Bank Ltd.",
-      "sector": "Other",
+      "sector": "Commercial Banks",
       "action": "WAIT",
       "score": 58.6,
       "ltp": 331.0,
@@ -4009,7 +3649,7 @@
     {
       "symbol": "NIMB",
       "name": "Nepal Investment Mega Bank Limited",
-      "sector": "Other",
+      "sector": "Commercial Banks",
       "action": "WAIT",
       "score": 58.6,
       "ltp": 211.5,
@@ -4045,7 +3685,7 @@
     {
       "symbol": "SWBBL",
       "name": "Swabalamban Laghubitta Bittiya Sanstha Limited",
-      "sector": "Other",
+      "sector": "Microfinance",
       "action": "WAIT",
       "score": 58.6,
       "ltp": 730.0,
@@ -4081,7 +3721,7 @@
     {
       "symbol": "MATRI",
       "name": "Matribhumi Lagubitta Bittiya Sanstha Limited",
-      "sector": "Other",
+      "sector": "Microfinance",
       "action": "WAIT",
       "score": 58.6,
       "ltp": 714.0,
@@ -4116,8 +3756,8 @@
     },
     {
       "symbol": "SHEL",
-      "name": "Singati Hydro Energy Limited",
-      "sector": "Other",
+      "name": "Singati Hydro Energy Ltd",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 58.4,
       "ltp": 312.9,
@@ -4153,7 +3793,7 @@
     {
       "symbol": "KBL",
       "name": "Kumari Bank Limited",
-      "sector": "Other",
+      "sector": "Commercial Banks",
       "action": "WAIT",
       "score": 58.3,
       "ltp": 239.0,
@@ -4188,8 +3828,8 @@
     },
     {
       "symbol": "SYPNL",
-      "name": "SY Panel Nepal Limited",
-      "sector": "Other",
+      "name": "SY PANEL NEPAL LIMITED",
+      "sector": "Manufacturing And Processing",
       "action": "WAIT",
       "score": 58.3,
       "ltp": 1299.9,
@@ -4225,7 +3865,7 @@
     {
       "symbol": "NRIC",
       "name": "Nepal Reinsurance Company Limited",
-      "sector": "Other",
+      "sector": "Others",
       "action": "WAIT",
       "score": 58.3,
       "ltp": 824.9,
@@ -4261,7 +3901,7 @@
     {
       "symbol": "SINDU",
       "name": "Sindhu Bikash Bank Ltd",
-      "sector": "Other",
+      "sector": "Development Banks",
       "action": "WAIT",
       "score": 58.3,
       "ltp": 412.0,
@@ -4296,8 +3936,8 @@
     },
     {
       "symbol": "IGI",
-      "name": "IGI Prudential insurance Limited",
-      "sector": "Other",
+      "name": "IGI Prudential Insurance Limited",
+      "sector": "Non Life Insurance",
       "action": "WAIT",
       "score": 58.3,
       "ltp": 405.0,
@@ -4332,8 +3972,8 @@
     },
     {
       "symbol": "MKHL",
-      "name": "Mai Khola Hydropower Limited",
-      "sector": "Other",
+      "name": "MaiKhola Hydropower Limited",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 58.3,
       "ltp": 514.9,
@@ -4367,45 +4007,9 @@
       "method": "heuristic technical screen; not a return probability or guarantee"
     },
     {
-      "symbol": "ICFCD89",
-      "name": "8% ICFC Finance Limited Debenture 2089",
-      "sector": "Other",
-      "action": "WAIT",
-      "score": 58.3,
-      "ltp": 1130.0,
-      "percent_change": 0.62,
-      "volume": 100.0,
-      "turnover": 112975.0,
-      "high": 1130.0,
-      "low": 1129.0,
-      "range_position": 1.0,
-      "indicators": {
-        "history_points": 74,
-        "history_source": "data/history/ICFCD89.json",
-        "rsi14": 56.52,
-        "sma20": 1122.67,
-        "sma50": 1103.41,
-        "ema12": 1127.99,
-        "ema26": 1119.72,
-        "macd": {
-          "line": 8.2668,
-          "signal": 9.1895,
-          "histogram": -0.9228
-        },
-        "avg_volume20": 418.3,
-        "relative_volume": 0.24
-      },
-      "entry": null,
-      "stop": null,
-      "target1": null,
-      "target2": null,
-      "risk_reward": null,
-      "method": "heuristic technical screen; not a return probability or guarantee"
-    },
-    {
       "symbol": "HDL",
       "name": "Himalayan Distillery Limited",
-      "sector": "Other",
+      "sector": "Manufacturing And Processing",
       "action": "WAIT",
       "score": 58.2,
       "ltp": 1318.5,
@@ -4441,7 +4045,7 @@
     {
       "symbol": "SARBTM",
       "name": "Sarbottam Cement Limited",
-      "sector": "Other",
+      "sector": "Manufacturing And Processing",
       "action": "WAIT",
       "score": 58.2,
       "ltp": 821.0,
@@ -4477,7 +4081,7 @@
     {
       "symbol": "MHCL",
       "name": "Molung Hydropower Company Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 58.2,
       "ltp": 290.6,
@@ -4511,45 +4115,9 @@
       "method": "heuristic technical screen; not a return probability or guarantee"
     },
     {
-      "symbol": "NICFC",
-      "name": "NIC Asia Flexi CAP Fund",
-      "sector": "Other",
-      "action": "WAIT",
-      "score": 58.1,
-      "ltp": 9.25,
-      "percent_change": -0.11,
-      "volume": 81525.0,
-      "turnover": 755542.0,
-      "high": 9.31,
-      "low": 9.22,
-      "range_position": 0.3333,
-      "indicators": {
-        "history_points": 78,
-        "history_source": "data/history/NICFC.json",
-        "rsi14": 61.7,
-        "sma20": 8.98,
-        "sma50": 8.95,
-        "ema12": 9.06,
-        "ema26": 8.99,
-        "macd": {
-          "line": 0.0652,
-          "signal": 0.0224,
-          "histogram": 0.0428
-        },
-        "avg_volume20": 3151.4,
-        "relative_volume": 25.87
-      },
-      "entry": null,
-      "stop": null,
-      "target1": null,
-      "target2": null,
-      "risk_reward": null,
-      "method": "heuristic technical screen; not a return probability or guarantee"
-    },
-    {
       "symbol": "NBL",
       "name": "Nepal Bank Limited",
-      "sector": "Other",
+      "sector": "Commercial Banks",
       "action": "WAIT",
       "score": 58.0,
       "ltp": 310.5,
@@ -4585,7 +4153,7 @@
     {
       "symbol": "AKPL",
       "name": "Arun Kabeli Power Ltd.",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 58.0,
       "ltp": 262.4,
@@ -4621,7 +4189,7 @@
     {
       "symbol": "BARUN",
       "name": "Barun Hydropower Co. Ltd.",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 58.0,
       "ltp": 327.0,
@@ -4657,7 +4225,7 @@
     {
       "symbol": "LEC",
       "name": "Liberty Energy Company Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 57.9,
       "ltp": 240.0,
@@ -4693,7 +4261,7 @@
     {
       "symbol": "FOWAD",
       "name": "Forward Microfinance Laghubitta Bittiya Sanstha Limited",
-      "sector": "Other",
+      "sector": "Microfinance",
       "action": "WAIT",
       "score": 57.8,
       "ltp": 905.0,
@@ -4729,7 +4297,7 @@
     {
       "symbol": "RSML",
       "name": "Reliance Spinning Mills Limited",
-      "sector": "Other",
+      "sector": "Manufacturing And Processing",
       "action": "WAIT",
       "score": 57.7,
       "ltp": 2680.0,
@@ -4764,8 +4332,8 @@
     },
     {
       "symbol": "USHEC",
-      "name": "Upper Solu Hydro Electric Company Limited",
-      "sector": "Other",
+      "name": "Upper solu Electric company Limited",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 57.6,
       "ltp": 526.0,
@@ -4801,7 +4369,7 @@
     {
       "symbol": "MEL",
       "name": "Modi Energy Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 57.6,
       "ltp": 214.0,
@@ -4836,8 +4404,8 @@
     },
     {
       "symbol": "SHINE",
-      "name": "Shine Resunga Development Bank Ltd.",
-      "sector": "Other",
+      "name": "SHINE RESUNGA DEVELOPMENT BANK LTD",
+      "sector": "Development Banks",
       "action": "WAIT",
       "score": 57.5,
       "ltp": 417.8,
@@ -4873,7 +4441,7 @@
     {
       "symbol": "KHPL",
       "name": "Kalinchock Hydropower Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 57.5,
       "ltp": 670.0,
@@ -4909,7 +4477,7 @@
     {
       "symbol": "GBBL",
       "name": "Garima Bikas Bank Limited",
-      "sector": "Other",
+      "sector": "Development Banks",
       "action": "WAIT",
       "score": 57.4,
       "ltp": 422.5,
@@ -4945,7 +4513,7 @@
     {
       "symbol": "NICLBSL",
       "name": "NIC ASIA Laghubitta Bittiya Sanstha Limited",
-      "sector": "Other",
+      "sector": "Microfinance",
       "action": "WAIT",
       "score": 57.4,
       "ltp": 508.9,
@@ -4979,45 +4547,9 @@
       "method": "heuristic technical screen; not a return probability or guarantee"
     },
     {
-      "symbol": "HIDCLP",
-      "name": "Hydorelectricity Investment and Development Company Limited Promoter",
-      "sector": "Other",
-      "action": "WAIT",
-      "score": 57.3,
-      "ltp": 191.3,
-      "percent_change": -1.39,
-      "volume": 223264.0,
-      "turnover": 43063654.2,
-      "high": 203.7,
-      "low": 190.0,
-      "range_position": 0.0949,
-      "indicators": {
-        "history_points": 77,
-        "history_source": "data/history/HIDCLP.json",
-        "rsi14": 60.67,
-        "sma20": 188.44,
-        "sma50": 186.92,
-        "ema12": 189.97,
-        "ema26": 188.8,
-        "macd": {
-          "line": 1.1733,
-          "signal": 0.6579,
-          "histogram": 0.5154
-        },
-        "avg_volume20": 93116.8,
-        "relative_volume": 2.4
-      },
-      "entry": null,
-      "stop": null,
-      "target1": null,
-      "target2": null,
-      "risk_reward": null,
-      "method": "heuristic technical screen; not a return probability or guarantee"
-    },
-    {
       "symbol": "SRLI",
       "name": "Sanima Reliance Life Insurance Limited",
-      "sector": "Other",
+      "sector": "Life Insurance",
       "action": "WAIT",
       "score": 57.2,
       "ltp": 388.5,
@@ -5051,41 +4583,9 @@
       "method": "heuristic technical screen; not a return probability or guarantee"
     },
     {
-      "symbol": "LSD92",
-      "name": "7% Laxmi Sunrise Debenture 2092",
-      "sector": "Other",
-      "action": "WAIT",
-      "score": 57.2,
-      "ltp": 1150.0,
-      "percent_change": 0.0,
-      "volume": 1543.0,
-      "turnover": 1772800.0,
-      "high": 1150.0,
-      "low": 1139.0,
-      "range_position": 1.0,
-      "indicators": {
-        "history_points": 20,
-        "history_source": "data/history/LSD92.json",
-        "rsi14": 41.95,
-        "sma20": 1146.16,
-        "sma50": null,
-        "ema12": 1149.49,
-        "ema26": null,
-        "macd": null,
-        "avg_volume20": null,
-        "relative_volume": null
-      },
-      "entry": null,
-      "stop": null,
-      "target1": null,
-      "target2": null,
-      "risk_reward": null,
-      "method": "heuristic technical screen; not a return probability or guarantee"
-    },
-    {
       "symbol": "NIL",
       "name": "Neco Insurance Limited",
-      "sector": "Other",
+      "sector": "Non Life Insurance",
       "action": "WAIT",
       "score": 57.0,
       "ltp": 525.1,
@@ -5120,8 +4620,8 @@
     },
     {
       "symbol": "MLBSL",
-      "name": "Mahila Lagubitta Bittiya Sanstha Limited ",
-      "sector": "Other",
+      "name": "Mahila Laghubitta Bittiya Sanstha Ltd",
+      "sector": "Microfinance",
       "action": "WAIT",
       "score": 56.9,
       "ltp": 1030.0,
@@ -5157,7 +4657,7 @@
     {
       "symbol": "NMBMF",
       "name": "NMB  Microfinance Bittiya Sanstha Ltd.",
-      "sector": "Other",
+      "sector": "Microfinance",
       "action": "WAIT",
       "score": 56.8,
       "ltp": 607.1,
@@ -5193,7 +4693,7 @@
     {
       "symbol": "SANIMA",
       "name": "Sanima Bank Limited",
-      "sector": "Other",
+      "sector": "Commercial Banks",
       "action": "WAIT",
       "score": 56.6,
       "ltp": 412.5,
@@ -5229,7 +4729,7 @@
     {
       "symbol": "TPC",
       "name": "Terhathum Power Company Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 56.6,
       "ltp": 384.1,
@@ -5264,8 +4764,8 @@
     },
     {
       "symbol": "SJCL",
-      "name": "SANJEN JALAVIDHYUT COMPANY LIMITED",
-      "sector": "Other",
+      "name": "SANJEN JALAVIDHYUT COMPANY LTD",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 56.4,
       "ltp": 252.0,
@@ -5301,7 +4801,7 @@
     {
       "symbol": "NLG",
       "name": "NLG Insurance Company Ltd.",
-      "sector": "Other",
+      "sector": "Non Life Insurance",
       "action": "WAIT",
       "score": 56.4,
       "ltp": 519.9,
@@ -5337,7 +4837,7 @@
     {
       "symbol": "KPCL",
       "name": "Kalika power Company Ltd",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 56.3,
       "ltp": 482.0,
@@ -5372,8 +4872,8 @@
     },
     {
       "symbol": "JBLB",
-      "name": "Jeevan Bikas Laghubitta  Bittya Sanstha Ltd",
-      "sector": "Other",
+      "name": "Jeevan Bikas Laghubitta Bittiya Sanstha Ltd",
+      "sector": "Microfinance",
       "action": "WAIT",
       "score": 56.1,
       "ltp": 1285.0,
@@ -5409,7 +4909,7 @@
     {
       "symbol": "IHL",
       "name": "Ingwa Hydropower Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 55.9,
       "ltp": 321.0,
@@ -5444,8 +4944,8 @@
     },
     {
       "symbol": "MAKAR",
-      "name": "Makar Jitumaya Suri Hydropower Limited",
-      "sector": "Other",
+      "name": "Makar Jitumaya Suri Hydropower Ltd ",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 55.8,
       "ltp": 422.9,
@@ -5481,7 +4981,7 @@
     {
       "symbol": "UPPER",
       "name": "Upper Tamakoshi Hydropower Ltd",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 55.8,
       "ltp": 195.0,
@@ -5517,7 +5017,7 @@
     {
       "symbol": "DDBL",
       "name": "Deprosc Laghubitta Bittiya Sanstha Limited",
-      "sector": "Other",
+      "sector": "Microfinance",
       "action": "WAIT",
       "score": 55.8,
       "ltp": 874.5,
@@ -5552,8 +5052,8 @@
     },
     {
       "symbol": "SSHL",
-      "name": "Shiva Shree Hydropower Ltd",
-      "sector": "Other",
+      "name": "Shiva Shree Hydropower Limited",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 55.7,
       "ltp": 208.6,
@@ -5589,7 +5089,7 @@
     {
       "symbol": "NABIL",
       "name": "Nabil Bank Limited",
-      "sector": "Other",
+      "sector": "Commercial Banks",
       "action": "WAIT",
       "score": 55.6,
       "ltp": 549.2,
@@ -5625,7 +5125,7 @@
     {
       "symbol": "SPDL",
       "name": "Synergy Power Development Ltd.",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 55.6,
       "ltp": 366.0,
@@ -5661,7 +5161,7 @@
     {
       "symbol": "GFCL",
       "name": "Goodwill Finance Limited",
-      "sector": "Other",
+      "sector": "Finance",
       "action": "WAIT",
       "score": 55.6,
       "ltp": 578.0,
@@ -5697,7 +5197,7 @@
     {
       "symbol": "HLI",
       "name": "Himalayan Life Insurance Limited",
-      "sector": "Other",
+      "sector": "Life Insurance",
       "action": "WAIT",
       "score": 55.5,
       "ltp": 307.8,
@@ -5733,7 +5233,7 @@
     {
       "symbol": "PROFL",
       "name": "Progressive Finance Limited",
-      "sector": "Other",
+      "sector": "Finance",
       "action": "WAIT",
       "score": 55.5,
       "ltp": 385.3,
@@ -5769,7 +5269,7 @@
     {
       "symbol": "MLBBL",
       "name": "Mithila LaghuBitta Bittiya Sanstha Limited",
-      "sector": "Other",
+      "sector": "Microfinance",
       "action": "WAIT",
       "score": 55.5,
       "ltp": 945.0,
@@ -5805,7 +5305,7 @@
     {
       "symbol": "PRVU",
       "name": "Prabhu  Bank Limited",
-      "sector": "Other",
+      "sector": "Commercial Banks",
       "action": "WAIT",
       "score": 55.4,
       "ltp": 194.3,
@@ -5841,7 +5341,7 @@
     {
       "symbol": "NLICL",
       "name": "National Life Insurance Co. Ltd.",
-      "sector": "Other",
+      "sector": "Life Insurance",
       "action": "WAIT",
       "score": 55.4,
       "ltp": 585.1,
@@ -5877,7 +5377,7 @@
     {
       "symbol": "GBLBS",
       "name": "Grameen Bikas Laghubitta Bittiya Sanstha Ltd.",
-      "sector": "Other",
+      "sector": "Microfinance",
       "action": "WAIT",
       "score": 55.4,
       "ltp": 673.0,
@@ -5913,7 +5413,7 @@
     {
       "symbol": "SIKLES",
       "name": "Sikles Hydropower Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 55.3,
       "ltp": 588.0,
@@ -5948,8 +5448,8 @@
     },
     {
       "symbol": "ENL",
-      "name": "Emerging Nepal Limited",
-      "sector": "Other",
+      "name": "Emerging nepal limited",
+      "sector": "Investment",
       "action": "WAIT",
       "score": 55.1,
       "ltp": 488.9,
@@ -5985,7 +5485,7 @@
     {
       "symbol": "BHPL",
       "name": "Barahi Hydropower Public Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 55.1,
       "ltp": 425.0,
@@ -6021,7 +5521,7 @@
     {
       "symbol": "UNLB",
       "name": "Unique Nepal Laghubitta Bittiya Sanstha Limited",
-      "sector": "Other",
+      "sector": "Microfinance",
       "action": "WAIT",
       "score": 55.1,
       "ltp": 1235.9,
@@ -6057,7 +5557,7 @@
     {
       "symbol": "PURE",
       "name": "Pure Energy Limited",
-      "sector": "Other",
+      "sector": "Others",
       "action": "WAIT",
       "score": 55.0,
       "ltp": 780.0,
@@ -6093,7 +5593,7 @@
     {
       "symbol": "NFS",
       "name": "Nepal Finance Ltd.",
-      "sector": "Other",
+      "sector": "Finance",
       "action": "WAIT",
       "score": 55.0,
       "ltp": 503.0,
@@ -6129,7 +5629,7 @@
     {
       "symbol": "HBL",
       "name": "Himalayan Bank Limited",
-      "sector": "Other",
+      "sector": "Commercial Banks",
       "action": "WAIT",
       "score": 54.9,
       "ltp": 208.4,
@@ -6165,7 +5665,7 @@
     {
       "symbol": "MPFL",
       "name": "Multipurpose Finance Company  Limited",
-      "sector": "Other",
+      "sector": "Finance",
       "action": "WAIT",
       "score": 54.9,
       "ltp": 592.0,
@@ -6201,7 +5701,7 @@
     {
       "symbol": "SLBBL",
       "name": "Swarojgar Laghubitta Bittiya Sanstha Ltd.",
-      "sector": "Other",
+      "sector": "Microfinance",
       "action": "WAIT",
       "score": 54.7,
       "ltp": 830.0,
@@ -6236,8 +5736,8 @@
     },
     {
       "symbol": "RNLI",
-      "name": "Reliable Nepal Life Insurance Limited",
-      "sector": "Other",
+      "name": "Reliable Nepal Life Insurance Ltd",
+      "sector": "Life Insurance",
       "action": "WAIT",
       "score": 54.7,
       "ltp": 456.6,
@@ -6272,8 +5772,8 @@
     },
     {
       "symbol": "USHL",
-      "name": "Upper Syange Hydropower Limited",
-      "sector": "Other",
+      "name": " Upper Syange Hydropower Limited",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 54.7,
       "ltp": 512.0,
@@ -6309,7 +5809,7 @@
     {
       "symbol": "PMHPL",
       "name": "Panchakanya Mai Hydropower Ltd",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 54.6,
       "ltp": 310.0,
@@ -6345,7 +5845,7 @@
     {
       "symbol": "SLBSL",
       "name": "Samudayik Laghubitta Bittiya Sanstha Limited",
-      "sector": "Other",
+      "sector": "Microfinance",
       "action": "WAIT",
       "score": 54.6,
       "ltp": 887.0,
@@ -6381,7 +5881,7 @@
     {
       "symbol": "NGPL",
       "name": "Ngadi Group Power Ltd.",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 54.5,
       "ltp": 411.0,
@@ -6416,8 +5916,8 @@
     },
     {
       "symbol": "GLH",
-      "name": "GreenLife Hydropower Limited",
-      "sector": "Other",
+      "name": "Greenlife Hydropower Limited",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 54.5,
       "ltp": 270.5,
@@ -6453,7 +5953,7 @@
     {
       "symbol": "BHL",
       "name": "Balephi Hydropower Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 54.4,
       "ltp": 227.7,
@@ -6488,8 +5988,8 @@
     },
     {
       "symbol": "DOLTI",
-      "name": "Dolti Power Company Limited",
-      "sector": "Other",
+      "name": "Dolti Power Company Ltd.",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 54.4,
       "ltp": 308.3,
@@ -6525,7 +6025,7 @@
     {
       "symbol": "MHNL",
       "name": "Mountain Hydro Nepal Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 54.2,
       "ltp": 265.0,
@@ -6560,8 +6060,8 @@
     },
     {
       "symbol": "PPCL",
-      "name": "Panchthar Power Compant Limited",
-      "sector": "Other",
+      "name": "Panchthar Power Company Ltd",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 54.2,
       "ltp": 345.0,
@@ -6597,7 +6097,7 @@
     {
       "symbol": "GUFL",
       "name": "Gurkhas Finance Ltd.",
-      "sector": "Other",
+      "sector": "Finance",
       "action": "WAIT",
       "score": 54.0,
       "ltp": 500.0,
@@ -6633,7 +6133,7 @@
     {
       "symbol": "HLBSL",
       "name": "Himalayan Laghubitta Bittiya Sanstha Limited",
-      "sector": "Other",
+      "sector": "Microfinance",
       "action": "WAIT",
       "score": 54.0,
       "ltp": 870.0,
@@ -6668,8 +6168,8 @@
     },
     {
       "symbol": "MMKJL",
-      "name": "Mathillo Mailun Khola Jalvidhyut Limited",
-      "sector": "Other",
+      "name": "Mathillo Mailun Khola Jalvidhyut Ltd.",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 53.8,
       "ltp": 393.9,
@@ -6705,7 +6205,7 @@
     {
       "symbol": "SBI",
       "name": "Nepal SBI Bank Limited",
-      "sector": "Other",
+      "sector": "Commercial Banks",
       "action": "WAIT",
       "score": 53.7,
       "ltp": 438.0,
@@ -6741,7 +6241,7 @@
     {
       "symbol": "KSBBL",
       "name": "Kamana Sewa Bikas Bank Limited",
-      "sector": "Other",
+      "sector": "Development Banks",
       "action": "WAIT",
       "score": 53.6,
       "ltp": 476.0,
@@ -6777,7 +6277,7 @@
     {
       "symbol": "BJHL",
       "name": "Bhujung Hydropower Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 53.5,
       "ltp": 572.0,
@@ -6812,8 +6312,8 @@
     },
     {
       "symbol": "TSHL",
-      "name": "Three Star Hydropower Limited",
-      "sector": "Other",
+      "name": "Three Star Hydropower Ltd",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 53.4,
       "ltp": 341.5,
@@ -6849,7 +6349,7 @@
     {
       "symbol": "BFC",
       "name": "Best Finance Company Ltd.",
-      "sector": "Other",
+      "sector": "Finance",
       "action": "WAIT",
       "score": 53.3,
       "ltp": 459.0,
@@ -6885,7 +6385,7 @@
     {
       "symbol": "SGHL",
       "name": "Sanigad Hydro Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 53.2,
       "ltp": 473.0,
@@ -6921,7 +6421,7 @@
     {
       "symbol": "NABBC",
       "name": "Narayani Development Bank Limited",
-      "sector": "Other",
+      "sector": "Development Banks",
       "action": "WAIT",
       "score": 53.2,
       "ltp": 688.0,
@@ -6957,7 +6457,7 @@
     {
       "symbol": "TRH",
       "name": "Taragaon Regency Hotel Limited",
-      "sector": "Other",
+      "sector": "Hotels And Tourism",
       "action": "WAIT",
       "score": 53.2,
       "ltp": 816.7,
@@ -6993,7 +6493,7 @@
     {
       "symbol": "MLBS",
       "name": "Manushi Laghubitta Bittiya Sanstha Limited",
-      "sector": "Other",
+      "sector": "Microfinance",
       "action": "WAIT",
       "score": 53.2,
       "ltp": 1000.0,
@@ -7028,8 +6528,8 @@
     },
     {
       "symbol": "ANLB",
-      "name": "Aatmanirbhar Laghubitta Bittiya Sanstha Limited",
-      "sector": "Other",
+      "name": "Aatmanirbhar Laghubitta Bittitya Sanstha Limited",
+      "sector": "Microfinance",
       "action": "WAIT",
       "score": 53.0,
       "ltp": 4928.0,
@@ -7065,7 +6565,7 @@
     {
       "symbol": "SGIC",
       "name": "Sanima GIC Insurance Limited",
-      "sector": "Other",
+      "sector": "Non Life Insurance",
       "action": "WAIT",
       "score": 52.9,
       "ltp": 388.0,
@@ -7101,7 +6601,7 @@
     {
       "symbol": "EHPL",
       "name": "Eastern Hydropower Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 52.8,
       "ltp": 329.9,
@@ -7137,7 +6637,7 @@
     {
       "symbol": "DHPL",
       "name": "Dibyashwori Hydropower Ltd.",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 52.6,
       "ltp": 277.0,
@@ -7173,7 +6673,7 @@
     {
       "symbol": "EBL",
       "name": "Everest Bank Limited",
-      "sector": "Other",
+      "sector": "Commercial Banks",
       "action": "WAIT",
       "score": 52.4,
       "ltp": 727.0,
@@ -7209,7 +6709,7 @@
     {
       "symbol": "NMIC",
       "name": "Nepal Micro Insurance Company Limited",
-      "sector": "Other",
+      "sector": "Non Life Insurance",
       "action": "WAIT",
       "score": 52.4,
       "ltp": 802.5,
@@ -7245,7 +6745,7 @@
     {
       "symbol": "HHL",
       "name": "Himalayan Hydropower Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 52.3,
       "ltp": 357.0,
@@ -7280,8 +6780,8 @@
     },
     {
       "symbol": "GMLI",
-      "name": "Guardian Micro Life Insurance Limited ",
-      "sector": "Other",
+      "name": "GUARDIAN MICRO LIFE INSURANCE LIMITED",
+      "sector": "Life Insurance",
       "action": "WAIT",
       "score": 52.2,
       "ltp": 919.6,
@@ -7317,7 +6817,7 @@
     {
       "symbol": "BBC",
       "name": "Bishal Bazar Company Limited",
-      "sector": "Other",
+      "sector": "Tradings",
       "action": "WAIT",
       "score": 52.2,
       "ltp": 4009.0,
@@ -7353,7 +6853,7 @@
     {
       "symbol": "HFIN",
       "name": "Hotel Forest Inn Limited",
-      "sector": "Other",
+      "sector": "Hotels And Tourism",
       "action": "WAIT",
       "score": 51.9,
       "ltp": 535.9,
@@ -7389,7 +6889,7 @@
     {
       "symbol": "CHCL",
       "name": "Chilime Hydropower Company Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 51.8,
       "ltp": 347.4,
@@ -7425,7 +6925,7 @@
     {
       "symbol": "SIFC",
       "name": "Shree Investment Finance Co. Ltd.",
-      "sector": "Other",
+      "sector": "Finance",
       "action": "WAIT",
       "score": 51.7,
       "ltp": 482.0,
@@ -7460,8 +6960,8 @@
     },
     {
       "symbol": "NMLBBL",
-      "name": "Nerude Mirmire Laghubitta Bittiya Sanstha Limited",
-      "sector": "Other",
+      "name": "Nerude Mirmire Laghubitta Bittiya Sanstha Ltd.",
+      "sector": "Microfinance",
       "action": "WAIT",
       "score": 51.7,
       "ltp": 496.0,
@@ -7496,8 +6996,8 @@
     },
     {
       "symbol": "DORDI",
-      "name": "Dordi Khola Jal Bidyut Company Limited",
-      "sector": "Other",
+      "name": "Dordi Khola Jal Bidyut Company limited",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 51.4,
       "ltp": 277.0,
@@ -7533,7 +7033,7 @@
     {
       "symbol": "JOSHI",
       "name": "Joshi Hydropower Development Company Ltd",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 51.3,
       "ltp": 263.1,
@@ -7569,7 +7069,7 @@
     {
       "symbol": "MBJC",
       "name": "Madhya Bhotekoshi Jalavidyut Company Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 51.2,
       "ltp": 330.4,
@@ -7604,8 +7104,8 @@
     },
     {
       "symbol": "SAIL",
-      "name": "Shreenagar Agritech Industries Limited",
-      "sector": "Other",
+      "name": "SHREENAGAR AGRITECH INDUSTRIES LIMITED",
+      "sector": "Manufacturing And Processing",
       "action": "WAIT",
       "score": 51.2,
       "ltp": 932.0,
@@ -7640,8 +7140,8 @@
     },
     {
       "symbol": "BHCL",
-      "name": "Bikash Hydropower Company Limited",
-      "sector": "Other",
+      "name": "Bikash Hydropower Company Ltd",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 50.9,
       "ltp": 548.0,
@@ -7676,8 +7176,8 @@
     },
     {
       "symbol": "AHPC",
-      "name": "Arun Valley Hydropower Development Co. Ltd.",
-      "sector": "Other",
+      "name": "Arun Valley Hydropower Development Company Limited",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 50.8,
       "ltp": 263.7,
@@ -7712,8 +7212,8 @@
     },
     {
       "symbol": "SPC",
-      "name": "Samling Power Company Limited",
-      "sector": "Other",
+      "name": "Samling power company limited",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 50.7,
       "ltp": 401.0,
@@ -7749,7 +7249,7 @@
     {
       "symbol": "UNHPL",
       "name": "Union Hydropower Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 50.6,
       "ltp": 366.0,
@@ -7785,7 +7285,7 @@
     {
       "symbol": "ICFC",
       "name": "ICFC Finance Limited",
-      "sector": "Other",
+      "sector": "Finance",
       "action": "WAIT",
       "score": 50.6,
       "ltp": 627.0,
@@ -7821,7 +7321,7 @@
     {
       "symbol": "VLBS",
       "name": "Vijaya laghubitta Bittiya Sanstha Ltd.",
-      "sector": "Other",
+      "sector": "Microfinance",
       "action": "WAIT",
       "score": 50.6,
       "ltp": 630.0,
@@ -7857,7 +7357,7 @@
     {
       "symbol": "BUNGAL",
       "name": "Bungal Hydro Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 50.3,
       "ltp": 470.0,
@@ -7891,45 +7391,9 @@
       "method": "heuristic technical screen; not a return probability or guarantee"
     },
     {
-      "symbol": "PBD93",
-      "name": "6.25% Prime Bank Debenture, 2093",
-      "sector": "Other",
-      "action": "WAIT",
-      "score": 50.2,
-      "ltp": 1116.0,
-      "percent_change": 0.08,
-      "volume": 1505.0,
-      "turnover": 1678650.0,
-      "high": 1120.0,
-      "low": 1106.0,
-      "range_position": 0.7143,
-      "indicators": {
-        "history_points": 30,
-        "history_source": "data/history/PBD93.json",
-        "rsi14": 41.89,
-        "sma20": 1127.82,
-        "sma50": null,
-        "ema12": 1120.22,
-        "ema26": 1103.18,
-        "macd": {
-          "line": 17.0406,
-          "signal": null,
-          "histogram": null
-        },
-        "avg_volume20": 9377.8,
-        "relative_volume": 0.16
-      },
-      "entry": null,
-      "stop": null,
-      "target1": null,
-      "target2": null,
-      "risk_reward": null,
-      "method": "heuristic technical screen; not a return probability or guarantee"
-    },
-    {
       "symbol": "SNLI",
       "name": "Sun Nepal Life Insurance Company Limited",
-      "sector": "Other",
+      "sector": "Life Insurance",
       "action": "WAIT",
       "score": 50.1,
       "ltp": 425.6,
@@ -7965,7 +7429,7 @@
     {
       "symbol": "NICL",
       "name": "Nepal Insurance Co. Ltd.",
-      "sector": "Other",
+      "sector": "Non Life Insurance",
       "action": "WAIT",
       "score": 49.9,
       "ltp": 440.0,
@@ -8000,8 +7464,8 @@
     },
     {
       "symbol": "SGHC",
-      "name": "Swet-Ganga Hydropower & Construction Limited ",
-      "sector": "Other",
+      "name": "Swet-Ganga Hydropower and Construction Limited",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 49.8,
       "ltp": 312.9,
@@ -8037,7 +7501,7 @@
     {
       "symbol": "MFIL",
       "name": "Manjushree Finance Ltd.",
-      "sector": "Other",
+      "sector": "Finance",
       "action": "WAIT",
       "score": 49.8,
       "ltp": 709.0,
@@ -8071,45 +7535,9 @@
       "method": "heuristic technical screen; not a return probability or guarantee"
     },
     {
-      "symbol": "RMF1",
-      "name": "RBB Mutual Fund 1",
-      "sector": "Other",
-      "action": "WAIT",
-      "score": 49.6,
-      "ltp": 9.2,
-      "percent_change": -1.18,
-      "volume": 11050.0,
-      "turnover": 101980.0,
-      "high": 9.3,
-      "low": 9.1,
-      "range_position": 0.5,
-      "indicators": {
-        "history_points": 78,
-        "history_source": "data/history/RMF1.json",
-        "rsi14": 53.9,
-        "sma20": 9.14,
-        "sma50": 9.37,
-        "ema12": 9.19,
-        "ema26": 9.24,
-        "macd": {
-          "line": -0.0444,
-          "signal": -0.0617,
-          "histogram": 0.0173
-        },
-        "avg_volume20": 24991.65,
-        "relative_volume": 0.44
-      },
-      "entry": null,
-      "stop": null,
-      "target1": null,
-      "target2": null,
-      "risk_reward": null,
-      "method": "heuristic technical screen; not a return probability or guarantee"
-    },
-    {
       "symbol": "NUBL",
       "name": "Nirdhan Utthan Laghubitta Bittiya Sanstha Limited",
-      "sector": "Other",
+      "sector": "Microfinance",
       "action": "WAIT",
       "score": 49.5,
       "ltp": 630.0,
@@ -8145,7 +7573,7 @@
     {
       "symbol": "AHL",
       "name": "Asian Hydropower Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 49.5,
       "ltp": 378.0,
@@ -8180,8 +7608,8 @@
     },
     {
       "symbol": "GMFBS",
-      "name": "Ganapati Laghubitta Bittiya Sanstha Limited",
-      "sector": "Other",
+      "name": "Ganapati Laghubitta Bittiya Sanstha Ltd",
+      "sector": "Microfinance",
       "action": "WAIT",
       "score": 49.3,
       "ltp": 1070.0,
@@ -8217,7 +7645,7 @@
     {
       "symbol": "MEN",
       "name": "Mountain Energy Nepal Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 49.1,
       "ltp": 585.9,
@@ -8251,77 +7679,9 @@
       "method": "heuristic technical screen; not a return probability or guarantee"
     },
     {
-      "symbol": "PCBLP",
-      "name": "Prime Commercial Bank Promoter Share",
-      "sector": "Other",
-      "action": "WAIT",
-      "score": 49.1,
-      "ltp": 110.0,
-      "percent_change": 0.0,
-      "volume": 24739.0,
-      "turnover": 2721290.0,
-      "high": 110.0,
-      "low": 110.0,
-      "range_position": 0.5,
-      "indicators": {
-        "history_points": 12,
-        "history_source": "data/history/PCBLP.json",
-        "rsi14": null,
-        "sma20": null,
-        "sma50": null,
-        "ema12": 105.25,
-        "ema26": null,
-        "macd": null,
-        "avg_volume20": null,
-        "relative_volume": null
-      },
-      "entry": null,
-      "stop": null,
-      "target1": null,
-      "target2": null,
-      "risk_reward": null,
-      "method": "heuristic technical screen; not a return probability or guarantee"
-    },
-    {
-      "symbol": "NIBLSTF",
-      "name": "NIBL Stable Fund",
-      "sector": "Other",
-      "action": "WAIT",
-      "score": 49.0,
-      "ltp": 8.82,
-      "percent_change": -0.11,
-      "volume": 14900.0,
-      "turnover": 131730.0,
-      "high": 8.85,
-      "low": 8.82,
-      "range_position": 0.0,
-      "indicators": {
-        "history_points": 77,
-        "history_source": "data/history/NIBLSTF.json",
-        "rsi14": 67.15,
-        "sma20": 8.52,
-        "sma50": 8.45,
-        "ema12": 8.63,
-        "ema26": 8.54,
-        "macd": {
-          "line": 0.0879,
-          "signal": 0.0438,
-          "histogram": 0.0442
-        },
-        "avg_volume20": 57166.9,
-        "relative_volume": 0.26
-      },
-      "entry": null,
-      "stop": null,
-      "target1": null,
-      "target2": null,
-      "risk_reward": null,
-      "method": "heuristic technical screen; not a return probability or guarantee"
-    },
-    {
       "symbol": "AKJCL",
-      "name": "Ankhu Khola Jalvidhyut Company Ltd",
-      "sector": "Other",
+      "name": "Ankhu Khola Jalvidhyut Company Limited",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 48.9,
       "ltp": 343.0,
@@ -8357,7 +7717,7 @@
     {
       "symbol": "CHL",
       "name": "Chhyangdi Hydropower Ltd.",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 48.8,
       "ltp": 267.0,
@@ -8393,7 +7753,7 @@
     {
       "symbol": "JHAPA",
       "name": "Jhapa Energy Limited",
-      "sector": "Other",
+      "sector": "Others",
       "action": "WAIT",
       "score": 48.7,
       "ltp": 949.0,
@@ -8428,8 +7788,8 @@
     },
     {
       "symbol": "UMRH",
-      "name": "United IDI Mardi RB Hydropower Limited.",
-      "sector": "Other",
+      "name": "United Idi Mardi & RB Hydropower Ltd",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 48.5,
       "ltp": 513.8,
@@ -8465,7 +7825,7 @@
     {
       "symbol": "GILB",
       "name": "Global IME Laghubitta Bittiya Sanstha Ltd.",
-      "sector": "Other",
+      "sector": "Microfinance",
       "action": "WAIT",
       "score": 48.4,
       "ltp": 1116.1,
@@ -8501,7 +7861,7 @@
     {
       "symbol": "SMHL",
       "name": "Super Madi Hydropower Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 48.3,
       "ltp": 506.2,
@@ -8535,77 +7895,9 @@
       "method": "heuristic technical screen; not a return probability or guarantee"
     },
     {
-      "symbol": "PMLIP",
-      "name": "Prabhu Mahalaxmi Life Insurance Limited promotor",
-      "sector": "Other",
-      "action": "WAIT",
-      "score": 48.3,
-      "ltp": 232.0,
-      "percent_change": 0.0,
-      "volume": 12355.0,
-      "turnover": 2866360.0,
-      "high": 232.0,
-      "low": 232.0,
-      "range_position": 0.5,
-      "indicators": {
-        "history_points": 4,
-        "history_source": "data/history/PMLIP.json",
-        "rsi14": null,
-        "sma20": null,
-        "sma50": null,
-        "ema12": null,
-        "ema26": null,
-        "macd": null,
-        "avg_volume20": null,
-        "relative_volume": null
-      },
-      "entry": null,
-      "stop": null,
-      "target1": null,
-      "target2": null,
-      "risk_reward": null,
-      "method": "heuristic technical screen; not a return probability or guarantee"
-    },
-    {
-      "symbol": "NBF2",
-      "name": "NABIL BALANCED FUND-2",
-      "sector": "Other",
-      "action": "WAIT",
-      "score": 47.8,
-      "ltp": 9.23,
-      "percent_change": 0.0,
-      "volume": 128025.0,
-      "turnover": 1208873.75,
-      "high": 9.5,
-      "low": 9.23,
-      "range_position": 0.0,
-      "indicators": {
-        "history_points": 70,
-        "history_source": "data/history/NBF2.json",
-        "rsi14": 47.62,
-        "sma20": 9.2,
-        "sma50": 9.54,
-        "ema12": 9.2,
-        "ema26": 9.29,
-        "macd": {
-          "line": -0.0956,
-          "signal": -0.1295,
-          "histogram": 0.0339
-        },
-        "avg_volume20": 14760.05,
-        "relative_volume": 8.67
-      },
-      "entry": null,
-      "stop": null,
-      "target1": null,
-      "target2": null,
-      "risk_reward": null,
-      "method": "heuristic technical screen; not a return probability or guarantee"
-    },
-    {
       "symbol": "CHDC",
-      "name": "CEDB Holdings Limited",
-      "sector": "Other",
+      "name": "CEDB Hydropower Development Company Limited",
+      "sector": "Investment",
       "action": "WAIT",
       "score": 47.7,
       "ltp": 2318.0,
@@ -8640,8 +7932,8 @@
     },
     {
       "symbol": "PRIN",
-      "name": "Prabhu Insurance Ltd.",
-      "sector": "Other",
+      "name": "Prabhu Insurance Limited",
+      "sector": "Non Life Insurance",
       "action": "WAIT",
       "score": 47.7,
       "ltp": 585.1,
@@ -8676,8 +7968,8 @@
     },
     {
       "symbol": "NHDL",
-      "name": "Nepal Hydro Developers Ltd.",
-      "sector": "Other",
+      "name": "Nepal Hydro Developers Ltd",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 47.7,
       "ltp": 647.1,
@@ -8713,7 +8005,7 @@
     {
       "symbol": "APHL",
       "name": "Appolo Hydropower Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 47.5,
       "ltp": 584.6,
@@ -8749,7 +8041,7 @@
     {
       "symbol": "NHPC",
       "name": "National Hydro Power Company Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 47.1,
       "ltp": 261.0,
@@ -8784,8 +8076,8 @@
     },
     {
       "symbol": "GMFIL",
-      "name": "Guheshowori Merchant Bank & Finance Co. Ltd.",
-      "sector": "Other",
+      "name": "Guheswori Merchant Banking & Finance Ltd.",
+      "sector": "Finance",
       "action": "WAIT",
       "score": 46.9,
       "ltp": 427.2,
@@ -8820,8 +8112,8 @@
     },
     {
       "symbol": "HDHPC",
-      "name": "Himal Dolakha Hydropower Company Limited",
-      "sector": "Other",
+      "name": "Himal Dolakha Hydropower Com. Ltd.",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 46.8,
       "ltp": 220.1,
@@ -8857,7 +8149,7 @@
     {
       "symbol": "SMATA",
       "name": "Samata Gharelu Laghubitta Bittiya Sanstha Limited",
-      "sector": "Other",
+      "sector": "Microfinance",
       "action": "WAIT",
       "score": 46.7,
       "ltp": 683.1,
@@ -8893,7 +8185,7 @@
     {
       "symbol": "JFL",
       "name": "Janaki Finance Company Limited",
-      "sector": "Other",
+      "sector": "Finance",
       "action": "WAIT",
       "score": 46.7,
       "ltp": 280.5,
@@ -8928,8 +8220,8 @@
     },
     {
       "symbol": "BEDC",
-      "name": "Bhugol Energy Development Company Limited",
-      "sector": "Other",
+      "name": "Bhugol Energy Development Company Ltd",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 46.4,
       "ltp": 297.0,
@@ -8965,7 +8257,7 @@
     {
       "symbol": "TTL",
       "name": "Trade Tower Limited",
-      "sector": "Other",
+      "sector": "Others",
       "action": "WAIT",
       "score": 46.3,
       "ltp": 644.0,
@@ -9000,8 +8292,8 @@
     },
     {
       "symbol": "SAPIL",
-      "name": "Sarvottam Paints Industries Limited",
-      "sector": "Other",
+      "name": "SARVOTTAM PAINTS INDUSTRIES LTD.",
+      "sector": "Manufacturing And Processing",
       "action": "WAIT",
       "score": 46.1,
       "ltp": 1140.0,
@@ -9036,8 +8328,8 @@
     },
     {
       "symbol": "CYCL",
-      "name": "CYC Nepal Laghubitta Bittiya Sanstha Limited",
-      "sector": "Other",
+      "name": "CYC Nepal laghubitta Bittiya Sanstha Limited",
+      "sector": "Microfinance",
       "action": "WAIT",
       "score": 45.8,
       "ltp": 1429.9,
@@ -9073,7 +8365,7 @@
     {
       "symbol": "ULHC",
       "name": "Upper Lohore Khola Hydropower Company Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 45.6,
       "ltp": 320.0,
@@ -9109,7 +8401,7 @@
     {
       "symbol": "MKHC",
       "name": "Maya Khola Hydropower Company Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 45.6,
       "ltp": 259.0,
@@ -9145,7 +8437,7 @@
     {
       "symbol": "MEPDL",
       "name": "Mount Everest Power Development Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 45.5,
       "ltp": 590.0,
@@ -9181,7 +8473,7 @@
     {
       "symbol": "KMCDB",
       "name": "Kalika Laghubitta Bittiya Sanstha Ltd",
-      "sector": "Other",
+      "sector": "Microfinance",
       "action": "WAIT",
       "score": 45.5,
       "ltp": 795.0,
@@ -9217,7 +8509,7 @@
     {
       "symbol": "NESDO",
       "name": "NESDO Sambridha Laghubitta Bittiya Sanstha Limited",
-      "sector": "Other",
+      "sector": "Microfinance",
       "action": "WAIT",
       "score": 45.4,
       "ltp": 1320.0,
@@ -9252,8 +8544,8 @@
     },
     {
       "symbol": "KBSH",
-      "name": "Kutheli Bukhari Small Hydropower Limited",
-      "sector": "Other",
+      "name": "Kutheli Bukhari Small Hydropower Ltd",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 45.3,
       "ltp": 892.0,
@@ -9289,7 +8581,7 @@
     {
       "symbol": "MABEL",
       "name": "Mabilung Energy Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 45.2,
       "ltp": 521.1,
@@ -9324,8 +8616,8 @@
     },
     {
       "symbol": "NYADI",
-      "name": "Nyadi Hydropower Limited",
-      "sector": "Other",
+      "name": "Nyadi hydropower limited",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 45.2,
       "ltp": 351.0,
@@ -9361,7 +8653,7 @@
     {
       "symbol": "LLBS",
       "name": "Laxmi Laghubitta Bittiya Sanstha Ltd.",
-      "sector": "Other",
+      "sector": "Microfinance",
       "action": "WAIT",
       "score": 45.0,
       "ltp": 815.0,
@@ -9396,8 +8688,8 @@
     },
     {
       "symbol": "BGWT",
-      "name": "Bhagawati Hydropower Development Company Limited",
-      "sector": "Other",
+      "name": "Bhagawati Hyropower Development Company Ltd.",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 44.9,
       "ltp": 515.0,
@@ -9432,8 +8724,8 @@
     },
     {
       "symbol": "KDL",
-      "name": "Kalinchowk Darshan Limited",
-      "sector": "Other",
+      "name": "KALINCHOWK DARSHAN LIMITED ",
+      "sector": "Hotels And Tourism",
       "action": "WAIT",
       "score": 44.7,
       "ltp": 529.3,
@@ -9469,7 +8761,7 @@
     {
       "symbol": "SNORL",
       "name": "Snow Rivers Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 44.7,
       "ltp": 814.0,
@@ -9504,8 +8796,8 @@
     },
     {
       "symbol": "DLBS",
-      "name": "Dhaulagiri Laghubitta Bittiya Sanstha Limited",
-      "sector": "Other",
+      "name": "Dhaulagiri laghubitta Sanstha Limited",
+      "sector": "Microfinance",
       "action": "WAIT",
       "score": 44.7,
       "ltp": 1076.0,
@@ -9539,45 +8831,9 @@
       "method": "heuristic technical screen; not a return probability or guarantee"
     },
     {
-      "symbol": "NICBF",
-      "name": "NIC Asia Balanced Fund",
-      "sector": "Other",
-      "action": "WAIT",
-      "score": 44.6,
-      "ltp": 9.26,
-      "percent_change": 0.22,
-      "volume": 10950.0,
-      "turnover": 101405.0,
-      "high": 9.3,
-      "low": 9.26,
-      "range_position": 0.0,
-      "indicators": {
-        "history_points": 59,
-        "history_source": "data/history/NICBF.json",
-        "rsi14": 55.34,
-        "sma20": 9.05,
-        "sma50": 9.1,
-        "ema12": 9.11,
-        "ema26": 9.07,
-        "macd": {
-          "line": 0.036,
-          "signal": 0.0086,
-          "histogram": 0.0274
-        },
-        "avg_volume20": 3461.05,
-        "relative_volume": 3.16
-      },
-      "entry": null,
-      "stop": null,
-      "target1": null,
-      "target2": null,
-      "risk_reward": null,
-      "method": "heuristic technical screen; not a return probability or guarantee"
-    },
-    {
       "symbol": "HATHY",
-      "name": "Hathway Investment Nepal Limited",
-      "sector": "Other",
+      "name": "HATHWAY INVESTMENT NEPAL LIMITED",
+      "sector": "Investment",
       "action": "WAIT",
       "score": 44.4,
       "ltp": 414.9,
@@ -9612,8 +8868,8 @@
     },
     {
       "symbol": "SMB",
-      "name": "Support Microfinance Bittiya Sanstha Ltd.",
-      "sector": "Other",
+      "name": "Support Lagubitta Bittiya Sanstha Limited",
+      "sector": "Microfinance",
       "action": "WAIT",
       "score": 44.1,
       "ltp": 1756.0,
@@ -9648,8 +8904,8 @@
     },
     {
       "symbol": "BANDIPUR",
-      "name": "Bandipur Cablecar and Tourism Limited",
-      "sector": "Other",
+      "name": "Bandipur Cable Car and Tourism Limited",
+      "sector": "Hotels And Tourism",
       "action": "WAIT",
       "score": 44.0,
       "ltp": 579.9,
@@ -9685,7 +8941,7 @@
     {
       "symbol": "MHL",
       "name": "Mandakini Hydropower Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 44.0,
       "ltp": 470.0,
@@ -9721,7 +8977,7 @@
     {
       "symbol": "SAGAR",
       "name": "Sagar Distillery Limited",
-      "sector": "Other",
+      "sector": "Manufacturing And Processing",
       "action": "WAIT",
       "score": 43.7,
       "ltp": 1553.0,
@@ -9756,8 +9012,8 @@
     },
     {
       "symbol": "CITY",
-      "name": "City Hotel Limited",
-      "sector": "Other",
+      "name": "CITY HOTEL LIMITED ",
+      "sector": "Hotels And Tourism",
       "action": "WAIT",
       "score": 43.5,
       "ltp": 327.0,
@@ -9793,7 +9049,7 @@
     {
       "symbol": "SMPDA",
       "name": "Sampada Laghubitta Bittiya Sanstha Limited",
-      "sector": "Other",
+      "sector": "Microfinance",
       "action": "WAIT",
       "score": 43.5,
       "ltp": 730.0,
@@ -9829,7 +9085,7 @@
     {
       "symbol": "SANVI",
       "name": "Sanvi Energy Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 43.4,
       "ltp": 505.0,
@@ -9865,7 +9121,7 @@
     {
       "symbol": "SOPL",
       "name": "Sopan Pharmaceuticals Limited",
-      "sector": "Other",
+      "sector": "Manufacturing And Processing",
       "action": "WAIT",
       "score": 43.3,
       "ltp": 649.3,
@@ -9900,8 +9156,8 @@
     },
     {
       "symbol": "NMFBS",
-      "name": "National Laghubitta Bittiya Sanstha Limited",
-      "sector": "Other",
+      "name": "National  Laghubitta Bittiya Sanstha Limited",
+      "sector": "Microfinance",
       "action": "WAIT",
       "score": 42.8,
       "ltp": 1191.0,
@@ -9937,7 +9193,7 @@
     {
       "symbol": "MEHL",
       "name": "Manakamana Engineering Hydropower Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 42.6,
       "ltp": 246.2,
@@ -9973,7 +9229,7 @@
     {
       "symbol": "MSLB",
       "name": "Mahuli Laghubitta Bittiya Sanstha Limited",
-      "sector": "Other",
+      "sector": "Microfinance",
       "action": "WAIT",
       "score": 42.5,
       "ltp": 1187.1,
@@ -10009,7 +9265,7 @@
     {
       "symbol": "STC",
       "name": "Salt Trading Corporation",
-      "sector": "Other",
+      "sector": "Tradings",
       "action": "WAIT",
       "score": 42.4,
       "ltp": 5531.0,
@@ -10044,8 +9300,8 @@
     },
     {
       "symbol": "RLEL",
-      "name": "Ridge Line Energy Limited",
-      "sector": "Other",
+      "name": "RIDGE LINE ENERGY LIMITED",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 42.2,
       "ltp": 649.9,
@@ -10081,7 +9337,7 @@
     {
       "symbol": "KAHL",
       "name": "Kalanga Hydro Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 42.0,
       "ltp": 430.0,
@@ -10117,7 +9373,7 @@
     {
       "symbol": "KKHC",
       "name": "Khanikhola Hydropower Co. Ltd.",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 41.8,
       "ltp": 268.0,
@@ -10153,7 +9409,7 @@
     {
       "symbol": "MKJC",
       "name": "Mailung Khola Jal Vidhyut Company Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 41.6,
       "ltp": 303.7,
@@ -10188,8 +9444,8 @@
     },
     {
       "symbol": "SKHL",
-      "name": "Super Khudi Hydropower Limited",
-      "sector": "Other",
+      "name": "Super Khudi Hydropower Ltd.",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 41.6,
       "ltp": 712.0,
@@ -10224,8 +9480,8 @@
     },
     {
       "symbol": "YMHL",
-      "name": "Yambaling Hydropower Limited",
-      "sector": "Other",
+      "name": "Yambaling Hydropower Ltd.",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 41.1,
       "ltp": 458.0,
@@ -10260,8 +9516,8 @@
     },
     {
       "symbol": "CKHL",
-      "name": "Chirkhwa Hydropower Limited ",
-      "sector": "Other",
+      "name": "Chirkhwa Hydropower Limited",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 40.7,
       "ltp": 493.0,
@@ -10296,8 +9552,8 @@
     },
     {
       "symbol": "SIPD",
-      "name": "Shikhar power Development Limited",
-      "sector": "Other",
+      "name": "Shikhar Power Development Ltd.",
+      "sector": "Hydro Power",
       "action": "WAIT",
       "score": 40.6,
       "ltp": 517.0,
@@ -10331,81 +9587,9 @@
       "method": "heuristic technical screen; not a return probability or guarantee"
     },
     {
-      "symbol": "RBCLPO",
-      "name": "Rastriya Beema Company Limited Promoter Share",
-      "sector": "Other",
-      "action": "WAIT",
-      "score": 40.3,
-      "ltp": 11101.0,
-      "percent_change": 0.9,
-      "volume": 130.0,
-      "turnover": 1438770.0,
-      "high": 11300.0,
-      "low": 11016.0,
-      "range_position": 0.2993,
-      "indicators": {
-        "history_points": 41,
-        "history_source": "data/history/RBCLPO.json",
-        "rsi14": 43.55,
-        "sma20": 11290.82,
-        "sma50": null,
-        "ema12": 11224.55,
-        "ema26": 11364.39,
-        "macd": {
-          "line": -139.8413,
-          "signal": -123.2931,
-          "histogram": -16.5482
-        },
-        "avg_volume20": 56.8,
-        "relative_volume": 2.29
-      },
-      "entry": null,
-      "stop": null,
-      "target1": null,
-      "target2": null,
-      "risk_reward": null,
-      "method": "heuristic technical screen; not a return probability or guarantee"
-    },
-    {
-      "symbol": "RSY",
-      "name": "Reliable Samriddhi Yojana",
-      "sector": "Other",
-      "action": "WAIT",
-      "score": 40.1,
-      "ltp": 9.52,
-      "percent_change": -1.86,
-      "volume": 11450.0,
-      "turnover": 111340.0,
-      "high": 9.75,
-      "low": 9.52,
-      "range_position": 0.0,
-      "indicators": {
-        "history_points": 78,
-        "history_source": "data/history/RSY.json",
-        "rsi14": 60.15,
-        "sma20": 9.43,
-        "sma50": 9.7,
-        "ema12": 9.52,
-        "ema26": 9.52,
-        "macd": {
-          "line": -0.0009,
-          "signal": -0.0443,
-          "histogram": 0.0435
-        },
-        "avg_volume20": 8087.3,
-        "relative_volume": 1.42
-      },
-      "entry": null,
-      "stop": null,
-      "target1": null,
-      "target2": null,
-      "risk_reward": null,
-      "method": "heuristic technical screen; not a return probability or guarantee"
-    },
-    {
       "symbol": "OMPL",
       "name": "Om Megashree Pharmaceuticals Limited",
-      "sector": "Other",
+      "sector": "Manufacturing And Processing",
       "action": "WAIT",
       "score": 39.8,
       "ltp": 816.0,
@@ -10441,7 +9625,7 @@
     {
       "symbol": "MKCL",
       "name": "Muktinath Krishi Company Limited",
-      "sector": "Other",
+      "sector": "Others",
       "action": "AVOID",
       "score": 40.0,
       "ltp": 756.2,
@@ -10476,8 +9660,8 @@
     },
     {
       "symbol": "SHLB",
-      "name": "Shrijanshil Laghubitta Bittiya Sanstha Limited",
-      "sector": "Other",
+      "name": "Shrijanshil Laghubitta Baittiya sanstha Limited",
+      "sector": "Microfinance",
       "action": "AVOID",
       "score": 39.3,
       "ltp": 1273.0,
@@ -10512,8 +9696,8 @@
     },
     {
       "symbol": "ACLBSL",
-      "name": "Aarambha Chautari Laghubitta Bittiya Sanstha Limited",
-      "sector": "Other",
+      "name": "Aarambha Chautari Laghubitta Bittya Sanstha Limited",
+      "sector": "Microfinance",
       "action": "AVOID",
       "score": 39.2,
       "ltp": 854.0,
@@ -10548,8 +9732,8 @@
     },
     {
       "symbol": "GLBSL",
-      "name": "Gurans Laghubitta Bittiya Sanstha Limited",
-      "sector": "Other",
+      "name": "Gurans Laghubitta Bittiya Sanstha Ltd",
+      "sector": "Microfinance",
       "action": "AVOID",
       "score": 37.1,
       "ltp": 1478.0,
@@ -10585,7 +9769,7 @@
     {
       "symbol": "USLB",
       "name": "Unnati Sahakarya Laghubitta Bittiya Sanstha Limited",
-      "sector": "Other",
+      "sector": "Microfinance",
       "action": "AVOID",
       "score": 36.7,
       "ltp": 1000.0,
@@ -10621,7 +9805,7 @@
     {
       "symbol": "PFL",
       "name": "Pokhara Finance Ltd.",
-      "sector": "Other",
+      "sector": "Finance",
       "action": "AVOID",
       "score": 36.4,
       "ltp": 336.0,
@@ -10656,8 +9840,8 @@
     },
     {
       "symbol": "SWASTIK",
-      "name": "Swastik Laghubitta Bittiya Sanstha Limited",
-      "sector": "Other",
+      "name": "SWASTIK LAGHUBITTA BITTIYA SANSTHA LTD.",
+      "sector": "Microfinance",
       "action": "AVOID",
       "score": 35.2,
       "ltp": 1680.0,
@@ -10692,8 +9876,8 @@
     },
     {
       "symbol": "MCHL",
-      "name": "Menchhiyam Hydropower Limited",
-      "sector": "Other",
+      "name": "Menchhiyam Hydro Power Ltd",
+      "sector": "Hydro Power",
       "action": "AVOID",
       "score": 35.1,
       "ltp": 256.0,
@@ -10725,42 +9909,6 @@
       "target2": null,
       "risk_reward": null,
       "method": "heuristic technical screen; not a return probability or guarantee"
-    },
-    {
-      "symbol": "GBILD84/85",
-      "name": "Global IME Bank Debenture, 2084/85",
-      "sector": "Other",
-      "action": "AVOID",
-      "score": 29.8,
-      "ltp": 1106.0,
-      "percent_change": -0.81,
-      "volume": 220.0,
-      "turnover": 244415.0,
-      "high": 1118.0,
-      "low": 1106.0,
-      "range_position": 0.0,
-      "indicators": {
-        "history_points": 36,
-        "history_source": "data/history/GBILD84/85.json",
-        "rsi14": 42.89,
-        "sma20": 1137.19,
-        "sma50": null,
-        "ema12": 1129.61,
-        "ema26": 1132.52,
-        "macd": {
-          "line": -2.9123,
-          "signal": 3.322,
-          "histogram": -6.2343
-        },
-        "avg_volume20": 137.6,
-        "relative_volume": 1.6
-      },
-      "entry": null,
-      "stop": null,
-      "target1": null,
-      "target2": null,
-      "risk_reward": null,
-      "method": "heuristic technical screen; not a return probability or guarantee"
     }
   ],
   "topBuy": [],
@@ -10768,7 +9916,7 @@
     {
       "symbol": "BENH",
       "name": "Beni Hydropower Project Limited",
-      "sector": "Other",
+      "sector": "Hydro Power",
       "action": "WATCH BREAKOUT",
       "score": 78.2,
       "ltp": 709.7,
@@ -10803,7 +9951,7 @@
     {
       "symbol": "MKCL",
       "name": "Muktinath Krishi Company Limited",
-      "sector": "Other",
+      "sector": "Others",
       "action": "AVOID",
       "score": 40.0,
       "ltp": 756.2,
@@ -10838,8 +9986,8 @@
     },
     {
       "symbol": "SHLB",
-      "name": "Shrijanshil Laghubitta Bittiya Sanstha Limited",
-      "sector": "Other",
+      "name": "Shrijanshil Laghubitta Baittiya sanstha Limited",
+      "sector": "Microfinance",
       "action": "AVOID",
       "score": 39.3,
       "ltp": 1273.0,
@@ -10874,8 +10022,8 @@
     },
     {
       "symbol": "ACLBSL",
-      "name": "Aarambha Chautari Laghubitta Bittiya Sanstha Limited",
-      "sector": "Other",
+      "name": "Aarambha Chautari Laghubitta Bittya Sanstha Limited",
+      "sector": "Microfinance",
       "action": "AVOID",
       "score": 39.2,
       "ltp": 854.0,
@@ -10910,8 +10058,8 @@
     },
     {
       "symbol": "GLBSL",
-      "name": "Gurans Laghubitta Bittiya Sanstha Limited",
-      "sector": "Other",
+      "name": "Gurans Laghubitta Bittiya Sanstha Ltd",
+      "sector": "Microfinance",
       "action": "AVOID",
       "score": 37.1,
       "ltp": 1478.0,
@@ -10947,7 +10095,7 @@
     {
       "symbol": "USLB",
       "name": "Unnati Sahakarya Laghubitta Bittiya Sanstha Limited",
-      "sector": "Other",
+      "sector": "Microfinance",
       "action": "AVOID",
       "score": 36.7,
       "ltp": 1000.0,
@@ -10983,7 +10131,7 @@
     {
       "symbol": "PFL",
       "name": "Pokhara Finance Ltd.",
-      "sector": "Other",
+      "sector": "Finance",
       "action": "AVOID",
       "score": 36.4,
       "ltp": 336.0,
@@ -11018,8 +10166,8 @@
     },
     {
       "symbol": "SWASTIK",
-      "name": "Swastik Laghubitta Bittiya Sanstha Limited",
-      "sector": "Other",
+      "name": "SWASTIK LAGHUBITTA BITTIYA SANSTHA LTD.",
+      "sector": "Microfinance",
       "action": "AVOID",
       "score": 35.2,
       "ltp": 1680.0,
@@ -11054,8 +10202,8 @@
     },
     {
       "symbol": "MCHL",
-      "name": "Menchhiyam Hydropower Limited",
-      "sector": "Other",
+      "name": "Menchhiyam Hydro Power Ltd",
+      "sector": "Hydro Power",
       "action": "AVOID",
       "score": 35.1,
       "ltp": 256.0,
@@ -11080,42 +10228,6 @@
         },
         "avg_volume20": 5224.65,
         "relative_volume": 3.51
-      },
-      "entry": null,
-      "stop": null,
-      "target1": null,
-      "target2": null,
-      "risk_reward": null,
-      "method": "heuristic technical screen; not a return probability or guarantee"
-    },
-    {
-      "symbol": "GBILD84/85",
-      "name": "Global IME Bank Debenture, 2084/85",
-      "sector": "Other",
-      "action": "AVOID",
-      "score": 29.8,
-      "ltp": 1106.0,
-      "percent_change": -0.81,
-      "volume": 220.0,
-      "turnover": 244415.0,
-      "high": 1118.0,
-      "low": 1106.0,
-      "range_position": 0.0,
-      "indicators": {
-        "history_points": 36,
-        "history_source": "data/history/GBILD84/85.json",
-        "rsi14": 42.89,
-        "sma20": 1137.19,
-        "sma50": null,
-        "ema12": 1129.61,
-        "ema26": 1132.52,
-        "macd": {
-          "line": -2.9123,
-          "signal": 3.322,
-          "histogram": -6.2343
-        },
-        "avg_volume20": 137.6,
-        "relative_volume": 1.6
       },
       "entry": null,
       "stop": null,
