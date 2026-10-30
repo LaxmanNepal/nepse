@@ -15,11 +15,15 @@ The root page is `index.html`. The previous implementation is preserved under `/
 - Imports the latest four monthly LTP shards into `data/history/{SYMBOL}.json`.
 - Calculates indicators only when sufficient daily history exists.
 - Writes `data/live.json` and `data/ai-signals.json`.
-- GitHub Actions attempts polling every five minutes during the configured session. YONEPSE documentation currently describes hourly upstream updates, so polling more often does not make the source five-minute or real-time.
+- GitHub Actions attempts polling every five minutes during the configured session. YONEPSE documentation describes hourly upstream updates, so polling more often does not make the source five-minute or real-time.
+- Every snapshot is marked `sourceVerification.status=unverified` and `tradeSignalsEnabled=false` until an independent licensed-provider comparison is completed.
+- The signal generator fails closed: it emits an empty `LOCKED_UNVERIFIED_SOURCE` file rather than BUY/SELL/WATCH calls from an unverified snapshot.
+- ShareHub is the candidate licensed intraday provider. Its documented API claims ~20-second market-hour refresh, but requires a licence, bearer authentication and server-IP allowlisting. A static-egress/self-hosted runner is required for reliable allowlisting; GitHub-hosted runner IPs are not suitable for a fixed allowlist.
+- Do not set source verification to `verified` or enable trade signals until same-session prices and timestamps have been independently compared and a documented tolerance has passed.
 
 Source dataset: https://github.com/Shubhamnpk/yonepse
 Source cadence and attribution: https://shubhamnpk.github.io/yonepse/pages/docs.html and https://shubhamnpk.github.io/yonepse/pages/sources.html
-Potential licensed alternative: ShareHub documents an all-stock price API requiring a licensed token and server-IP allowlisting: https://sharehubnepal.com/data/nepse-data-documentation/  
+Candidate licensed intraday provider: ShareHub documents an all-stock price API with ~20-second refresh during trading; requires a licence and server-IP allowlisting: https://sharehubnepal.com/data/nepse-data-documentation/  
 Source API docs: https://shubhamnpk.github.io/yonepse/pages/docs.html
 
 ## Dashboard features
@@ -38,7 +42,7 @@ This is a research screener, not an execution system or investment adviser. YONE
 
 Signals are heuristic screens, not probabilities of profit. BUY ON CONFIRMATION requires adequate daily history and technical conditions; even then, verify the quote, volume, spread, market depth, corporate actions, circuit limits, and broker charges before placing an order. SELL / REDUCE is a review prompt for an existing holding, not a short-selling instruction. Never rely on stale data.
 
-The dashboard locks active signals when the latest quote timestamp is older than 15 minutes. After market close, the data may be stale for intraday execution even though it remains useful for historical review.
+The dashboard locks active signals unless the source is independently verified AND the latest quote timestamp is under 15 minutes old. After market close, the data may be stale for intraday execution even though it remains useful for historical review.
 
 ## Run locally
 
