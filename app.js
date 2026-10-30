@@ -94,7 +94,7 @@ function renderSignals(data){
  const top=[...buy,...watch,...sell,...avoid,...wait].slice(0,10);
  const cards=top.map(x=>{
   const cls=x.action==="BUY ON CONFIRMATION"?"positive":x.action==="AVOID"||String(x.action).startsWith("SELL")?"negative":"muted";
-  return '<div class="signal-row"><div><b>'+esc(x.symbol)+'</b><small>'+esc(x.name||"")+'</small></div><span class="'+cls+'">'+esc(x.action)+'</span><div class="signal-levels"><small>Score '+fmt(x.score,1)+' · LTP NPR '+fmt(x.ltp)+'</small><small>Entry '+fmt(x.entry)+' / Stop '+fmt(x.stop)+' / T1 '+fmt(x.target1)+' / T2 '+fmt(x.target2)+'</small></div></div>';
+  return '<div class="signal-row"><div><b><a href="/nepse/'+encodeURIComponent(x.symbol.toLowerCase())+'"> '+esc(x.symbol)+'</a></b><small>'+esc(x.name||"")+'</small></div><span class="'+cls+'">'+esc(x.action)+'</span><div class="signal-levels"><small>Score '+fmt(x.score,1)+' · LTP NPR '+fmt(x.ltp)+'</small><small>Entry '+fmt(x.entry)+' / Stop '+fmt(x.stop)+' / T1 '+fmt(x.target1)+' / T2 '+fmt(x.target2)+'</small></div></div>';
  }).join("");
  $("signal-status").innerHTML='<div class="signal-summary"><span>BUY '+buy.length+'</span><span>WATCH '+watch.length+'</span><span>SELL REVIEW '+sell.length+'</span><span>AVOID '+avoid.length+'</span></div><div class="signal-list">'+(cards||'<p>No eligible stock passed the liquidity and data-quality filters.</p>')+'</div><p class="signal-disclaimer">Generated '+esc(dateText(new Date(data.generatedAt)))+'. '+esc(data.warning||"Heuristic screening only; not a profit guarantee.")+'</p>';
 }
@@ -117,7 +117,7 @@ async function load(){
 function init(){
  $("clock").textContent=new Date().toLocaleDateString("en-GB",{weekday:"short",day:"2-digit",month:"short",year:"numeric",timeZone:"Asia/Kathmandu"})+" · NPT";
  ["search","movement","sort"].forEach(id=>$(id).addEventListener(id==="search"?"input":"change",()=>{S.page=1;filter()}));
- $("stock-rows").addEventListener("click",e=>{const tr=e.target.closest("tr[data-symbol]");if(tr)location.href='/nepse/'+encodeURIComponent(tr.dataset.symbol.toLowerCase())});$("stock-rows").addEventListener("keydown",e=>{if((e.key==="Enter"||e.key===" ")&&e.target.matches("tr[data-symbol]")){e.preventDefault();location.href='/nepse/'+encodeURIComponent(e.target.dataset.symbol.toLowerCase())}});$("detail-close").addEventListener("click",()=>$("stock-detail").classList.add("hidden"));$("prev").addEventListener("click",()=>{S.page--;rows()});$("next").addEventListener("click",()=>{S.page++;rows()});$("refresh").addEventListener("click",load);
+ $("stock-rows").addEventListener("click",e=>{const tr=e.target.closest("tr[data-symbol]");if(tr)location.href='/nepse/'+encodeURIComponent(tr.dataset.symbol.toLowerCase())});$("stock-rows").addEventListener("keydown",e=>{if((e.key==="Enter"||e.key===" ")&&e.target.matches("tr[data-symbol]")){e.preventDefault();location.href='/nepse/'+encodeURIComponent(e.target.dataset.symbol.toLowerCase())}});$("detail-close").addEventListener("click",()=>{const path=location.pathname.split("/").filter(Boolean);if(path.length>1&&path[path.length-1].toUpperCase()!=="INDEX.HTML")location.href="/nepse/";else $("stock-detail").classList.add("hidden")});$("prev").addEventListener("click",()=>{S.page--;rows()});$("next").addEventListener("click",()=>{S.page++;rows()});$("refresh").addEventListener("click",load);
  ["capital","risk-pct","entry","stop"].forEach(id=>$(id).addEventListener("input",risk));load();
 }
 document.addEventListener("DOMContentLoaded",init);
