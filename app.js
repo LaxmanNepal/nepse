@@ -18,7 +18,7 @@ function freshness(l){
  return !stale;
 }
 function market(l){
- S.stocks=(Array.isArray(l.stocks)?l.stocks:[]).filter(x=>x&&x.symbol&&n(x.ltp)!=null);
+ S.stocks=(Array.isArray(l.stocks)?l.stocks:[]).filter(x=>x&&x.symbol);
  const pct=x=>n(x.changePercent??x.percent_change??x.changePercent);
  const up=S.stocks.filter(x=>(pct(x)||0)>0).length,down=S.stocks.filter(x=>(pct(x)||0)<0).length,flat=S.stocks.length-up-down,total=S.stocks.length||1;
  $("advancers").textContent=fmt(up,0);$("decliners").textContent=fmt(down,0);
