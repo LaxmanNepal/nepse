@@ -110,7 +110,7 @@ function renderSignals(data){
  const top=[...buy,...watch,...sell,...avoid,...wait].slice(0,10);
  const cards=top.map(x=>{
   const cls=x.action==="BUY ON CONFIRMATION"?"positive":x.action==="AVOID"||String(x.action).startsWith("SELL")?"negative":"muted";
-  return '<div class="signal-row"><div><b><a href="/nepse/'+encodeURIComponent(x.symbol.toLowerCase())+'"> '+esc(x.symbol)+'</a></b><small>'+esc(x.name||"")+'</small></div><span class="'+cls+'">'+esc(x.action)+'</span><div class="signal-levels"><small>Score '+fmt(x.score,1)+' · LTP NPR '+fmt(x.ltp)+'</small><small>Entry '+fmt(x.entry)+' / Stop '+fmt(x.stop)+' / T1 '+fmt(x.target1)+' / T2 '+fmt(x.target2)+'</small></div></div>';
+  return '<div class="signal-row"><div><b><a href="/nepse/'+encodeURIComponent(x.symbol.toLowerCase())+'" target="_top"> '+esc(x.symbol)+'</a></b><small>'+esc(x.name||"")+'</small></div><span class="'+cls+'">'+esc(x.action)+'</span><div class="signal-levels"><small>Score '+fmt(x.score,1)+' · LTP NPR '+fmt(x.ltp)+'</small><small>Entry '+fmt(x.entry)+' / Stop '+fmt(x.stop)+' / T1 '+fmt(x.target1)+' / T2 '+fmt(x.target2)+'</small></div></div>';
  }).join("");
  $("signal-status").innerHTML='<div class="signal-summary"><span>BUY '+buy.length+'</span><span>WATCH '+watch.length+'</span><span>SELL REVIEW '+sell.length+'</span><span>AVOID '+avoid.length+'</span></div><div class="signal-list">'+(cards||'<p>No eligible stock passed the liquidity and data-quality filters.</p>')+'</div><p class="signal-disclaimer">Generated '+esc(dateText(new Date(data.generatedAt)))+'. '+esc(data.warning||"Heuristic screening only; not a profit guarantee.")+'</p>';
 }
