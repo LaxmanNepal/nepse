@@ -19,10 +19,10 @@ function freshness(l){
 }
 function market(l){
  S.stocks=(Array.isArray(l.stocks)?l.stocks:[]).filter(x=>x&&x.symbol);
- const pct=x=>n(x.changePercent??x.percent_change??x.changePercent);
- const up=S.stocks.filter(x=>(pct(x)||0)>0).length,down=S.stocks.filter(x=>(pct(x)||0)<0).length,flat=S.stocks.length-up-down,total=S.stocks.length||1;
+ const quoted=S.stocks.filter(x=>n(x.ltp)!=null),pct=x=>n(x.changePercent??x.percent_change??x.changePercent);
+ const up=quoted.filter(x=>(pct(x)??0)>0).length,down=quoted.filter(x=>(pct(x)??0)<0).length,flat=quoted.filter(x=>pct(x)===0).length,total=quoted.length||1;
  $("advancers").textContent=fmt(up,0);$("decliners").textContent=fmt(down,0);
- $("breadth-up").textContent=fmt(up,0);$("breadth-down").textContent=fmt(down,0);$("breadth-flat").textContent=fmt(flat,0);$("breadth-total").textContent=fmt(S.stocks.length,0);
+ $("breadth-up").textContent=fmt(up,0);$("breadth-down").textContent=fmt(down,0);$("breadth-flat").textContent=fmt(flat,0);$("breadth-total").textContent=fmt(quoted.length,0);
  const a=up/total*100,b=(up+down)/total*100;
  $("breadth-donut").style.background="conic-gradient(#31d6a0 0 "+a+"%,#ff6b78 "+a+"% "+b+"%,#526176 "+b+"% 100%)";
  const turnover=S.stocks.reduce((v,x)=>v+(n(x.turnover)||0),0);
@@ -31,12 +31,12 @@ function market(l){
  $("index-value").textContent=iv==null?"—":fmt(iv,2);
  $("index-change").textContent=ip==null?"Index change unavailable":(ip>0?"+":"")+fmt(ip,2)+"% today";
  $("stock-count").textContent=fmt(S.stocks.length,0);
- $("breadth-note").textContent="Calculated from "+S.stocks.length+" stock records. Check feed freshness before using.";
+ $("breadth-note").textContent="Breadth from "+quoted.length+" stocks with quotes; "+(S.stocks.length-quoted.length)+" active listings have no quote in this snapshot." ;
  $("table-status").textContent="Snapshot loaded · "+dateText(stamp(l));S.page=1;filter();
 }
 function filter(){
  const q=$("search").value.trim().toLowerCase(),m=$("movement").value,sort=$("sort").value;
- let a=S.stocks.filter(x=>(!q||String(x.symbol).toLowerCase().includes(q)||String(x.name).toLowerCase().includes(q))).filter(x=>{const p=n(x.changePercent??x.percent_change)||0;return m==="all"||(m==="up"&&p>0)||(m==="down"&&p<0)||(m==="flat"&&p===0)});
+ let a=S.stocks.filter(x=>(!q||String(x.symbol).toLowerCase().includes(q)||String(x.name).toLowerCase().includes(q))).filter(x=>{const p=n(x.changePercent??x.percent_change);return m==="all"||(m==="up"&&p!=null&&p>0)||(m==="down"&&p!=null&&p<0)||(m==="flat"&&p===0)});
  const key={turnover:"turnover",change:"changePercent",volume:"volume",price:"ltp"}[sort];
  a.sort((x,y)=>sort==="symbol"?String(x.symbol).localeCompare(String(y.symbol)):(n(y[key])||0)-(n(x[key])||0));
  S.filtered=a;rows();
@@ -45,8 +45,8 @@ function rows(){
  const total=S.filtered.length,pages=Math.max(1,Math.ceil(total/SIZE));S.page=Math.min(S.page,pages);
  const a=S.filtered.slice((S.page-1)*SIZE,S.page*SIZE);
  $("stock-rows").innerHTML=a.length?a.map(x=>{
-  const p=n(x.changePercent??x.percent_change)||0,lo=n(x.low),hi=n(x.high),ltp=n(x.ltp),pos=lo!=null&&hi!=null&&hi>lo?Math.max(0,Math.min(100,(ltp-lo)/(hi-lo)*100)):0;
-  return '<tr class="stock-row" data-symbol="'+esc(x.symbol)+'" tabindex="0" role="button" aria-label="Open '+esc(x.symbol)+' research"><td class="stock-name"><b>'+esc(x.symbol)+'</b><small>'+esc(x.name||"")+'</small></td><td class="num">'+fmt(ltp)+'</td><td class="num '+(p>0?"positive":p<0?"negative":"")+'">'+(p>0?"+":"")+fmt(p)+'%</td><td class="num">'+fmt(n(x.volume),0)+'</td><td class="num">'+fmt(n(x.turnover),0)+'</td><td class="num"><span class="range"><i style="width:'+pos+'%"></i></span> <small>'+fmt(lo,1)+'–'+fmt(hi,1)+'</small></td></tr>';
+  const p=n(x.changePercent??x.percent_change),lo=n(x.low),hi=n(x.high),ltp=n(x.ltp),pos=lo!=null&&hi!=null&&hi>lo?Math.max(0,Math.min(100,(ltp-lo)/(hi-lo)*100)):0;
+  return '<tr class="stock-row" data-symbol="'+esc(x.symbol)+'" tabindex="0" role="button" aria-label="Open '+esc(x.symbol)+' research"><td class="stock-name"><b>'+esc(x.symbol)+'</b><small>'+esc(x.name||"")+'</small></td><td class="num">'+fmt(ltp)+'</td><td class="num '+(p>0?"positive":p<0?"negative":"")+'">'+(p!=null&&p>0?"+":"")+(p==null?"—":fmt(p)+"%")+'</td><td class="num">'+fmt(n(x.volume),0)+'</td><td class="num">'+fmt(n(x.turnover),0)+'</td><td class="num"><span class="range"><i style="width:'+pos+'%"></i></span> <small>'+fmt(lo,1)+'–'+fmt(hi,1)+'</small></td></tr>';
  }).join(""):'<tr><td colspan="6" class="table-empty">No stocks match this filter.</td></tr>';
  $("table-status").textContent="Showing "+(total?(S.page-1)*SIZE+1:0)+"–"+Math.min(S.page*SIZE,total)+" of "+total+" matches";
  $("page-label").textContent=S.page+" / "+pages;$("prev").disabled=S.page<=1;$("next").disabled=S.page>=pages;
