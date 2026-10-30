@@ -67,7 +67,7 @@ function miniChart(points){
  return '<div class="history-chart"><div class="chart-meta"><span>'+esc(points[0].date||"Start")+'</span><b>'+vals.length+' daily observations</b><span>'+esc(points[points.length-1].date||"Latest")+'</span></div><svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Daily closing price chart"><defs><linearGradient id="priceFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#268bdf" stop-opacity=".22"/><stop offset="1" stop-color="#268bdf" stop-opacity="0"/></linearGradient></defs><path d="'+path+' L'+coords[coords.length-1][0]+' '+(H-P)+' L'+P+' '+(H-P)+' Z" fill="url(#priceFill)"/><path d="'+path+'" fill="none" stroke="#268bdf" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="chart-scale"><span>NPR '+fmt(min)+'</span><span>NPR '+fmt(max)+'</span></div></div>';
 }
 async function openStock(symbol){
- const stock=S.stocks.find(x=>String(x.symbol).toUpperCase()===String(symbol).toUpperCase());if(!stock)return;
+ const stock=S.stocks.find(x=>String(x.symbol).toUpperCase()===String(symbol).toUpperCase());if(!stock)return;document.title=stock.symbol+" — "+(stock.name||"NEPSE Stock Research")+" | NEPSE Terminal";
  const panel=$("stock-detail");panel.classList.remove("hidden");$("detail-title").textContent=stock.name||stock.symbol;$("detail-subtitle").textContent=stock.symbol+" · "+(stock.sector&&stock.sector!=="Other"?stock.sector:"Sector not supplied")+" · source snapshot";
  $("detail-content").innerHTML='<p class="table-empty">Loading '+esc(stock.symbol)+' historical research…</p>';
  panel.scrollIntoView({behavior:"smooth",block:"start"});
