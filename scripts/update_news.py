@@ -15,10 +15,13 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "data/news.json"
 QUERIES = [
-    '"नेप्से" OR "शेयर बजार" OR "सेयर बजार" site:merolagani.com when:14d',
-    '"नेप्से" OR "शेयर बजार" OR "सेयर बजार" site:sharesansar.com when:14d',
-    '"आईपीओ" OR "लाभांश" OR "हकप्रद" OR "बोनस शेयर" Nepal share market when:14d',
-    '"नेप्से" OR "सूचीकृत कम्पनी" OR "शेयर कारोबार" site:arthasarokar.com when:14d',
+    '"नेप्से" when:14d',
+    '"शेयर बजार" when:14d',
+    '"सेयर बजार" when:14d',
+    '"आईपीओ" OR "लाभांश" OR "हकप्रद" when:14d',
+    'site:nepseanalysis.com "नेप्से" when:14d',
+    'site:merolagani.com "नेप्से" when:14d',
+    'site:sharesansar.com "नेप्से" when:14d',
 ]
 MARKET_TERMS = ("नेप्से", "शेयर", "सेयर", "आईपीओ", "आइपिओ", "लाभांश", "हकप्रद", "बोनस शेयर", "साधारणसभा", "सूचीकृत कम्पनी", "कारोबार", "ब्रोकर", "धितोपत्र", "merolagani", "sharesansar", "nepse")
 IPO_TERMS = ("आईपीओ", "आइपिओ", "हकप्रद", "एफपीओ", "बुक बिल्डिङ")
