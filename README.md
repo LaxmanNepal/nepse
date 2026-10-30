@@ -2,6 +2,12 @@
 
 A lightweight, GitHub Pages-compatible NEPSE market research dashboard and conservative technical screening engine.
 
+## Quality and safety checks
+
+- CI runs Python regression tests for non-finite values, quote consistency, and the fail-closed signal gate.
+- A stock is excluded from scoring if its own quote timestamp is missing or older than 15 minutes, even when the overall snapshot appears fresh.
+- Signals remain disabled until source verification is explicitly reviewed; a successful provider comparison alone does not authorize automatic activation.
+
 ## Dashboard
 
 The root page is `index.html`. The previous implementation is preserved under `/old`.
