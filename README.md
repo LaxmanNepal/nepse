@@ -23,7 +23,18 @@ The root page is `index.html`. The previous implementation is preserved under `/
 
 Source dataset: https://github.com/Shubhamnpk/yonepse
 Source cadence and attribution: https://shubhamnpk.github.io/yonepse/pages/docs.html and https://shubhamnpk.github.io/yonepse/pages/sources.html
-Candidate licensed intraday provider: ShareHub documents an all-stock price API with ~20-second refresh during trading; requires a licence and server-IP allowlisting: https://sharehubnepal.com/data/nepse-data-documentation/  
+Candidate licensed intraday provider: ShareHub documents an all-stock price API with ~20-second refresh during trading; requires a licence and server-IP allowlisting: https://sharehubnepal.com/data/nepse-data-documentation/
+
+### Licensed provider onboarding
+
+1. Obtain a ShareHub Data API licence that includes the `stock-prices` service. Ask ShareHub to confirm commercial/research redistribution terms and whether the API is sourced directly from NEPSE or republished.
+2. Provision a self-hosted GitHub Actions runner with a fixed outbound public IP. Register that IP with ShareHub. Do not use a GitHub-hosted runner for this provider because its outbound IP is not fixed for allowlisting.
+3. Add repository Actions secrets named `SHAREHUB_EMAIL` and `SHAREHUB_PASSWORD`. Never put credentials in code, Pages, logs, or committed files.
+4. Run **NEPSE licensed provider comparison** manually from Actions. It compares same-symbol LTPs and source timestamps and writes only aggregate results to `data/provider-comparison.json`.
+5. Repeat comparisons during multiple live trading sessions. Review outliers, coverage, timestamp alignment and provider terms. A `candidate_pass` is only a technical screening result, not proof of exchange accuracy.
+6. Keep `sourceVerification.status=unverified` and `tradeSignalsEnabled=false` until a human has reviewed the evidence. Never flip these flags merely because the script runs successfully.
+
+The comparison workflow does not replace the YONEPSE fallback or automatically promote ShareHub to production. This is deliberate: provider credentials, licensing, stable egress and independent accuracy checks are prerequisites, not assumptions.  
 Source API docs: https://shubhamnpk.github.io/yonepse/pages/docs.html
 
 ## Dashboard features
