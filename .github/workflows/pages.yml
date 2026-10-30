@@ -21,12 +21,16 @@ jobs:
       - name: Run Python data integrity regression tests
         run: python -m unittest discover -s tests -v
       - name: Validate dashboard JavaScript
-        run: node --check app.js
+        run: |
+          node --check app.js
+          node --check features.js
       - name: Validate required dashboard files
         run: |
           test -s index.html
           test -s app.css
           test -s app.js
+          test -s features.js
+          test -s features.css
   deploy:
     needs: validate
     environment:
