@@ -27,5 +27,5 @@ jobs:
           git add data/provider-comparison.json
           git diff --cached --quiet && exit 0
           git commit -m "chore(data): record licensed provider comparison"
-          git pull --rebase origin main
+          git pull --rebase -X theirs origin main
           git push
