@@ -1,0 +1,42 @@
+name: NEPSE market data refresh
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/**'
+      - '.github/workflows/nepse-data.yml'
+  schedule:
+    # Sunday–Thursday, roughly 10:45–15:45 Nepal time.
+    - cron: '*/5 5-10 * * 0-4'
+permissions:
+  contents: write
+concurrency:
+  group: nepse-market-data
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile Python modules
+        run: python -m compileall -q scripts
+      - name: Fetch and validate current market snapshot
+        run: python scripts/update_live_market.py
+      - name: Generate conservative screening signals
+        run: python scripts/generate_ai_signals.py
+      - name: Commit data snapshots
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data
+          if git diff --cached --quiet; then
+            echo "No market data changes."
+            exit 0
+          fi
+          git commit -m "chore: refresh NEPSE market data and signals"
+          git push
