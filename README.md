@@ -43,6 +43,21 @@ Candidate licensed intraday provider: ShareHub documents an all-stock price API 
 The comparison workflow does not replace the YONEPSE fallback or automatically promote ShareHub to production. This is deliberate: provider credentials, licensing, stable egress and independent accuracy checks are prerequisites, not assumptions.  
 Source API docs: https://shubhamnpk.github.io/yonepse/pages/docs.html
 
+## Investor workspace features
+
+The additional workspace is loaded by `features.js` and styled by `features.css`. It is static-hosting compatible and uses browser local storage for personal records.
+
+- Market lab: sector quote-change aggregation, top movers, turnover/change scanner, symbol comparison and CSV export.
+- Watchlist and threshold alerts: browser-local storage; alerts are checked when the workspace is opened and only while the page is running.
+- Portfolio ledger: manual BUY/SELL transactions, average-cost holdings, realized/unrealized P&L, estimated fee assumptions and CSV export.
+- Daily close-only SMA crossover backtest: next-session close execution, editable costs, benchmark buy-and-hold comparison, drawdown, win rate and trade log. Requires enough history for the selected symbol.
+- Trade journal: thesis, entry/exit, quantity, gross P&L and simple win-rate summary.
+- Trading-cost estimator: editable broker/SEBON/DP/other fee assumptions; defaults are placeholders and must be checked against current official schedules.
+- Risk/reward planner: position sizing and reward-to-risk calculations.
+- Data availability panel: displays source provenance and explicitly lists unavailable licensed or fundamental data integrations.
+
+**Privacy and persistence:** watchlists, alerts, portfolios and journals are saved in the current browser's local storage only. They are not uploaded, synchronized, backed up or shared across devices. Clearing browser site data can erase them. Do not use this local-only ledger as your sole accounting record.
+
 ## Dashboard features
 
 - NEPSE index and market breadth
@@ -51,7 +66,7 @@ Source API docs: https://shubhamnpk.github.io/yonepse/pages/docs.html
 - Indicator and history-aware scoring
 - Position sizing calculator based on fixed account risk
 - Stale-feed lockout, source timestamp display, full active-equity coverage and explicit missing-quote status
-- Responsive dark terminal interface; no frontend framework or paid API
+- Responsive GitHub Pages interface; no frontend framework or paid API
 
 ## Data and trading limitations
 
