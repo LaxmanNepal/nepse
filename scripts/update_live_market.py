@@ -9,7 +9,7 @@ from datetime import datetime, timezone
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
-BASE = "https://shubhamnpk.github.io/yonepse/data/"
+BASE = "https://raw.githubusercontent.com/Shubhamnpk/yonepse/main/data/"
 UA = "NEPSE-Pulse/7.0 (+https://apps.laxmannepal.com.np/nepse/)"
 
 import sys
