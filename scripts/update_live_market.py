@@ -64,10 +64,11 @@ def normalize_stock(row: dict, mapping: dict[str, str]) -> dict:
 
 
 def main():
-    stocks = fetch("nepse_data.json")
+    stocks = fetch("market/live.json")
     indices = fetch("market/indices.json")
     summary = fetch("market/summary.json")
     status = fetch("market/status.json")
+    ltp_manifest = fetch("ltp/manifest.json")
     sectors_raw = fetch("other/sector_codes.json")
     mapping = sector_map(sectors_raw)
 
@@ -82,9 +83,14 @@ def main():
     if not normalized:
         raise RuntimeError("No valid securities after normalization")
 
-    source_updated_at = status.get("last_checked") if isinstance(status, dict) else None
+    # Use the newest individual quote timestamp, not status.last_checked (which can lag).
+    quote_times = [parse_timestamp(row.get("lastUpdated")) for row in normalized if row.get("lastUpdated")]
+    quote_times = [stamp for stamp in quote_times if stamp is not None]
+    source_updated_at = max(quote_times).isoformat() if quote_times else None
+    if not source_updated_at:
+        source_updated_at = status.get("last_checked") if isinstance(status, dict) else None
     if not source_updated_at or parse_timestamp(source_updated_at) is None:
-        raise RuntimeError("YONEPSE returned an invalid or missing source timestamp")
+        raise RuntimeError("YONEPSE returned an invalid or missing quote timestamp")
 
     symbols = [row["symbol"] for row in normalized]
     duplicates = sorted({s for s in symbols if symbols.count(s) > 1})
@@ -128,6 +134,44 @@ def main():
     write_json(DATA / "live.json", live)
     write_json(DATA / "sectors.json", {"schemaVersion": 1, "updatedAt": now, "source": "YONEPSE", "sectors": mapping})
     write_json(DATA / "market-summary.json", {"schemaVersion": 1, "updatedAt": now, "source": "YONEPSE", "summary": summary})
+
+    # Build per-symbol daily close/volume histories from compact monthly LTP shards.
+    # Three recent months provide enough observations for 50-day indicators for liquid names.
+    months = ltp_manifest.get("availableMonths", []) if isinstance(ltp_manifest, dict) else []
+    months = [str(month) for month in months if isinstance(month, str)]
+    recent_months = months[-4:]
+    history_by_symbol: dict[str, list[dict]] = {}
+    for month in recent_months:
+        shard = fetch(f"ltp/monthly/{month}.json")
+        dates = shard.get("dates", [])
+        series = shard.get("series", {})
+        if not isinstance(dates, list) or not isinstance(series, dict):
+            print(f"Skipping malformed LTP shard: {month}")
+            continue
+        for symbol, points in series.items():
+            if not isinstance(points, list):
+                continue
+            bucket = history_by_symbol.setdefault(str(symbol).upper(), [])
+            for point in points:
+                if not isinstance(point, list) or len(point) < 3:
+                    continue
+                try:
+                    date_index = int(point[0])
+                    close = number(point[1])
+                    volume = number(point[2])
+                    if date_index < 0 or date_index >= len(dates) or close is None or close <= 0:
+                        continue
+                    bucket.append({"date": dates[date_index], "close": close, "volume": volume or 0})
+                except (TypeError, ValueError):
+                    continue
+    history_dir = DATA / "history"
+    history_dir.mkdir(parents=True, exist_ok=True)
+    for symbol, rows in history_by_symbol.items():
+        deduped = {row["date"]: row for row in rows}
+        ordered = [deduped[key] for key in sorted(deduped)]
+        if ordered:
+            write_json(history_dir / f"{symbol}.json", ordered)
+    print(f"Built daily history for {len(history_by_symbol)} symbols from {len(recent_months)} monthly shards.")
 
     history_path = DATA / "index-history.json"
     history = {"schemaVersion": 1, "index": "NEPSE", "updatedAt": now, "points": []}
