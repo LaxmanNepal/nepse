@@ -58,6 +58,15 @@ The additional workspace is loaded by `features.js` and styled by `features.css`
 
 **Privacy and persistence:** watchlists, alerts, portfolios and journals are saved in the current browser's local storage only. They are not uploaded, synchronized, backed up or shared across devices. Clearing browser site data can erase them. Do not use this local-only ledger as your sole accounting record.
 
+
+## Company research routes and Nepali news
+
+- Every equity row and signal links to a clean company route such as `/nepse/akjcl`. GitHub Pages uses `404.html` as the SPA fallback; the route resolves the symbol against the active-equity universe.
+- Company research shows the available quote snapshot, daily price history when present, technical indicators from the signal file, day range, turnover, volume, observed historical levels, and any supplied company fields. Missing fundamentals are shown as unavailable rather than inferred.
+- Each company page displays a status. Until the source is independently verified and signal generation is enabled, the status is **AVOID / NO TRADE — SOURCE UNVERIFIED**. This is a fail-closed data-quality warning, not a fundamental sell recommendation. When the source gate is passed, the page displays the signal engine's BUY/SELL/AVOID/WAIT classification and its methodology.
+- Nepali NEPSE news is published at `/nepse/news/`. A scheduled GitHub Actions workflow collects Nepali-language headlines from Google News RSS searches focused on NEPSE, listed companies, IPOs, rights shares, dividends and market activity. Original publisher/source attribution and article links are retained. The feed is filtered to Devanagari-language headlines and NEPSE-related terms; coverage is not guaranteed to be exhaustive.
+- News is an aggregation feed, not original reporting. Users should open the original publisher link and verify material announcements against official NEPSE/company disclosures.
+
 ## Dashboard features
 
 - NEPSE index and market breadth
