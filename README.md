@@ -8,25 +8,28 @@ The root page is `index.html`. The previous implementation is preserved under `/
 
 ## Data pipeline
 
-- Reads the YONEPSE public static dataset.
-- Normalizes the daily stock snapshot and validates source rows.
-- Quarantines isolated malformed stock rows; rejects a feed when too many rows fail quality checks.
+- Uses YONEPSE's active-equity securities master as the coverage universe, not only the daily traded-stock snapshot.
+- Keeps every active listed equity visible; unavailable quotes remain null and are never converted to zero.
+- Quarantines invalid quote fields without deleting the listed security; writes data/data-quality-report.json with coverage and validation counts.
+- Preserves source quote timestamps separately from pipeline generation time.
 - Imports the latest four monthly LTP shards into `data/history/{SYMBOL}.json`.
 - Calculates indicators only when sufficient daily history exists.
 - Writes `data/live.json` and `data/ai-signals.json`.
-- GitHub Actions refreshes on a five-minute schedule during the approximate NEPSE session and on manual/push triggers.
+- GitHub Actions attempts polling every five minutes during the configured session. YONEPSE documentation currently describes hourly upstream updates, so polling more often does not make the source five-minute or real-time.
 
-Source dataset: https://github.com/Shubhamnpk/yonepse  
+Source dataset: https://github.com/Shubhamnpk/yonepse
+Source cadence and attribution: https://shubhamnpk.github.io/yonepse/pages/docs.html and https://shubhamnpk.github.io/yonepse/pages/sources.html
+Potential licensed alternative: ShareHub documents an all-stock price API requiring a licensed token and server-IP allowlisting: https://sharehubnepal.com/data/nepse-data-documentation/  
 Source API docs: https://shubhamnpk.github.io/yonepse/pages/docs.html
 
 ## Dashboard features
 
 - NEPSE index and market breadth
-- Searchable, sortable stock screener with pagination
+- Searchable, sortable stock screener with pagination, including active listed equities without a current quote
 - BUY confirmation / WATCH / WAIT / AVOID / SELL-review screening
 - Indicator and history-aware scoring
 - Position sizing calculator based on fixed account risk
-- Stale-feed lockout and source timestamp display
+- Stale-feed lockout, source timestamp display, full active-equity coverage and explicit missing-quote status
 - Responsive dark terminal interface; no frontend framework or paid API
 
 ## Data and trading limitations
