@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-30T23:23:05.148800+00:00",
+  "updatedAt": "2026-10-30T23:41:08.508619+00:00",
   "language": "Nepali headlines only",
   "scope": "NEPSE and listed-company news",
   "items": [
@@ -12,7 +12,8 @@
       "published": "Fri, 30 Oct 2026 09:34:00 GMT",
       "category": "market",
       "categoryLabel": "नेप्से / बजार",
-      "symbols": []
+      "symbols": [],
+      "imageUrl": "https://equitynepal.com/wp-content/uploads/2025/08/nepse1706003501.jpg"
     },
     {
       "title": "शुक्रबार ५.४५ अंकले घट्यो नेप्से परिसूचक",
@@ -22,7 +23,8 @@
       "published": "Fri, 30 Oct 2026 10:13:00 GMT",
       "category": "market",
       "categoryLabel": "नेप्से / बजार",
-      "symbols": []
+      "symbols": [],
+      "imageUrl": "https://arthakhabar.com/wp-content/uploads/2026/06/nepse.jpg"
     }
   ]
 }
