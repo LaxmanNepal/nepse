@@ -1,0 +1,31 @@
+name: NEPSE licensed provider comparison
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  compare:
+    # Requires a self-hosted runner with a static outbound IP registered with ShareHub.
+    runs-on: [self-hosted, nepse-data]
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile comparison probe
+        run: python -m py_compile scripts/compare_sharehub.py
+      - name: Compare licensed ShareHub quotes
+        env:
+          SHAREHUB_EMAIL: ${{ secrets.SHAREHUB_EMAIL }}
+          SHAREHUB_PASSWORD: ${{ secrets.SHAREHUB_PASSWORD }}
+        run: python scripts/compare_sharehub.py
+      - name: Commit aggregate comparison report
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/provider-comparison.json
+          git diff --cached --quiet && exit 0
+          git commit -m "chore(data): record licensed provider comparison"
+          git pull --rebase origin main
+          git push
