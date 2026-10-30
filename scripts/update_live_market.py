@@ -143,6 +143,8 @@ def main():
         "sourceUpdatedAt": source_updated_at,
         "upstreamDocumentedCadence": "hourly during market hours",
         "pollingCadence": "GitHub Actions attempts every 5 minutes; upstream cadence is the limiting factor",
+        "sourceVerification": {"status": "unverified", "checkedAgainstIndependentProvider": False, "note": "YONEPSE is a third-party republisher. No independent licensed feed comparison has passed."},
+        "tradeSignalsEnabled": False,
         "market": status, "index": nepse, "summary": summary,
         "coverage": {
             "masterSource": "YONEPSE data/other/securities.json",
