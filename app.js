@@ -8,12 +8,15 @@ const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&
 function dateText(d){return Number.isNaN(d.getTime())?"Unknown":d.toLocaleString("en-GB",{dateStyle:"medium",timeStyle:"short",timeZone:"Asia/Kathmandu"})+" NPT"}
 function stamp(x){return new Date(x?.sourceUpdatedAt||x?.updatedAt||x?.timestamp||0)}
 function freshness(l){
- const d=stamp(l),age=(Date.now()-d.getTime())/60000,stale=!Number.isFinite(age)||age>FRESH||age< -5;
- $("feed-label").textContent=stale?"OLD SNAPSHOT":"RECENT SNAPSHOT";
- $("feed-time").textContent="Updated "+dateText(d);
- $("market-state").textContent=stale?"NOT LIVE":"RECENT SNAPSHOT";
- $("market-state").style.color=stale?"#f5c56b":"#31d6a0";
- if(stale){$("stale-banner").classList.remove("hidden");$("stale-message").textContent="Source data timestamp: "+dateText(d)+" ("+(Number.isFinite(age)?Math.max(0,age).toFixed(0)+" minutes old":"timestamp unavailable") +"). Active trade calls are disabled.";$("signal-status").innerHTML='<div class="empty-icon">⚠</div><b>Trading signals locked — stale feed</b><p>Historical prices are not live quotes. Do not place orders from this snapshot.</p>'}
+ const d=stamp(l),age=(Date.now()-d.getTime())/60000;
+ const verified=(l.sourceVerification||{}).status==="verified"&&l.tradeSignalsEnabled===true;
+ const fresh=Number.isFinite(age)&&age<=FRESH&&age>=-5;
+ const stale=!fresh||!verified;
+ $("feed-label").textContent=!verified?"UNVERIFIED SOURCE":stale?"OLD SNAPSHOT":"VERIFIED FEED";
+ $("feed-time").textContent="Source timestamp "+dateText(d);
+ $("market-state").textContent=!verified?"SIGNALS LOCKED":stale?"NOT LIVE":"VERIFIED";
+ $("market-state").style.color=stale?"#b7791f":"#16865b";
+ if(stale){$("stale-banner").classList.remove("hidden");$("stale-message").textContent=!verified?"Source is not independently verified. Market values are for reference only; BUY/SELL signals are disabled. Source timestamp: "+dateText(d):"Source timestamp: "+dateText(d)+" ("+(Number.isFinite(age)?Math.max(0,age).toFixed(0)+" minutes old":"timestamp unavailable")+"). Active trade calls are disabled.";$("signal-status").innerHTML='<div class="empty-icon">⚠</div><b>Trading signals locked — source not verified</b><p>Quotes are reference snapshots only. No BUY, SELL or WATCH recommendations are permitted until a licensed source passes independent comparison and freshness checks.</p>'}
  else $("stale-banner").classList.add("hidden");
  return !stale;
 }
@@ -81,6 +84,7 @@ function risk(){
  const qty=Math.floor(c*p/100/(e-s));$("shares").textContent=fmt(qty,0);$("risk-amount").textContent="NPR "+fmt(qty*(e-s),0);$("position-value").textContent="NPR "+fmt(qty*e,0);
 }
 function renderSignals(data){
+ if(data.status==="LOCKED_UNVERIFIED_SOURCE"){ $("signal-status").innerHTML='<div class="empty-icon">⚠</div><b>Trade engine locked</b><p>Independent source verification has not passed. No actionable trade calls are published.</p>'; return; }
  const list=Array.isArray(data.signals)?data.signals:[];
  const buy=list.filter(x=>x.action==="BUY ON CONFIRMATION"),watch=list.filter(x=>x.action==="WATCH BREAKOUT"),sell=list.filter(x=>String(x.action||"").startsWith("SELL")),avoid=list.filter(x=>x.action==="AVOID"),wait=list.filter(x=>x.action==="WAIT");
  const top=[...buy,...watch,...sell,...avoid,...wait].slice(0,10);
