@@ -12,7 +12,7 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: nepse-market-data
+  group: nepse-data-updates
   cancel-in-progress: false
 jobs:
   refresh:
