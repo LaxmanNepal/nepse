@@ -238,6 +238,24 @@ def score_stock(stock):
 def main():
     live = json.loads(LIVE_PATH.read_text(encoding="utf-8"))
     stocks = live.get("stocks", [])
+    # Fail closed until the source has passed an independent provider comparison.
+    verified = (live.get("sourceVerification") or {}).get("status") == "verified"
+    enabled = live.get("tradeSignalsEnabled") is True and verified
+    if not enabled:
+        output = {
+            "schemaVersion": 3,
+            "generatedAt": datetime.now(timezone.utc).isoformat(),
+            "sourceUpdatedAt": live.get("sourceUpdatedAt"),
+            "source": live.get("source"),
+            "status": "LOCKED_UNVERIFIED_SOURCE",
+            "engine": "NEPSE Pulse fail-closed screening engine",
+            "warning": "No BUY/SELL/WATCH calls are published. The source has not passed independent provider verification.",
+            "counts": {"stocks_scored": 0, "buy_confirmation": 0, "watch_breakout": 0, "wait": 0, "avoid": 0, "sell_review": 0},
+            "signals": [], "topBuy": [], "topWatch": [], "topSell": [], "topAvoid": []
+        }
+        OUT_PATH.write_text(json.dumps(output, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
+        print("Signals locked: source is not independently verified")
+        return
     signals = [result for stock in stocks if isinstance(stock, dict) for result in [score_stock(stock)] if result]
     priority = {"BUY ON CONFIRMATION": 0, "WATCH BREAKOUT": 1, "WAIT": 2, "AVOID": 3, "SELL / REDUCE (REVIEW HOLDING)": 4}
     signals.sort(key=lambda x: (priority.get(x["action"], 9), -x["score"], -(x.get("turnover") or 0)))
