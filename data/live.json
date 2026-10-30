@@ -1,10 +1,16 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-10-30T22:54:32.229656+00:00",
+  "updatedAt": "2026-10-30T22:56:16.832818+00:00",
   "source": "YONEPSE public dataset; not independently exchange-verified",
   "sourceUpdatedAt": "2026-10-30T09:14:59.997144+00:00",
   "upstreamDocumentedCadence": "hourly during market hours",
   "pollingCadence": "GitHub Actions attempts every 5 minutes; upstream cadence is the limiting factor",
+  "sourceVerification": {
+    "status": "unverified",
+    "checkedAgainstIndependentProvider": false,
+    "note": "YONEPSE is a third-party republisher. No independent licensed feed comparison has passed."
+  },
+  "tradeSignalsEnabled": false,
   "market": {
     "is_open": false,
     "last_checked": "2026-10-30T10:17:02.050300"
