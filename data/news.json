@@ -1,18 +1,7 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-30T23:19:43.880453+00:00",
+  "updatedAt": "2026-10-30T23:20:29.421198+00:00",
   "language": "Nepali headlines only",
   "scope": "NEPSE and listed-company news",
-  "items": [
-    {
-      "title": "रिलायन्स स्पिनिङ्ग मिल्सको आईपीओ आजदेखि खुला, प्रतिकित्ता मूल्य ८२०.८० रुपैयाँ - NEPSE Trading",
-      "summary": "रिलायन्स स्पिनिङ्ग मिल्सको आईपीओ आजदेखि खुला, प्रतिकित्ता मूल्य ८२०.८० रुपैयाँ NEPSE Trading",
-      "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQX0s5S0ZBb3ZHUWRpYVBmUktVMEphaTZxdUZwaGtOVGRkZmN3WUt1S0FjQldBNmFQMnVsbmMxVk5LNzJqNWNma0Z5RXdXMENMYXpNM2lFaW1FTXRUQjcxT3RhTjM1dHJBWVlIRmZKRWp6QWVnNUhwMGlyemtsT3cwNmRzeG94TGRiZzBCSlUwUm9KTV9vTlV2QXR1R3RrYnZhVUNWS3VoR3RvWXBBNWh0TmsxeFBiUWt2ZXItUThoYmZqQk1VZmxCaXdFODdIeVlZc3c?oc=5",
-      "source": "NEPSE Trading",
-      "published": "Mon, 22 Dec 2025 08:00:00 GMT",
-      "category": "ipo",
-      "categoryLabel": "आईपीओ / हकप्रद",
-      "symbols": []
-    }
-  ]
+  "items": []
 }
