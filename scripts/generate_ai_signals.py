@@ -121,7 +121,16 @@ def score_stock(stock):
     high, low = number(stock.get("high")), number(stock.get("low"))
     pct = number(stock.get("percent_change", stock.get("changePercent")))
     volume, turnover = number(stock.get("volume")), number(stock.get("turnover"))
+    if stock.get("quoteStatus") not in (None, "available"):
+        return None
+    if stock.get("listingStatus") not in (None, "A"):
+        return None
     if not ltp or ltp <= 0 or not previous or previous <= 0 or high is None or low is None or high < low:
+        return None
+    # A fresh global snapshot can still contain an old quote for an individual stock.
+    from data_quality import parse_timestamp
+    quote_time = parse_timestamp(stock.get("last_updated") or stock.get("lastUpdated"))
+    if quote_time is None or (datetime.now(timezone.utc) - quote_time).total_seconds() > 900:
         return None
     if (turnover or 0) < 100_000 or (volume or 0) < 100:
         return None
