@@ -97,7 +97,7 @@ def main():
     if quality_errors:
         raise RuntimeError("Source data failed validation: " + "; ".join(quality_errors[:20]))
 
-    nepse = next((x for x in indices if isinstance(x, dict) and x.get("index") == "NEPSE"), None)
+    nepse = next((x for x in indices if isinstance(x, dict) and x.get("index") in ("NEPSE", "NEPSE Index")), None)
     live = {
         "schemaVersion": 1,
         "updatedAt": now,
