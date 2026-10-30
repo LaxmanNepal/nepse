@@ -11,7 +11,7 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: nepse-news
+  group: nepse-data-updates
   cancel-in-progress: false
 jobs:
   refresh:
