@@ -1,30 +1,19 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-01T07:41:23.410137+00:00",
+  "updatedAt": "2026-11-01T15:15:39.468501+00:00",
   "language": "Nepali headlines only",
   "scope": "NEPSE and listed-company news",
   "items": [
     {
-      "title": "५.४५ अंकले घट्यो नेप्से, बढ्यो कारोबार रकम",
-      "summary": "शुक्रबार नेप्से परिसूचक ५.४५ अंकले घटेर २,६९०.१५ विन्दुमा बन्द भयो। ३४८ कम्पनीका २ करोड २८ लाखभन्दा बढी कित्ता कारोबार हुँदा कुल कारोबार रकम करिब ८ अर्ब ८९ करोड रुपैयाँ पुगेको थियो।",
-      "url": "https://equitynepal.com/2026/10/30/106952/",
-      "source": "Equity Nepal",
-      "published": "Fri, 30 Oct 2026 09:34:00 GMT",
-      "category": "market",
-      "categoryLabel": "नेप्से / बजार",
+      "title": "सिद्धार्थ बैंकको तेस्रो त्रैमासिक वित्तीय विवरण तथा लाभांश योग्य मुनाफा - NEPSE Trading",
+      "summary": "सिद्धार्थ बैंकको तेस्रो त्रैमासिक वित्तीय विवरण तथा लाभांश योग्य मुनाफा NEPSE Trading",
+      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNT08xalBoOEw3Y2ppVDdPYUROV2hrYm5wMWtrdXdhS1ZYZjZkWFJHVUJteEFhT21HWTQ2T1M5SHRfWngyNExDU2QtX2VsNUN6RGdDdlZ0V3FzQWtLYndkamwyaWd4M1lNWEhTb1J5a1lvMVpmN0FNYjREU2libVdVN09nT1l6Rk5PTjhDM3NuUFJTRFNCekE2NnBXMEx2SmlMWFRjVUN0dE9zRXhuU2tzSg?oc=5",
+      "source": "NEPSE Trading",
+      "published": "Sun, 01 Nov 2026 08:24:41 GMT",
+      "category": "dividend",
+      "categoryLabel": "लाभांश / बोनस",
       "symbols": [],
-      "imageUrl": "https://equitynepal.com/wp-content/uploads/2025/08/nepse1706003501.jpg"
-    },
-    {
-      "title": "शुक्रबार ५.४५ अंकले घट्यो नेप्से परिसूचक",
-      "summary": "शुक्रबार शेयर बजार मापक नेप्से परिसूचक सामान्य अंकले घटेर बन्द भयो। कारोबार भएका कम्पनीमध्ये १०२ कम्पनीको मूल्य बढ्दा १६९ कम्पनीको मूल्य घटेको र कारोबार रकम ८ अर्ब ८९ करोड रुपैयाँभन्दा माथि पुगेको विवरण प्रकाशित भएको छ।",
-      "url": "https://arthakhabar.com/en/2026/10/30/122192/",
-      "source": "अर्थ खबर",
-      "published": "Fri, 30 Oct 2026 10:13:00 GMT",
-      "category": "market",
-      "categoryLabel": "नेप्से / बजार",
-      "symbols": [],
-      "imageUrl": "https://arthakhabar.com/wp-content/uploads/2026/06/nepse.jpg"
+      "imageUrl": ""
     }
   ]
 }
