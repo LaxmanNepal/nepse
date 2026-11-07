@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-07T02:54:42.477284+00:00",
+  "updatedAt": "2026-11-07T10:22:51.118561+00:00",
   "language": "Nepali headlines only",
   "scope": "NEPSE and listed-company news",
   "items": [
@@ -12,17 +12,6 @@
       "published": "Sun, 01 Nov 2026 08:24:41 GMT",
       "category": "dividend",
       "categoryLabel": "लाभांश / बोनस",
-      "symbols": [],
-      "imageUrl": ""
-    },
-    {
-      "title": "माछापुछ्रे बैंकको १२% हकप्रद सेयरमा कहिले हुने भयो बुक क्लोज ? - Nepali Paisa",
-      "summary": "माछापुछ्रे बैंकको १२% हकप्रद सेयरमा कहिले हुने भयो बुक क्लोज ? Nepali Paisa",
-      "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQanRCYVBiTnQ5djVCT0xrVTNSNjJib3Y0bTVHUGhuN2dQeDVLbnVqT0E3N1dGU0hObXUxNnhxNXFPN2E3elhXeDlweUU0ZFhheTNOS3pxTnhFcXZyZWp6bEZoTVRvRHBpb1lKTjB0TkZYcU9wUmRBNWRGWEJDc09ka1YtNmJFdw?oc=5",
-      "source": "Nepali Paisa",
-      "published": "Fri, 06 Nov 2026 12:03:59 GMT",
-      "category": "ipo",
-      "categoryLabel": "आईपीओ / हकप्रद",
       "symbols": [],
       "imageUrl": ""
     }
