@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-11-08T11:40:24.352655+00:00",
+  "updatedAt": "2026-11-09T13:36:14.283384+00:00",
   "source": "YONEPSE public dataset; not independently exchange-verified",
   "sourceUpdatedAt": "2026-11-06T09:14:59.958093+00:00",
   "upstreamDocumentedCadence": "hourly during market hours",
@@ -13,13 +13,13 @@
   "tradeSignalsEnabled": false,
   "market": {
     "is_open": false,
-    "last_checked": "2026-11-06T10:16:56.982133"
+    "last_checked": "2026-11-09T10:16:59.339966"
   },
   "index": {
     "id": 58,
     "auditId": null,
     "exchangeIndexId": null,
-    "generatedTime": "2026-11-06T15:17:46.49",
+    "generatedTime": null,
     "index": "NEPSE Index",
     "close": 2652.58,
     "high": 2661.4451,
