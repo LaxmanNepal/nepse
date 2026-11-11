@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-11-10T13:14:16.611349+00:00",
+  "updatedAt": "2026-11-11T12:25:22.366617+00:00",
   "source": "YONEPSE public dataset; not independently exchange-verified",
   "sourceUpdatedAt": "2026-11-06T09:14:59.958093+00:00",
   "upstreamDocumentedCadence": "hourly during market hours",
@@ -13,7 +13,7 @@
   "tradeSignalsEnabled": false,
   "market": {
     "is_open": false,
-    "last_checked": "2026-11-10T10:17:01.464658"
+    "last_checked": "2026-11-11T10:16:56.502006"
   },
   "index": {
     "id": 58,
