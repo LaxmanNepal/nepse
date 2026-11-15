@@ -1,7 +1,7 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-11-12T13:30:40.316704+00:00",
-  "sourceUpdatedAt": "2026-11-06T09:14:59.958093+00:00",
+  "generatedAt": "2026-11-15T12:29:11.719461+00:00",
+  "sourceUpdatedAt": "2026-11-13T09:14:59.986834+00:00",
   "source": "YONEPSE public dataset; not independently exchange-verified",
   "status": "LOCKED_UNVERIFIED_SOURCE",
   "engine": "NEPSE Pulse fail-closed screening engine",
