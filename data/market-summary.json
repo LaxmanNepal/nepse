@@ -1,31 +1,31 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-17T14:05:38.346571+00:00",
+  "updatedAt": "2026-11-18T13:39:20.756867+00:00",
   "source": "YONEPSE",
   "summary": [
     {
       "detail": "Total Turnover Rs:",
-      "value": 4731178017.24
+      "value": 4154925107.54
     },
     {
       "detail": "Total Traded Shares",
-      "value": 11293450.0
+      "value": 10162605.0
     },
     {
       "detail": "Total Transactions",
-      "value": 48788.0
+      "value": 41627.0
     },
     {
       "detail": "Total Scrips Traded",
-      "value": 353.0
+      "value": 347.0
     },
     {
       "detail": "Total Market Capitalization Rs:",
-      "value": 4537681417248.0
+      "value": 4518653395940.7
     },
     {
       "detail": "Total Float Market Capitalization Rs:",
-      "value": 1546660002925.9
+      "value": 1541879661410.3
     }
   ]
 }
