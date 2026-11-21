@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-20T21:14:10.662600+00:00",
+  "updatedAt": "2026-11-21T02:29:33.223865+00:00",
   "language": "Nepali headlines only",
   "scope": "NEPSE and listed-company news",
   "items": [
@@ -54,6 +54,17 @@
       "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxObnpNdHhWVGFDdnE3RDFOYnoyb19kNnpXd1AtYk5pUTRUQmpRems0WkJvMU9BdFhiVFJrTGc2bjh2WExYWW1ucFJnd2Q5aDNYSUo4bVlOR3NJdnN5bFFNSFJndDMzRUd2XzVPa0k5Y2NJYkpHdXhUWkVSdWNEeERaMllmZy1XZWMxbTdJbjI2UWlFN1hoN3J4bV9ORFZKcWp6eVUtamk3TkJLZ2xnRGpQcWNqOVoyV3JpQk9NbG04cW5OdkU?oc=5",
       "source": "Hamro Patro",
       "published": "Tue, 17 Nov 2026 09:56:00 GMT",
+      "category": "market",
+      "categoryLabel": "नेप्से / बजार",
+      "symbols": [],
+      "imageUrl": ""
+    },
+    {
+      "title": "नेप्से परिसूचक झिनो अङ्कले बढ्यो - Hamro Patro",
+      "summary": "नेप्से परिसूचक झिनो अङ्कले बढ्यो Hamro Patro",
+      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQUXNyQlp3WDEtSTQxbmw5ekN3MHVZVThfMnVaN3F6VTZab0MzbU53TThMdFN6endfQmdvWk55eVdvdjA4OE9sVExQNExDUXlub2NzXzRvZWdyZGhiSnVURHRjYlhrMmRPbnFuZkVsY3JnaUFqaHNoZVU1RTZ2bkUxUWxfbnJPMkhuMHQ4YkNIa1FDcmx2aEJHSmF6M1UtS1h6?oc=5",
+      "source": "Hamro Patro",
+      "published": "Thu, 19 Nov 2026 10:10:09 GMT",
       "category": "market",
       "categoryLabel": "नेप्से / बजार",
       "symbols": [],
