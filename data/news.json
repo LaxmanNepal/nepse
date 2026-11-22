@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-22T07:00:33.099512+00:00",
+  "updatedAt": "2026-11-22T15:26:33.457019+00:00",
   "language": "Nepali headlines only",
   "scope": "NEPSE and listed-company news",
   "items": [
@@ -76,6 +76,17 @@
       "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQUXNyQlp3WDEtSTQxbmw5ekN3MHVZVThfMnVaN3F6VTZab0MzbU53TThMdFN6endfQmdvWk55eVdvdjA4OE9sVExQNExDUXlub2NzXzRvZWdyZGhiSnVURHRjYlhrMmRPbnFuZkVsY3JnaUFqaHNoZVU1RTZ2bkUxUWxfbnJPMkhuMHQ4YkNIa1FDcmx2aEJHSmF6M1UtS1h6?oc=5",
       "source": "Hamro Patro",
       "published": "Thu, 19 Nov 2026 10:10:09 GMT",
+      "category": "market",
+      "categoryLabel": "नेप्से / बजार",
+      "symbols": [],
+      "imageUrl": ""
+    },
+    {
+      "title": "नेप्सेमा ७ अंकको गिरावट, कारोबार रकम भने बढ्यो - Hamro Patro",
+      "summary": "नेप्सेमा ७ अंकको गिरावट, कारोबार रकम भने बढ्यो Hamro Patro",
+      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQRlpYWjRYMGVoUy16aEZSbG4yYnNDOGluMElua0taVnlxUnFaS1dVRDFDNHFvTVF4Xzc1Q19GcVBGU0tjZ3E4MnMzRGdmTEhmUW5QMEJNdVY5N0tmSFYzbDhVUFcyUjd2eWRUUWFtTU9vdlNsUjR0cjdoZkprQ3d0WWxxazJvT1FGVFV6bklLUmxpbDU3a0xfRVJYQVUxWjZpYkhVdnNyQlg3c1dMWHI5c3JQZw?oc=5",
+      "source": "Hamro Patro",
+      "published": "Fri, 20 Nov 2026 10:45:00 GMT",
       "category": "market",
       "categoryLabel": "नेप्से / बजार",
       "symbols": [],
