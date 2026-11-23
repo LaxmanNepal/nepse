@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-22T21:53:05.802413+00:00",
+  "updatedAt": "2026-11-23T02:53:32.901108+00:00",
   "language": "Nepali headlines only",
   "scope": "NEPSE and listed-company news",
   "items": [
@@ -104,22 +104,33 @@
       "imageUrl": ""
     },
     {
-      "title": "नेप्सेमा ७ अंकको गिरावट, कारोबार रकम भने बढ्यो - Hamro Patro",
-      "summary": "नेप्सेमा ७ अंकको गिरावट, कारोबार रकम भने बढ्यो Hamro Patro",
-      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQRlpYWjRYMGVoUy16aEZSbG4yYnNDOGluMElua0taVnlxUnFaS1dVRDFDNHFvTVF4Xzc1Q19GcVBGU0tjZ3E4MnMzRGdmTEhmUW5QMEJNdVY5N0tmSFYzbDhVUFcyUjd2eWRUUWFtTU9vdlNsUjR0cjdoZkprQ3d0WWxxazJvT1FGVFV6bklLUmxpbDU3a0xfRVJYQVUxWjZpYkhVdnNyQlg3c1dMWHI5c3JQZw?oc=5",
+      "title": "नेप्से ७ अंकले घट्यो - Hamro Patro",
+      "summary": "नेप्से ७ अंकले घट्यो Hamro Patro",
+      "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQcnM2eFFJeVg2alVMekdpQ1pFU0VRM05TZ18yTnBXMi1RV2xUZV96bjZFVjRPYVpac2dFYnNCWWhGXzlsYXBwWU43eGw0NXRWTXZPeUx2QUR5dDFmbHY2YW1TSEFRM0R0aGRDME5zQ2ZfQkhGUUFRTFQtZ19yV1lXWEJUcGxHYUFDaS1B?oc=5",
       "source": "Hamro Patro",
-      "published": "Fri, 20 Nov 2026 10:45:00 GMT",
+      "published": "Fri, 20 Nov 2026 10:29:18 GMT",
       "category": "market",
       "categoryLabel": "नेप्से / बजार",
       "symbols": [],
       "imageUrl": ""
     },
     {
-      "title": "नेप्से परिसूचक सामान्य अङ्कले घट्यो - Hamro Patro",
-      "summary": "नेप्से परिसूचक सामान्य अङ्कले घट्यो Hamro Patro",
-      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOUXhObGtoNUphS3QxMEduZkhkZ2p1YW9zajVocDYtTVlwRnFjcnUxNTNmZ2dFUXBjOVFxVDVNLUVMdEd3YzlBVk1NU3ZUNGk5Tk9ZbHlFX1JpUTF6WXdDVkRPbHR6c0dYNDZ1bzh0MXZNYmNXMVdIcUI2dHUzUndIdnhscnJJTWFxN3puckVVQ29YMmJPQy05RFJfalVfZ29LQXc?oc=5",
+      "title": "नेप्सेमा ७ अंकको गिरावट : बैंकिङबाहेक सबै समूह घटे, दोल्ती पावर कम्पनीको बढी कारोबार - Hamro Patro",
+      "summary": "नेप्सेमा ७ अंकको गिरावट : बैंकिङबाहेक सबै समूह घटे, दोल्ती पावर कम्पनीको बढी कारोबार Hamro Patro",
+      "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPYTZ1djFvZktzRklZQWNXVGVicWticmx5dVlmZm5VWWlDMXBYcnVDczZRZjF3ZWwyZnFWcjZlNFVmLWR4RkJmTUVHUUJNTnNuX2NXM2E1MzNWQkpmbVdXX0R6elZxQ0ZyaVhpc1IxY2NqU29kMmlDRkY2S2l4dml0Z05EbGtieXUwWDU5QjNTSmE1RG5XZlo5RHhRLWVacW5pRDczbmVZYmE3YzhDRkNSaTVXMWxFS3JlWWRaNmh2WUhjU0hkSGFpYjlxcw?oc=5",
       "source": "Hamro Patro",
-      "published": "Fri, 20 Nov 2026 10:06:57 GMT",
+      "published": "Fri, 20 Nov 2026 10:20:54 GMT",
+      "category": "company",
+      "categoryLabel": "कम्पनी समाचार",
+      "symbols": [],
+      "imageUrl": ""
+    },
+    {
+      "title": "सात अंकले घट्यो नेप्से, कारोबार पौने चार अर्ब - Hamro Patro",
+      "summary": "सात अंकले घट्यो नेप्से, कारोबार पौने चार अर्ब Hamro Patro",
+      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPUGQxeVBfMS1HOWpjNFkwQThKYXhTaXEtY0VWQWZxVUxvMzFSZVpCZWhsMGVoMWIwckJacEozU3ZGd25yS3RObWF0S2dZaW1qZGdjYkNxVXFrazV1SklRWkVfNWpuVzZGenpTZmF4RHR6WmJOeHJxdmRfV3ZqeWxQX2VKWEoxaDlnN05uVG9rSERxa3YtU3NHanNpcV92dkkwcTNpVHVvTzBFVXk3?oc=5",
+      "source": "Hamro Patro",
+      "published": "Fri, 20 Nov 2026 09:45:43 GMT",
       "category": "market",
       "categoryLabel": "नेप्से / बजार",
       "symbols": [],
