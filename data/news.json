@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-26T19:41:59.510134+00:00",
+  "updatedAt": "2026-11-27T02:55:46.254017+00:00",
   "language": "Nepali headlines only",
   "scope": "NEPSE and listed-company news",
   "items": [
@@ -43,6 +43,17 @@
       "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQTmFTbXFCbFdMMHZ4VnBOd2M1cWg0Ty1vT1o0VDhVT0VTZDVvUDBOaF8ya183RUlJNWJaQW1zTUh6cUl4cno4em56NkJ3QWViR1hrVnZOdElyUXY5bmhONVNJOUVBcXJBUmsyM2d4UUdrS00yRk1CVUNZZmlTTWx2VjFUZmZNLXJLN0V1NXctdmliUWtUc1dqdjlTdF8wYllsS3gzbThQdw?oc=5",
       "source": "Hamro Patro",
       "published": "Wed, 25 Nov 2026 05:13:00 GMT",
+      "category": "market",
+      "categoryLabel": "नेप्से / बजार",
+      "symbols": [],
+      "imageUrl": ""
+    },
+    {
+      "title": "प्रिओपनमै बजारमा हरियाली, नेप्से २६४४ विन्दुमा उक्लियो - Hamro Patro",
+      "summary": "प्रिओपनमै बजारमा हरियाली, नेप्से २६४४ विन्दुमा उक्लियो Hamro Patro",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPUjNFNFRCMHNLY2JyTE5SNWFTdjZWWThkZ0RhRnV5NjNQUEJCUmprQ2tYZFExZDhfOTdwNkRyRm5RMU43MmUzMmQyWUdqdkNCUE1IS0RFOFNPQm5YbUJXVElpOWNlbkJQR2thWXBRSW1RMlhxYVRIOXRKV21PY2pPT0xfOWJVczduYjlmcGFNaDR3Y2prZW1Zc0hHejRjd3o1ZVFDdlhDQUpwM2xjR2NVYTdBbS1ZcGp5?oc=5",
+      "source": "Hamro Patro",
+      "published": "Wed, 25 Nov 2026 05:12:40 GMT",
       "category": "market",
       "categoryLabel": "नेप्से / बजार",
       "symbols": [],
@@ -214,17 +225,6 @@
       "imageUrl": ""
     },
     {
-      "title": "सामान्य अंकले बढ्यो नेप्से, कारोबार रकम भने घट्यो - Hamro Patro",
-      "summary": "सामान्य अंकले बढ्यो नेप्से, कारोबार रकम भने घट्यो Hamro Patro",
-      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQWUJTS05WSUJTdWxQQWpLeGhKOWplV1FsbzgzSl9YUC1iTVo2djRFemR1ZEhIcjR0ZUlqOG5QNEZZNXMxWmI5THg4ZkRzLVpKWkpFSldyV2UzVG1TT2hIZ0tJZnJkTzBtdEkta0V0b05ZMTNTY3NocWRjdUM1SVFkNnhNejh2UUNaYXZWSnJwOUpTd1lMNHNfd0Rkcm1xZTN3eEFDZ0RGRU5lLU9aWmVNTTFUWFB3QQ?oc=5",
-      "source": "Hamro Patro",
-      "published": "Thu, 19 Nov 2026 09:37:45 GMT",
-      "category": "market",
-      "categoryLabel": "नेप्से / बजार",
-      "symbols": [],
-      "imageUrl": ""
-    },
-    {
       "title": "बिहीबार ३.६२ अंकले बढ्यो नेप्से परिसूचक - Hamro Patro",
       "summary": "बिहीबार ३.६२ अंकले बढ्यो नेप्से परिसूचक Hamro Patro",
       "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPbW9DdER5VkxoRmZzbVoyREl3OUdIMW1MckIwTm5SMmhQRXhkbGNQVW1FQi1zSWNTb3czbXlmSmg5Y1NZTWlNc2t4N0UtZzQwTGRQUTlpYmFlY0UyR2dCa21CUHNSOWtqMmthM2hsazFkY0VDZkwzaVBLTTM2N0RzOVNBWWluVy1jRkRvQmV6aWN6aXF5V1RqN2Y2Z0JYMmVWN0xFaTc2eGY?oc=5",
@@ -291,11 +291,33 @@
       "imageUrl": ""
     },
     {
+      "title": "नेप्सेमा अपि पावरको शेयर मूल्य समायोजन - Hamro Patro",
+      "summary": "नेप्सेमा अपि पावरको शेयर मूल्य समायोजन Hamro Patro",
+      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxORGlJd1J1ZmpBM1hfanljMVpscGNPTWdjaEJ5NXRfMWk0WmJtdVlwMVg2X20wMDRrczktNVRGVmxxT2x1MU9pTXBCRTRVQVBXMHh1ZDF4WXhWa0ZjSXNRQVR1OUkzSE0ybS16cVF2SzBVaHNPS3MtT2lhVTBqS0ZRX3JQMW1sSFhNLXdmWTQwN2JhVzJTYUwyaXV1NmdjZGNKQXl5bmtIWQ?oc=5",
+      "source": "Hamro Patro",
+      "published": "Mon, 23 Nov 2026 10:20:00 GMT",
+      "category": "market",
+      "categoryLabel": "नेप्से / बजार",
+      "symbols": [],
+      "imageUrl": ""
+    },
+    {
       "title": "झिनो अंकले बढ्यो नेप्से, कारोबार रकममा गिरावट - Hamro Patro",
       "summary": "झिनो अंकले बढ्यो नेप्से, कारोबार रकममा गिरावट Hamro Patro",
       "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNR05aLXFqLU40NHVXeTJ0Y1pjYXB2YUJWU3lhbHpsRE9GeElpZGhTS1dsUnpVYkwzMGQ5Y09kOGdVbVZZS29KdnFxNjgwWlFIVXVkaWsyMFVRN1p5VUlqMzFwTG9iUDFfckZlMXdJVGRRWmNmR1Mzc21RMXpMLUtVMDYxYkdHbU1iempaeUNUeTJRN2JMcVFETDNfN2VkeDZzbFZqeWhKM1hxT0NHOFFtOUpB?oc=5",
       "source": "Hamro Patro",
       "published": "Mon, 23 Nov 2026 10:08:52 GMT",
+      "category": "market",
+      "categoryLabel": "नेप्से / बजार",
+      "symbols": [],
+      "imageUrl": ""
+    },
+    {
+      "title": "२.२६ अंकले बढ्यो नेप्से, ३ अर्ब ८२ करोड रुपैयाँको कारोबार - Hamro Patro",
+      "summary": "२.२६ अंकले बढ्यो नेप्से, ३ अर्ब ८२ करोड रुपैयाँको कारोबार Hamro Patro",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPTjJ0LW9JbE5MS29wb2xaWmE0dTR6YWowcTZ4YkZjendlcFZaZTJmZm9wRHNPTTFyNHR0OHNKNmVZNGpYY2dGdlVrRGltclZHdE82dDZGY1B0YmlXNzVVQVFMcUhITTJvbHVOMXdyMEFGY3F3MlZzVGRvOWhOVXlGb1NaZEd5MmZQeXZKSzZYaks0U3FWYmI1UERqUlBRUUYzSlliVVEweWpVazBhRnlPTVN3?oc=5",
+      "source": "Hamro Patro",
+      "published": "Mon, 23 Nov 2026 09:42:00 GMT",
       "category": "market",
       "categoryLabel": "नेप्से / बजार",
       "symbols": [],
